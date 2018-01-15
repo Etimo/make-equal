@@ -1,0 +1,10 @@
+.datepicker__calendar{
+  background-color:#fff;
+  z-index: 99;
+  position: relative;
+}
+
+
+.DayPickerInput{
+  width: 100%;
+}

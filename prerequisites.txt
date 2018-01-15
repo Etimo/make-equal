@@ -1,0 +1,15 @@
+- Visual Studio Code (eller liknande editor)
+  - EditorConfig
+  - ESLint
+- Yarn
+- Git
+- Webbläsare
+  - React DevTools
+  - Redux DevTools
+
+1. Öppna den integrerade terminalen i VSCode
+2. Kör `yarn start`
+3. Din webbläsare öppnas nu och appen startas i dev-läge
+4. Ändra filer och spara, appen i webbläsaren bör uppdateras automatiskt
+5. För att spara ditt arbete, staga dina filer i VSCodes integrerade git-verktyg, commita och kör `git push`. När jag satt upp Travis-integration och AWS-deployments kommer dessa komma ut live och gå att visa för Make Equal efter några minuter
+
