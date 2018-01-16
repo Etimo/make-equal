@@ -25,7 +25,7 @@ class Datepicker extends Component{
 
   render(){
     const x = this.props.questions;
-    const value = this.state.selectedDay ? this.state.selectedDay.format('YYYY/MM/DD'): '';
+    const value = this.state.selectedDay ? this.state.selectedDay : '';
     return(
         <Form.Field>
           <label>{x.label}
@@ -33,9 +33,9 @@ class Datepicker extends Component{
             value={value}
             className = 'e'
             placeholder="ÅÅÅÅ/MM/DD" 
-            format="YYYY/MM/DD"
+            dateFormat="YYYY/MM/DD"
             onDayChange={this._handleDayChange}
-
+            
             dayPickerProps={
               {
                 className: 'datepicker__calendar',

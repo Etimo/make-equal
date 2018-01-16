@@ -4,6 +4,8 @@
       icon:'user',
       questions:[
         {label: 'Vilken datum?', type:'datepicker'},
+        {label: 'Vilken åldersgrupp tillhör du?', type:'selectGroup', 
+        options:[{value:'value1', text:'10 till 14'},{value:'value2', text:'15 till 17'},{value:'value3', text:'18 till 21'}] },
         {label: 'Hur många?', type:'radioGroup', options:[{value:'1', text:'1'}, {value:'2', text:'2'}, {value:'3', text:'trea'}] },
         {label: 'QQ', type:'checkboxGroup', options:[{value:'a', text:'a'}, {value:'b', text:'b'}, {value:'c', text:'c'}] }, 
         {label: 'Förnamn', type:'textfield' },
