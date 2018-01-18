@@ -18,6 +18,9 @@
  .hidden{
   display: none;
 }
+.make-color {
+    background-color: #ee2a7b;
+}
 
 @media (max-width: 991px){
   .form-section{

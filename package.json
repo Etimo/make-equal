@@ -14,7 +14,8 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.77.2"
+    "semantic-ui-react": "^0.77.2",
+    "typeface-roboto-slab": "0.0.44"
   },
   "devDependencies": {
     "react-scripts": "1.1.0"

@@ -86,7 +86,7 @@ class RegistrationForm extends Component{
     
       return(
 
-        <Form onSubmit={handleSubmit}>
+        <Form  onSubmit={handleSubmit}>
           {
             sectionsArr.map((section, num) =>{
               if(num === sectionsArr.length-1){
@@ -96,7 +96,9 @@ class RegistrationForm extends Component{
                 first= false;
               }
               
-              return(<FormSection key={num} section={section} isLast = {last} windowSize={this.props.windowSize} isFirst={first} _navigate={this.props._navigate} _back={this.props._back} _changeAddress={this.props._changeAddress} _changeSection={this.props._changeSection} _scrollUp={this.props._scrollUp} sectionPosition={this.props.sectionPosition}/>);
+              return(<FormSection  key={num} section={section} isLast = {last} windowSize={this.props.windowSize} 
+                isFirst={first} _navigate={this.props._navigate} _back={this.props._back} _changeAddress={this.props._changeAddress} 
+                _changeSection={this.props._changeSection} _scrollUp={this.props._scrollUp} sectionPosition={this.props.sectionPosition}/>);
             })
           }
           

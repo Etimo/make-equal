@@ -1,11 +1,25 @@
 .header{
-  text-align: left;
-  padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  padding-bottom: 10px;
+  /* background-color: #fecd1b; */
+  height: auto;
+  font-size: 10em;
+  font-family:'Roboto Slab';
+  /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0.1); */
+  /* box-shadow: 0 18px 20px -20px gray; */
+  
+}
+img {
+    max-width: 90%;
+    height: auto;
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 991px){
   .header{
-    font-size: 1.7em;
-    text-align: center;
+    font-size: 10em;
+  font-family:'Roboto Slab';
   }
 }

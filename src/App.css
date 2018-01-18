@@ -1,6 +1,11 @@
 .App {
   padding-top: 30px;
 }
+
+.QuestionBox {
+    box-shadow: 3px 3px 18px -3px gray;
+    padding: 1em;
+}
 /*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
