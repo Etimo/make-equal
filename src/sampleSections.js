@@ -1,4 +1,4 @@
-import section from './resources/sections/individual-section'
+
 const sections = [
   {
     name: 'Textfield Question',
