@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
+import {Form} from 'semantic-ui-react';
+import {reduxForm} from 'redux-form'
+import FormSection from './FormSection';
+import '../css/registrationForm.css';
 
 // import {Field, reduxForm, initialize} from 'redux-form';
 // import {connect} from 'react-redux';
-import FormSection from './FormSection';
 // import TriangleDown from './TriangleDown';
 // import TriangleUp from './TriangleUp';
-
 // import{BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
-import {Form, Button} from 'semantic-ui-react';
-import '../css/registrationForm.css';
 
-import {reduxForm} from 'redux-form'
 
 
 class RegistrationForm extends Component{

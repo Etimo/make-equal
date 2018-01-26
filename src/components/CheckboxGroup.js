@@ -8,7 +8,6 @@ class CheckboxGroup extends Component {
     render() {
         // console.log(this.props.questions);
         const x = this.props.questions;
-        debugger;
         return (
             <Form.Field>
                 <label>{x.label}</label>

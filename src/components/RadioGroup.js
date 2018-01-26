@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Radio, Form } from 'semantic-ui-react';
 import '../css/radioGroup.css';
-import { Field } from 'redux-form';
+// import { Field } from 'redux-form';
 import 'semantic-ui-css/semantic.min.css';
 
 

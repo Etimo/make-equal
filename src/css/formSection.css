@@ -1,6 +1,6 @@
 .form-section{
-  min-height: 130vh;
-  padding: 70px 0;
+  min-height: auto;
+  padding: 1em 0;
   width: 100%;
 }
 
@@ -30,7 +30,7 @@
 
   .form-section__header{
     font-size: 1.3em;
-    margin-bottom: 5px; 
+    margin-bottom: 0.1em; 
   }
 
 }
