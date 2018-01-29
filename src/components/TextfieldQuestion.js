@@ -35,7 +35,8 @@ const TextfieldQuestion = (props) => {
   // console.log(parseInt("101",10))
   // console.log(parseInt("101",2))
   return (
-    <div>
+    <div className='component-box'>
+      <p className='question-box'>{x.text}</p>
       <Field name={x.label} type='text' label={x.label} placeholder="Text" component={renderSemanticUITextfield} />
     </div>
   );

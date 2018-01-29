@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Field } from 'redux-form';
 import { Grid, Form, Checkbox } from 'semantic-ui-react';
 import '../css/radioGroup.css';
-import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.css';
 
 
 class CheckboxQuestion extends Component {
@@ -30,29 +30,31 @@ class CheckboxQuestion extends Component {
   render() {
     const x = this.props.questions;
     return (
-      <Form.Field className='box'>
-        <p className='question-box'>{x.label}</p>
-        {
-          x.options.map((el, num) => {
-            return (
-              <Grid key={num}>
-                <Grid.Row className={this._isChecked(num) ? 'box-fill' : 'box-nofill'}
-                  onClick={() => this._handleChange(num)}>
-                  <Grid.Column computer={16} tablet={16} mobile={16} >
-                    <div className='answer-text'>
-                      <span className='right'>
-                        <Checkbox className='checkboxGroup__checkbox ui toggle' value={el.value}
-                          onClick={() => this._handleChange(num)} checked={this._isChecked(num)} />
-                      </span>
-                      {el.text}
-                    </div>
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            )
-          })
-        }
-      </Form.Field>
+      <div className='component-box'>
+        <Form.Field>
+          <p className='question-box'>{x.label}</p>
+          {
+            x.options.map((el, num) => {
+              return (
+                <Grid key={num}>
+                  <Grid.Row className={this._isChecked(num) ? 'box-fill' : 'box-nofill'}
+                    onClick={() => this._handleChange(num)}>
+                    <Grid.Column computer={16} tablet={16} mobile={16} >
+                      <div className='answer-text'>
+                        <span className='right'>
+                          <Checkbox className='checkboxGroup__checkbox  toggle' value={el.value}
+                            onClick={() => this._handleChange(num)} checked={this._isChecked(num)} />
+                        </span>
+                        {el.text}
+                      </div>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              )
+            })
+          }
+        </Form.Field>
+      </div>
     )
   }
 }

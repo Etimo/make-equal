@@ -20,7 +20,8 @@ class RadioQuestion extends Component {
     const x = this.props.questions;
 
     return (
-      <Form.Field className='box'>
+      <div className='component-box'>
+      <Form.Field>
         <p className='question-box'>{x.label}</p>
         {
           x.options.map((el, num) => {
@@ -46,6 +47,7 @@ class RadioQuestion extends Component {
           })
         }
       </Form.Field>
+      </div>
     )
   }
 }

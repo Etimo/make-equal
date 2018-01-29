@@ -122,9 +122,10 @@ class FormSection extends Component {
     } else {
       return (
         <div>
-          {this._isNotFirst()}
           {this._isNotLast()}
+          {this._isNotFirst()}
         </div>
+
       )
     }
   }

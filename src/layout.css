@@ -2,21 +2,175 @@
   margin: 0 auto;
   padding: 0%;
   height: 100vh;
-  width: 50%;
+  /* width: 50%; */
 }
-.l-top{
+.l-topa{
   height: 20vh;
 }
-.l-middle{
+.l-middlea{
   height: 80vh;
   /* overflow-y: auto; */
 }
-.l-bottom{
+.l-bottoma{
   height: 20vh;
 }
-.child-container{
+.child-container1{
   height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+/* ************************* */
+/* ********** Font *********** */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+.Roboto {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* *********** Util *********** */
+.right{float:right;margin-left:1em;}
+
+.left{float:left;margin-right:1em;}
+
+.site-yellow-brighter{
+  background-color: #FCEA10;
+}
+.site-yellow-darker{
+  background-color: rgb(254,205,27);
+}
+
+/* ******* Page Layout ******* */
+.App {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  /* max-height: 120vh; */
+  /* display: flex;
+  justify-content: space-between;
+  flex-direction: column; */
+  
+}
+.l-container{
+  height: 100vh;
+}
+.l-top{
+  height: 20vh;
+  /* background-color: red; */
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.l-middle{
+  height: 75vh;
+  background-color: white;
+  margin: 0;
+  /* box-sizing: border-box; */
+  
+}
+.l-bottom{
+  height: 20vh;
+  background-color: white;
+  margin: 0;
+}
+
+.child-container{
+  /* height: max-content; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: -webkit-fill-available; */
+  height: stretch;
+}
+
+
+
+.content{
+  /* text-overflow: ellipsis; */
+  /* top: 0; */
+  
+  /* height: stretch; */
+  /* padding-bottom: 5%; */
+  /* position: absolute; */
+  /* height: 65vh; */
+  /* background-color: aliceblue; */
+  /* margin-top: auto;
+  margin-bottom: auto; */
+}
+
+.form-buttons {
+  width: inherit;
+  bottom: 0;
+  position: sticky; 
+  border: 0.2em solid white;
+  background-color: white;
+  height: 10vh;
+  min-height: 10vh;
+  z-index: 10000;
+  
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  top: 0;
+}
+
+/* ******** Layout End ******** */
+
+/* ****** Content Layout ****** */
+.component-box {
+  padding: 1.2em;
+  margin: 0;
+}
+
+.question-box{
+  font-size: 1.5em;
+}
+
+.answer-text{
+  word-wrap: break-word;
+  padding: 2px 0 2px 0; 
+}
+
+.box-fill{
+  cursor: pointer;
+  background-color: rgb(236, 236, 236);
+  border-radius: 2em;
+  margin-bottom: 0.3em;  
+}
+
+.box-nofill{
+  cursor: pointer;
+  border-radius: 2em;
+  margin-bottom: 0.3em;
+}
+
+
+/* ******** Leftovers ********* */
+/*
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/

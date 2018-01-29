@@ -6,9 +6,11 @@ import sampleSection from './sampleSections';
 import { Grid, Container, Progress } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
+import { Button } from 'semantic-ui-react';
+import './css/formSection.css';
 // import Textfield from './components/Textfield';
 
-import './layout.css';
+// import './layout.css';
 
 class App extends Component {
   constructor() {
@@ -24,6 +26,7 @@ class App extends Component {
       sectionPosition: sampleSection[0].id,
       address: window.location.origin,
       windowSize: '',
+      showForm: false,
       numberOfSections: sampleSection.length,
       currentPercentage: 0,
       sectionPercentageIncrement: 100 / sampleSection.length,
@@ -136,43 +139,90 @@ class App extends Component {
       currentPercentage: 100,
     })
   }
+  showForm = function(){
+    this.setState({
+      showForm: true,
+    })
+  }
 
   handleChange = (values) => {
     // console.log(values);
   }
 
-  render() {
+  regForm() {
     return (
-      <div className="l-container" >
-        <div className='l-top'>
-          <Header />
-          <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
-        </div>
-        <div className='l-middle'>
-          <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
-
-        </div>
-        <div className='l-bottom'>
-          <p>wawa</p>
-        </div>
+      <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+    );
+  }
+  welcomeBox(){
+    return (
+      <div className='welcome-box'>
+        <h2 >Welcome to this page</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <Button primary={true} type="button" fluid onClick={() => this.showForm()} content="Fortsätt" className="registration-form__btn next" />
       </div>
     );
   }
+  progbar(){
+    return (
+<Progress percent={this.state.currentPercentage} color='yellow'/>
+    );
+  }
+  
 
-//   <div className="l-container" >
-//   <div className='l-top'>
-//     <Header />
-//     <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
-//   </div>
-//   <div className='l-middle'>
-//     <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+  render() {
+    return (
+      <Container className='App' >
+        <Grid className="l-container" verticalAlign='middle' >
 
-//   </div>
-//   <div className='l-bottom'>
-//     <p>wawa</p>
-//   </div>
-// </div>
+          <Grid.Row className='l-top' centered columns={1}>
+            <Grid.Column computer={10} tablet={16} mobile={16} >
+              <Header />
+            </Grid.Column>
+            <Grid.Column computer={10} tablet={16} mobile={16}>
+{this.state.showForm === true ? this.progbar() : ''}
+            {/* <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}> */}
+              
+            </Grid.Column>
+          </Grid.Row>
 
+          <Grid.Row className='l-middle' centered>
+            <Grid.Column computer={10} tablet={16} mobile={16} >
+              {/* <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} /> */}
+              {this.state.showForm === true? this.regForm():this.welcomeBox()}
+            </Grid.Column>
+          </Grid.Row>
+
+        </Grid>
+        {/* <Grid>
+          <Grid.Row className='l-bottom'>
+            <Grid.Column computer={16} tablet={16} mobile={16} >
+              <p>Footer</p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid> */}
+      </Container>
+    );
+  }
+
+
+  // render() {
+  //   return (
+  //     <div className="l-container" >
+  //       <div className='l-top'>
+  //         <Header />
+  //         <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
+  //       </div>
+  //       <div className='l-middle'>
+  //         <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+
+  //       </div>
+  //       <div className='l-bottom'>
+  //         <p>wawa</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   // render() {
   //   return (
