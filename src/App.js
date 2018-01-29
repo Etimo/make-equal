@@ -144,7 +144,6 @@ class App extends Component {
   render() {
     return (
       <div className="l-container" >
-
         <div className='l-top'>
           <Header />
           <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
@@ -153,12 +152,27 @@ class App extends Component {
           <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
 
         </div>
-        {/* <div className='l-bottom'>
+        <div className='l-bottom'>
           <p>wawa</p>
-        </div> */}
+        </div>
       </div>
     );
   }
+
+//   <div className="l-container" >
+//   <div className='l-top'>
+//     <Header />
+//     <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
+//   </div>
+//   <div className='l-middle'>
+//     <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+
+//   </div>
+//   <div className='l-bottom'>
+//     <p>wawa</p>
+//   </div>
+// </div>
+
 
   // render() {
   //   return (
