@@ -139,7 +139,7 @@ class App extends Component {
       currentPercentage: 100,
     })
   }
-  showForm = function(){
+  showForm = function () {
     this.setState({
       showForm: true,
     })
@@ -154,7 +154,7 @@ class App extends Component {
       <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
     );
   }
-  welcomeBox(){
+  welcomeBox() {
     return (
       <div className='welcome-box'>
         <h2 >Welcome to this page</h2>
@@ -163,12 +163,12 @@ class App extends Component {
       </div>
     );
   }
-  progbar(){
+  progbar() {
     return (
-<Progress percent={this.state.currentPercentage} color='yellow'/>
+      <Progress percent={this.state.currentPercentage} color='yellow' />
     );
   }
-  
+
 
   render() {
     return (
@@ -180,16 +180,14 @@ class App extends Component {
               <Header />
             </Grid.Column>
             <Grid.Column computer={10} tablet={16} mobile={16}>
-{this.state.showForm === true ? this.progbar() : ''}
-            {/* <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}> */}
-              
+              {this.state.showForm === true ? this.progbar() : ''}
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row className='l-middle' centered>
             <Grid.Column computer={10} tablet={16} mobile={16} >
               {/* <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} /> */}
-              {this.state.showForm === true? this.regForm():this.welcomeBox()}
+              {this.state.showForm === true ? this.regForm() : this.welcomeBox()}
             </Grid.Column>
           </Grid.Row>
 

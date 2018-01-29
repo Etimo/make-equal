@@ -1,6 +1,19 @@
 
 const sections = [
   {
+    name: 'question 1',
+    id: '1',
+    icon: 'archive',
+    questions: [{
+      label: "Vem är utsatt?",
+      type: 'radioQuestion',
+      options: [
+        { value: 'a', text: 'Jag' },
+        { value: 'b', text: 'En annan person' },
+        ]
+    },]
+  },
+  {
     name: 'Checkbox question',
     id: 'checkbox22',
     icon: 'archive',

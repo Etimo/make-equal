@@ -139,7 +139,7 @@ class FormSection extends Component {
       <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}>
         <div className='child-container'>
           <div className='content'>
-            <h1 className='form-section__header Roboto'>{section.name}</h1>
+            {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
 
             {section.questions.map((question, num) => {
               let input;
