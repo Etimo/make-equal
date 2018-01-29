@@ -8,7 +8,7 @@ import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 // import Textfield from './components/Textfield';
 
-
+import './layout.css';
 
 class App extends Component {
   constructor() {
@@ -143,24 +143,43 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" >
-        <Container>
-          <Grid className="QuestionBox">
-            <Grid.Row>
-              {/* <Grid.Column computer={16} tablet={16} mobile={16} >
-                <Steps windowSize={this.state.windowSize} sectionNames={sampleSection} _setScreenSize={this._setScreenSize} _stepsClick={this._stepsClick} activeSection={this.state.sectionPosition} />
-              </Grid.Column> */}
-              <Grid.Column computer={16} tablet={16} mobile={16} >
-                <Header />
-                <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
-                <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+      <div className="l-container" >
+
+        <div className='l-top'>
+          <Header />
+          <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
+        </div>
+        <div className='l-middle'>
+          <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+
+        </div>
+        {/* <div className='l-bottom'>
+          <p>wawa</p>
+        </div> */}
       </div>
     );
   }
+
+  // render() {
+  //   return (
+  //     <div className="App" >
+  //       <Container>
+  //         <Grid className="QuestionBox">
+  //           <Grid.Row>
+  //             {/* <Grid.Column computer={16} tablet={16} mobile={16} >
+  //               <Steps windowSize={this.state.windowSize} sectionNames={sampleSection} _setScreenSize={this._setScreenSize} _stepsClick={this._stepsClick} activeSection={this.state.sectionPosition} />
+  //             </Grid.Column> */}
+  //             <Grid.Column computer={16} tablet={16} mobile={16} >
+  //               <Header />
+  //               <Progress percent={this.state.currentPercentage} className='bar' color='yellow' />
+  //               <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+  //             </Grid.Column>
+  //           </Grid.Row>
+  //         </Grid>
+  //       </Container>
+  //     </div>
+  //   );
+  // }
 }
 
 export default App;

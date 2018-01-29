@@ -112,10 +112,12 @@ class FormSection extends Component {
   _isMobile() {
     if (this.props.windowSize > 991) {
       return (
-        <Button.Group widths='3'>
-          {this._isNotFirst()}
-          {this._isNotLast()}
-        </Button.Group>
+        <div>
+          <Button.Group widths='3'>
+            {this._isNotFirst()}
+            {this._isNotLast()}
+          </Button.Group>
+        </div>
       )
     } else {
       return (
@@ -133,7 +135,8 @@ class FormSection extends Component {
     // const windowSize = this.props.windowSize;
 
     return (
-        <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}>
+      <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}>
+        <div className='child-container'>
           <div className='content'>
             <h1 className='form-section__header Roboto'>{section.name}</h1>
 
@@ -180,7 +183,8 @@ class FormSection extends Component {
               this._isMobile()
             }
           </div>
-        </section>
+        </div>
+      </section>
     )
   };
 }

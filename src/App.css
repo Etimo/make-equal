@@ -33,36 +33,42 @@
   font-family: 'Roboto Slab', serif;
   font-size: 1.5em;
   height: 100vh;
+  padding: 0;
   margin: 0;
   }
 
 .header {
   width: 100%;
   text-align: center;
-  padding-bottom: 10px;
-  margin-top: 1em;
-  height: 10vh;
+  /* padding-bottom: 10px; */
+  padding-top: 1em;
+  height: auto;
   top: 0;
   /* position: sticky; */
   /* background-color: antiquewhite; */
 }
 .content{
-  height: 60vh;
-  
+  /* position: absolute; */
+  /* top: 0; */
+  /* height: 80%; */
+  max-height: 60%;
+  padding-bottom: 5%;
   /* background-color: aliceblue; */
+  /* margin-top: auto;
+  margin-bottom: auto; */
 }
 
 .form-buttons {
-  height: 10vh;
-  width: inherit;
-
-  position: sticky; 
+  width: auto;
   bottom: 0;
-  margin-top:1em;
-  margin-bottom:0;
-  padding-top: 0.5em;
-  padding-bottom: 0;
-  border-top: 0.2em solid rgb(228, 228, 228);
+  position: sticky; 
+  height: auto;
+  /* margin-top:1em; */
+  /* margin-bottom:0; */
+  /* padding-top: 0.5em; */
+  padding-bottom: 5%;
+  border: 0.2em solid white;
+  /* border: 0.2em solid rgb(228, 228, 228); */
   z-index: 10000;
   
   background-color: white;
