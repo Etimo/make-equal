@@ -22,7 +22,7 @@ class RadioQuestion extends Component {
     return (
       <div className='component-box'>
       <Form.Field>
-        <p className='question-box'>{x.label}</p>
+        <p className='question-box'>{x.text}</p>
         {
           x.options.map((el, num) => {
             return (

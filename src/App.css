@@ -6,6 +6,7 @@
 }
 body{
   background-color: rgba(0, 0, 0, 0.03);
+  cursor: crosshair;
 }
 /* ******* Page Layout ******* */
 .App {
@@ -26,6 +27,7 @@ body{
 }
 .l-top{
   height: 20vh;
+  /* height: auto; */
   margin: 0;
   /* display: flex;
   flex-flow: column;
@@ -117,6 +119,7 @@ body{
 .component-box {
   padding: 1.2em;
   margin: 0;
+
 }
 
 .question-box{

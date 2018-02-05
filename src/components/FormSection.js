@@ -130,54 +130,58 @@ class FormSection extends Component {
     }
   }
 
-  render() {
-    const section = this.props.section;
-    const sameSection = this.props.sectionPosition === section.id;
-    // const windowSize = this.props.windowSize;
+  _renderQuestionType(question) {
+    let input;
+    switch (question.type) {
+      case 'checkboxGroup':
+        input = <CheckboxGroup key={question.id} questions={question} />;
+        break
+      case 'textfield':
+        input = <Textfield key={question.id} questions={question} />
+        break
+      case 'textarea':
+        input = <Textarea key={question.id} questions={question} />
+        break
+      case 'selectGroup':
+        input = <SelectGroup key={question.id} questions={question} />
+        break
+      case 'radioGroup':
+        input = <RadioGroup key={question.id} questions={question} />
+        break
+      case 'datepicker':
+        input = <Datepicker key={question.id} questions={question} />
+        break
+      case 'radioQuestion':
+        input = <RadioQuestion key={question.id} questions={question} />
+        break;
+      case 'checkboxQuestion':
+        input = <CheckboxQuestion key={question.id} questions={question} />
+        break;
+      case 'textfieldQuestion':
+        input = <TextfieldQuestion key={question.id} questions={question} />
+        break;
+      default:
+        break;
+    }
+    return input;
+  }
 
+  render() {
+    const question = this.props.section;
+    const sameSection = this.props.sectionPosition === question.id;
+    // const windowSize = this.props.windowSize;
+    // console.log(question)
     return (
-      <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={section.id}>
+      <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
         <div className='child-container'>
           <div className='content'>
             {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
+            {/* {
+              question.questions.map((question, num) => {
 
-            {section.questions.map((question, num) => {
-              let input;
-
-              switch (question.type) {
-                case 'checkboxGroup':
-                  input = <CheckboxGroup key={num} questions={question} />;
-                  break
-                case 'textfield':
-                  input = <Textfield key={num} questions={question} />
-                  break
-                case 'textarea':
-                  input = <Textarea key={num} questions={question} />
-                  break
-                case 'selectGroup':
-                  input = <SelectGroup key={num} questions={question} />
-                  break
-                case 'radioGroup':
-                  input = <RadioGroup key={num} questions={question} />
-                  break
-                case 'datepicker':
-                  input = <Datepicker key={num} questions={question} />
-                  break
-                case 'radioQuestion':
-                  input = <RadioQuestion key={num} questions={question} />
-                  break;
-                case 'checkboxQuestion':
-                  input = <CheckboxQuestion key={num} questions={question} />
-                  break;
-                case 'textfieldQuestion':
-                  input = <TextfieldQuestion key={num} questions={question} />
-                  break;
-                default:
-                  break;
-              }
-
-              return input;
-            })}
+              })
+            } */}
+            {this._renderQuestionType(question)}
           </div>
           <div className='form-buttons'>
             {

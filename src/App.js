@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 // import Steps from './components/Steps';
 import RegistrationForm from './components/RegistrationForm';
-import sampleSection from './sampleSections';
+// import FormSection from './sampleSections';
 import { Grid, Container, Progress } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import { Button } from 'semantic-ui-react';
 import './css/formSection.css';
 // import Textfield from './components/Textfield';
-
 // import './layout.css';
+import QuestionSection from './resources/questions/FormQuestions';
 
 class App extends Component {
   constructor() {
@@ -23,13 +23,13 @@ class App extends Component {
     // this._back = this._back.bind(this);
     this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
-      sectionPosition: sampleSection[0].id,
+      sectionPosition: QuestionSection[0].id,
       address: window.location.origin,
       windowSize: '',
       showForm: false,
-      numberOfSections: sampleSection.length,
+      numberOfSections: QuestionSection.length,
       currentPercentage: 0,
-      sectionPercentageIncrement: 100 / sampleSection.length,
+      sectionPercentageIncrement: 100 / QuestionSection.length,
     }
   }
 
@@ -52,9 +52,9 @@ class App extends Component {
 
   //Navigate BACK and FORTH with button
   _navigate(param) {
-    sampleSection.map((obj, num) => {
+    QuestionSection.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
-        const newSectionPosition = sampleSection[num + param].id;
+        const newSectionPosition = QuestionSection[num + param].id;
         this.setState({
           sectionPosition: newSectionPosition,
           currentPercentage: param > 0 ? this.state.currentPercentage + this.state.sectionPercentageIncrement : this.state.currentPercentage - this.state.sectionPercentageIncrement,
@@ -65,7 +65,7 @@ class App extends Component {
 
   _changeAddress(position) {
     if (position === this.state.sectionPosition) {
-      sampleSection.map((obj, num) => {
+      QuestionSection.map((obj, num) => {
         console.log(obj);
         console.log('change address');
       });
@@ -82,16 +82,14 @@ class App extends Component {
   _changeSection() {
     let newSectionPosition;
     let lastSection = false;
-    sampleSection.map((obj, num) => {
+    QuestionSection.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
         console.log('with waypoitn');
-        // console.log(obj.id + num);
-        // console.log(sampleSection[num+1]);
-        if ((sampleSection.length - 1) > num) { //if not last section
-          newSectionPosition = sampleSection[num + 1].id;
+        if ((QuestionSection.length - 1) > num) { //if not last section
+          newSectionPosition = QuestionSection[num + 1].id;
           console.log('with waypoitn1');
         } else {
-          newSectionPosition = sampleSection[num].id;
+          newSectionPosition = QuestionSection[num].id;
           lastSection = true;
           console.log('with waypoitn2');
         }
@@ -108,30 +106,7 @@ class App extends Component {
     }
   }
 
-  //Scrolling
-  // _scrollUp(){
-  //   // console.log('w');
-  //   let x;
-  //   sampleSection.map((obj, num)=>{
-  //   // //   // console.log(obj);
-  //     if(obj.id === this.state.sectionPosition){
-  //       // console.log(obj.id + num);
-  //   // //     // console.log(sampleSection[num+1]);
-  //       if( num >= 1 ){
-  //         x = sampleSection[num-1].id;
-  //         console.log(this.state.sectionPosition);
-  //       }else{
-  //         x = sampleSection[num].id;
-  //       }
-  //     }
-  //   });
-  //   this.setState({
-  //     sectionPosition: x,
-  //   });
-  //   // if(){
-  //     this._changeAddress();
-  //   // }
-  // }
+
   submit = (values) => {
     console.log('submit');
     console.log(values);
@@ -151,7 +126,11 @@ class App extends Component {
 
   regForm() {
     return (
-      <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} sections={sampleSection} windowSize={this.state.windowSize} _navigate={this._navigate} _back={this._back} _changeAddress={this._changeAddress} _changeSection={this._changeSection} _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
+      <RegistrationForm onSubmit={this.submit} onChange={this.handleChange} 
+      sections={QuestionSection} windowSize={this.state.windowSize} 
+      _navigate={this._navigate} _back={this._back} 
+      _changeAddress={this._changeAddress} _changeSection={this._changeSection} 
+      _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition} />
     );
   }
   welcomeBox() {
@@ -202,6 +181,33 @@ class App extends Component {
       </Container>
     );
   }
+
+
+
+    //Scrolling
+  // _scrollUp(){
+  //   // console.log('w');
+  //   let x;
+  //   sampleSection.map((obj, num)=>{
+  //   // //   // console.log(obj);
+  //     if(obj.id === this.state.sectionPosition){
+  //       // console.log(obj.id + num);
+  //   // //     // console.log(sampleSection[num+1]);
+  //       if( num >= 1 ){
+  //         x = sampleSection[num-1].id;
+  //         console.log(this.state.sectionPosition);
+  //       }else{
+  //         x = sampleSection[num].id;
+  //       }
+  //     }
+  //   });
+  //   this.setState({
+  //     sectionPosition: x,
+  //   });
+  //   // if(){
+  //     this._changeAddress();
+  //   // }
+  // }
 
 
   // render() {

@@ -32,23 +32,25 @@ class CheckboxQuestion extends Component {
     return (
       <div className='component-box'>
         <Form.Field>
-          <p className='question-box'>{x.label}</p>
+          <p className='question-box'>{x.text}</p>
           {
             x.options.map((el, num) => {
               return (
                 <Grid key={num}>
-                  <Grid.Row className={this._isChecked(num) ? 'box-fill' : 'box-nofill'}
-                    onClick={() => this._handleChange(num)}>
-                    <Grid.Column computer={16} tablet={16} mobile={16} >
-                      <div className='answer-text'>
-                        <span className='right'>
-                          <Checkbox className='checkboxGroup__checkbox  toggle' value={el.value}
-                            onClick={() => this._handleChange(num)} checked={this._isChecked(num)} />
-                        </span>
-                        {el.text}
-                      </div>
-                    </Grid.Column>
-                  </Grid.Row>
+                  
+                    <Grid.Row columns={2} className={this._isChecked(num) ? 'box-fill' : 'box-nofill'}
+                      onClick={() => this._handleChange(num)}>
+                      <Grid.Column columns={2} computer={16} tablet={16} mobile={16} >
+                        <div className='answer-text'>
+                          <span className='right'>
+                            <Checkbox className='checkboxGroup__checkbox  toggle' value={el.value}
+                              onClick={() => this._handleChange(num)} checked={this._isChecked(num)} />
+                          </span>
+                          {el.text}
+                        </div>
+                      </Grid.Column>
+                    </Grid.Row>
+                  
                 </Grid>
               )
             })
