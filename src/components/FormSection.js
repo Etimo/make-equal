@@ -11,6 +11,7 @@ import { Button } from 'semantic-ui-react';
 import '../css/formSection.css';
 // import '../App.css'
 import TextfieldQuestion from './TextfieldQuestion';
+import RadioQuestionTwo from './RadioQuestionTwo';
 
 // import {Icon} from 'semantic-ui-react';
 // import {Field} from 'redux-form';
@@ -112,19 +113,19 @@ class FormSection extends Component {
   _isMobile() {
     if (this.props.windowSize > 991) {
       return (
-        <div>
+        <label>
           <Button.Group widths='3'>
             {this._isNotFirst()}
             {this._isNotLast()}
           </Button.Group>
-        </div>
+        </label>
       )
     } else {
       return (
-        <div>
+        <label>
           {this._isNotLast()}
           {this._isNotFirst()}
-        </div>
+        </label>
 
       )
     }
@@ -160,6 +161,9 @@ class FormSection extends Component {
       case 'textfieldQuestion':
         input = <TextfieldQuestion key={question.id} questions={question} />
         break;
+      case 'radioQuestionTwo':
+        input = <RadioQuestionTwo key={question.id} questions={question} />
+        break;
       default:
         break;
     }
@@ -173,8 +177,8 @@ class FormSection extends Component {
     // console.log(question)
     return (
       <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
-        <div className='child-container'>
-          <div className='content'>
+        <label className='child-container'>
+          <label className='content'>
             {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
             {/* {
               question.questions.map((question, num) => {
@@ -182,13 +186,13 @@ class FormSection extends Component {
               })
             } */}
             {this._renderQuestionType(question)}
-          </div>
-          <div className='form-buttons'>
+          </label>
+          <label className='form-buttons'>
             {
               this._isMobile()
             }
-          </div>
-        </div>
+          </label>
+        </label>
       </section>
     )
   };

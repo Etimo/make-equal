@@ -26,7 +26,7 @@ class App extends Component {
       sectionPosition: QuestionSection[0].id,
       address: window.location.origin,
       windowSize: '',
-      showForm: false,
+      showForm: true,
       numberOfSections: QuestionSection.length,
       currentPercentage: 0,
       sectionPercentageIncrement: 100 / QuestionSection.length,
@@ -135,11 +135,11 @@ class App extends Component {
   }
   welcomeBox() {
     return (
-      <div className='welcome-box'>
+      <label className='welcome-box'>
         <h2 >Welcome to this page</h2>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <Button primary={true} type="button" fluid onClick={() => this.showForm()} content="Fortsätt" className="registration-form__btn next" />
-      </div>
+      </label>
     );
   }
   progbar() {

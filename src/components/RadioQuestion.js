@@ -20,34 +20,32 @@ class RadioQuestion extends Component {
     const x = this.props.questions;
 
     return (
-      <div className='component-box'>
-      <Form.Field>
-        <p className='question-box'>{x.text}</p>
-        {
-          x.options.map((el, num) => {
-            return (
-              <Grid key={num}>
-                <Grid.Row className={this.state.value === el.value ? 'box-fill' : 'box-nofill'}
-                  onClick={() => this._handleChange(el.value)}>
-                  <Grid.Column computer={16} tablet={16} mobile={16}>
-                    <div className='answer-text'>
-                      <span className='right'>
-                        <Radio className='radioGroup__radio' key={num}
-                          value={el.value} checked={this.state.value === el.value}
-                          onClick={() => this._handleChange(el.value)} />
-                      </span>
-                      {el.text}
-                    </div>
-
-
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            )
-          })
-        }
-      </Form.Field>
-      </div>
+      <label className='component-box'>
+        <Form.Field>
+          <p className='question-box'>{x.text}</p>
+          {
+            x.options.map((el, num) => {
+              return (
+                <Grid key={num}>
+                  <Grid.Row className={this.state.value === el.value ? 'box-fill' : 'box-nofill'}
+                    onClick={() => this._handleChange(el.value)}>
+                    <Grid.Column computer={16} tablet={16} mobile={16}>
+                      <label className='answer-text'>
+                        <span className='right'>
+                          <Radio className='radioGroup__radio' key={num}
+                            value={el.value} checked={this.state.value === el.value}
+                            onClick={() => this._handleChange(el.value)} />
+                        </span>
+                        {el.text}
+                      </label>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              )
+            })
+          }
+        </Form.Field>
+      </label>
     )
   }
 }

@@ -6,7 +6,6 @@
 }
 body{
   background-color: rgba(0, 0, 0, 0.03);
-  cursor: crosshair;
 }
 /* ******* Page Layout ******* */
 .App {
@@ -124,11 +123,18 @@ body{
 
 .question-box{
   font-size: 1.5em;
+  border-bottom: 1px solid gray;
 }
 
 .answer-text{
   word-wrap: break-word;
-  padding: 2px 0 2px 0; 
+  padding: 2px 0 2px 0;
+  /* border: 1px solid black; */
+}
+label {
+  /* font: inherit; */
+  /* background-color: aliceblue; */
+  width: 100%;
 }
 
 .box-fill{

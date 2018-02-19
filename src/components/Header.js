@@ -4,11 +4,11 @@ import headerImage from '../images/logo-skarpning.svg';
 
 const Header = () => {
     return (
-            <div className="header">
+            <label className="header">
                 <a href='/'>
                   <img src={headerImage} alt="logga"/>
                 </a>
-              </div>
+              </label>
             );
 }
 export default Header;
