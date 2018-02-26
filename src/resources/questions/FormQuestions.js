@@ -7,7 +7,7 @@ import question_3 from './question-3';
 import question_4 from './question-4';
 
 const FormQuestions = [
-  // testQuestion,
+  testQuestion,
   testQuestion2,
   // question_1, question_2, question_3, question_4,
 ];
