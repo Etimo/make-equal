@@ -31,7 +31,7 @@ class RadioQuestionTwo extends Component {
                     <div className='answer-text'>
 
                       <Field name={x.id} label={el.text} value={el.value}
-                         type='radio' component={this.testComp} />
+                        type='radio' component={this.testComp} />
                       {/* {el.text} */}
                     </div>
                   </Grid.Column>
@@ -46,17 +46,17 @@ class RadioQuestionTwo extends Component {
 
   testComp(props) {
     return (
-          <label>
-      <Form.Field>
-        <div>
+      <label>
+        <Form.Field>
+          <div>
             {props.label}
             <span className='right'>
               <input type='radio' {...props.input}
                 className='radioGroup__radio ui radio checkbox unchecked' />
             </span>
-        </div>
-      </Form.Field>
-          </label>
+          </div>
+        </Form.Field>
+      </label>
     );
   }
 

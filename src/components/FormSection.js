@@ -12,6 +12,7 @@ import '../css/formSection.css';
 // import '../App.css'
 import TextfieldQuestion from './TextfieldQuestion';
 import RadioQuestionTwo from './RadioQuestionTwo';
+import CheckboxQuestionTwo from './CheckboxQuestionTwo';
 
 // import {Icon} from 'semantic-ui-react';
 // import {Field} from 'redux-form';
@@ -164,6 +165,9 @@ class FormSection extends Component {
       case 'radioQuestionTwo':
         input = <RadioQuestionTwo key={question.id} questions={question} />
         break;
+        case 'checkboxQuestionTwo':
+        input = <CheckboxQuestionTwo key={question.id} questions={question} />
+        break;
       default:
         break;
     }
@@ -177,8 +181,8 @@ class FormSection extends Component {
     // console.log(question)
     return (
       <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
-        <label className='child-container'>
-          <label className='content'>
+        <div className='child-container'>
+          <div className='content'>
             {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
             {/* {
               question.questions.map((question, num) => {
@@ -186,13 +190,13 @@ class FormSection extends Component {
               })
             } */}
             {this._renderQuestionType(question)}
-          </label>
-          <label className='form-buttons'>
+          </div>
+          <div className='form-buttons'>
             {
               this._isMobile()
             }
-          </label>
-        </label>
+          </div>
+        </div>
       </section>
     )
   };

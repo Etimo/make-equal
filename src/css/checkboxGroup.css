@@ -1,3 +1,14 @@
 .checkboxGroup__checkbox{
   /* padding-right: 20px; */
 }
+.bg-fill-dark{
+  background-color: lightgray;
+}
+.bg-fill-lighter{
+  background-color: lightblue;
+}
+.bg-border{
+  border: 1px solid black;
+  height:100%;
+  width: 100%;
+}

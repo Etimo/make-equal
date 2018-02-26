@@ -1,17 +1,17 @@
 const question = {
   text: 'Hur upplever du situationen? Du kan kryssa i flera svar.',
   id: '4',
-  type: 'checkboxQuestion',
+  type: 'checkboxQuestionTwo',
   options: [
-    { value:'a', text:'Jag känner mig hotad'},
-    { value:'b', text:'Jag känner mig rädd'},
-    { value:'c', text:'Jag känner mig trakasserad'},
-    { value:'d', text:'Jag känner mig kränkt'},
-    { value:'e', text:'Jag känner mig förföljd'},
-    { value:'f', text:'Jag känner mig utpressad'},
-    { value:'g', text:'Jag känner mig utfryst'},
-    { value:'h', text:'Jag känner mig mobbad'},
-    { value:'i', text:'Det sprids lögner om mig'}
+    { id:'a', text:'Jag känner mig hotad'},
+    { id:'b', text:'Jag känner mig rädd'},
+    { id:'c', text:'Jag känner mig trakasserad'},
+    { id:'d', text:'Jag känner mig kränkt'},
+    { id:'e', text:'Jag känner mig förföljd'},
+    { id:'f', text:'Jag känner mig utpressad'},
+    { id:'g', text:'Jag känner mig utfryst'},
+    { id:'h', text:'Jag känner mig mobbad'},
+    { id:'i', text:'Det sprids lögner om mig'}
     ]
 }
 
