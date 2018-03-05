@@ -5,38 +5,53 @@ import '../css/radioGroup.css';
 import 'semantic-ui-css/semantic.min.css';
 
 class RadioQuestionTwo extends Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.state = { value: null, }
+    this.state = {
+      question: props.questions,
+      selectedOption: null,
+    }
+    console.log(this)
   }
-  _handleChange(value) {
+
+  _handleChange(id) {
+    const selectedOption = id;
+    this.state.selectedOption = null;
     this.setState({
-      value: value
+      selectedOption: selectedOption
     })
+  }
+  _clearOther(ev, va) {
+    // console.log(ev)
+    // console.log(va)
   }
 
   render() {
-    const x = this.props.questions;
+    const x = this.state.question;
 
     return (
       <FormSection name={x.id}>
         <div className='component-box'>
           <p className='question-box'>{x.text}</p>
           {
-            x.options.map((el, num) => {
+            x.options.map((option, num) => {
               return (
                 <Grid key={num}>
-                  <Grid.Row className={this.state.value === el.value ? 'box-fill' : 'box-nofill'}>
+                  <Grid.Row className={this.state.selectedOption === option.id ? 'box-fill' : 'box-nofill'}>
                     <Grid.Column computer={16} tablet={16} mobile={16}>
                       <div className='answer-text'>
-                        <label onClick={() => this._handleChange(el.value)}>
+                        <label onChange={() => this._handleChange(option.id)}>
                           <Form.Field>
                             <div>
-                              {el.text}
                               <span className='right'>
-                                <Field name={x.id} label={el.text} value={el.value}
-                                  type='radio' component={renderRadioQuestion} />
+                                <Field name={option.id} component={renderRadioQuestion}
+                                  type="radio"
+                                  checked={this.state.selectedOption === option.id}
+                                  onChange={() => this._handleChange(option.id)}
+                                />
+
                               </span>
+                              {option.text}
                             </div>
                           </Form.Field>
                         </label>
@@ -52,13 +67,37 @@ class RadioQuestionTwo extends Component {
     )
   }
 
+  renderRadioQuestion2 = (props) => (
+    <div>
+      <Radio type='radio'
+        onChange={() => props.input.onChange(props.input.checked === true ? true : "")}
+        {...props} />
+      {/* {console.log(props)} */}
+    </div>
+  )
 }
 
-const renderRadioQuestion = (props) => (
+const renderRadioQuestion = (props) => {
+  // debugger;
+  
+  return (
+    <div>
+      <Radio type='radio'
+        checked={props.checked}
+        onChange={() => props.input.onChange(props.input.checked === true ? true : "")}
+        {...props} />
+        
+        { console.log("props")}
+        { console.log(props)}
+    </div>
+  )
+}
 
-  <input type='radio' {...props.input}
-    className='radioGroup__radio ui radio checkbox unchecked' />
-
-)
+// const renderRadioQuestion = (props) => (
+//   <Radio type='radio'
+//     checked={props.checked}
+//     onChange={() => props.input.onChange(props.input.checked === true ? true : "")}
+//     {...props} />
+// )
 
 export default RadioQuestionTwo;

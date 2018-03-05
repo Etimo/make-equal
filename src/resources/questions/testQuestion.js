@@ -3,8 +3,8 @@ const question = {
   id: 'test',
   type: 'radioQuestionTwo',
   options: [
-    { value: 'a', text: 'Wawa' },
-    { value: 'b', text: 'Gaga' },
+    { id: 'a', text: 'Wawa' },
+    { id: 'b', text: 'Gaga' },
   ]
 }
 export default question;

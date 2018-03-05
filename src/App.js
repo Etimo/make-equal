@@ -114,6 +114,7 @@ class App extends Component {
       currentPercentage: 100,
     })
   }
+
   showForm = function () {
     this.setState({
       showForm: true,
@@ -121,7 +122,7 @@ class App extends Component {
   }
 
   handleChange = (values) => {
-    // console.log(values);
+    // console.log(values);    
   }
 
   regForm() {

@@ -72,7 +72,7 @@ class CheckboxQuestionTwo extends Component {
 
 const renderSemanticUICheckbox = (props) => (
   <Checkbox type="checkbox" value={props.options.id}
-    onChange={() => props.input.onChange(props.input.value == "" ? true : "")}
+    onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
     {...props} />
 )
 
