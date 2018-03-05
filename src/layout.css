@@ -1,26 +1,35 @@
-.l-container{
-  margin: 0 auto;
-  padding: 0%;
-  height: 100vh;
+.container {
+  /*margin: 0 auto;*/
+  padding: 0;
+  /*height: fit-content;*/
   /* width: 50%; */
+  background-color: #f7f7f7;
 }
-.l-topa{
-  height: 20vh;
+
+.top {
+  /*height: auto;*/
+  /*padding: 1em 1em 1em 1em !important;*/
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
 }
-.l-middlea{
+
+.l-middle {
   height: 80vh;
   /* overflow-y: auto; */
 }
-.l-bottoma{
-  height: 20vh;
+
+.l-bottom {
+  /*height: 20vh;*/
 }
-.child-container1{
+
+.child-container1 {
   height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-/* ************************* */
+
 /* ********** Font *********** */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
@@ -29,55 +38,58 @@
 }
 
 /* *********** Util *********** */
-.right{float:right;margin-left:1em;}
+.right {
+  float: right;
+  margin-left: 1em;
+}
 
-.left{float:left;margin-right:1em;}
+.left {
+  float: left;
+  margin-right: 1em;
+}
 
-.site-yellow-brighter{
+.site-yellow-brighter {
   background-color: #FCEA10;
 }
-.site-yellow-darker{
-  background-color: rgb(254,205,27);
+
+.site-yellow-darker {
+  background-color: rgb(254, 205, 27);
 }
 
 /* ******* Page Layout ******* */
-.App {
+.ui.container.App {
   font-family: 'Roboto Slab', serif;
   font-size: 1.5em;
   margin: 0;
   padding: 0;
-  /* max-height: 120vh; */
-  /* display: flex;
-  justify-content: space-between;
-  flex-direction: column; */
-  
-}
-.l-container{
   height: 100vh;
 }
-.l-top{
+
+.l-container {
+  height: 100vh;
+}
+
+.l-top {
   height: 20vh;
-  /* background-color: red; */
   margin: 0;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
 }
 
-.l-middle{
-  height: 75vh;
-  background-color: white;
-  margin: 0;
-  /* box-sizing: border-box; */
-  
-}
-.l-bottom{
-  height: 20vh;
+.l-middle {
+  height: 80vh;
   background-color: white;
   margin: 0;
 }
 
-.child-container{
+.l-bottom {
+  /*height: 20vh;*/
+  background-color: white;
+  margin: 0;
+}
+
+.child-container {
   /* height: max-content; */
   display: flex;
   flex-direction: column;
@@ -86,31 +98,24 @@
   height: stretch;
 }
 
-
-
-.content{
-  /* text-overflow: ellipsis; */
-  /* top: 0; */
-  
-  /* height: stretch; */
-  /* padding-bottom: 5%; */
-  /* position: absolute; */
-  /* height: 65vh; */
-  /* background-color: aliceblue; */
-  /* margin-top: auto;
-  margin-bottom: auto; */
+.content {
+  height: 60vh;
 }
 
 .form-buttons {
-  width: inherit;
+  /*width: 100vw !important;*/
+  margin:0 !important;
   bottom: 0;
-  position: sticky; 
-  border: 0.2em solid white;
+  /*left:0;*/
+  /*right:0;*/
+  position: sticky;
+  border: none;
+  border-top: 0.2em solid white;
   background-color: white;
-  height: 10vh;
-  min-height: 10vh;
+  height: 20vh;
+  /*min-height: 10vh;*/
   z-index: 10000;
-  
+
 }
 
 .header {
@@ -129,48 +134,50 @@
   margin: 0;
 }
 
-.question-box{
+.question-box {
   font-size: 1.5em;
 }
 
-.answer-text{
+.answer-text {
   word-wrap: break-word;
-  padding: 2px 0 2px 0; 
+  padding: 2px 0 2px 0;
 }
 
-.box-fill{
+.box-fill {
   cursor: pointer;
   background-color: rgb(236, 236, 236);
   border-radius: 2em;
-  margin-bottom: 0.3em;  
+  margin-bottom: 0.3em;
 }
 
-.box-nofill{
+.box-nofill {
   cursor: pointer;
   border-radius: 2em;
   margin-bottom: 0.3em;
 }
 
+@media only screen and (max-width: 767px) {
+  .ui.container.App{
+    width: 100vw !important;
+    margin: 0!important;
+  }
+  .ui.grid.container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
-/* ******** Leftovers ********* */
-/*
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  .top {
+    padding: 0 !important;
+  }
+
+  .l-middle.column {
+    /*height: 80vh;*/
+    width: 100vw !important;
+  }
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.ui.form{
+  width: 100vw !important;
 }
-
-.App-intro {
-  font-size: large;
+.ui.grid .column{
+  padding: 0!important;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Form} from 'semantic-ui-react';
-import {reduxForm} from 'redux-form'
-import FormSection from './FormSection';
-import '../css/registrationForm.css';
+import React, {Component} from "react";
+import {Form} from "semantic-ui-react";
+import {reduxForm} from "redux-form";
+import FormSection from "./FormSection";
+import "../../css/registrationForm.css";
 
 // import {Field, reduxForm, initialize} from 'redux-form';
 // import {connect} from 'react-redux';
@@ -11,16 +11,14 @@ import '../css/registrationForm.css';
 // import{BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 
-
-
-class RegistrationForm extends Component{
+class RegistrationForm extends Component {
   // constructor(){
   //   super();
   //   // this._checkPosition = this._checkPosition.bind(this);
 
   // }
 
-  componentDidMount(){
+  componentDidMount() {
     // this._getSectionSize();
     // window.addEventListener('scroll', ()=>{
     // //   this._scrollToNextSection();
@@ -33,7 +31,7 @@ class RegistrationForm extends Component{
   // _checkPosition(){
   //   const height = window.innerHeight;
   //   const scroll = window.scrollY;
-    
+
   //   const sectionHeight = this.refs[this.props.sectionPosition].scrollHeight;
   //   console.log(this);
   //   if((height+scroll) >= sectionHeight){
@@ -76,36 +74,38 @@ class RegistrationForm extends Component{
 
   //   }
   // }
-  render(){
+  render() {
     const sectionsArr = this.props.sections;
     let last = false;
     let first = true;
     const {handleSubmit} = this.props;
     // console.log(this.props);
-    
-      return(
 
-        <Form  onSubmit={handleSubmit}>
-          {
-            sectionsArr.map((section, num) =>{
-              if(num === sectionsArr.length-1){
-                last = true;
-              }
-              if(num !== 0){
-                first= false;
-              }
-              
-              return(<FormSection  key={num} section={section} isLast = {last} windowSize={this.props.windowSize} 
-                isFirst={first} _navigate={this.props._navigate} _back={this.props._back} _changeAddress={this.props._changeAddress} 
-                _changeSection={this.props._changeSection} _scrollUp={this.props._scrollUp} sectionPosition={this.props.sectionPosition}/>);
-            })
-          }
-          
-           {/* <Button fluid inverted color="blue" content="Riktig" className="registration-form__btn submit"/>  */}
-      
-        </Form>
-      );
-  
+    return (
+
+      <Form onSubmit={handleSubmit}>
+        {
+          sectionsArr.map((section, num) => {
+            if (num === sectionsArr.length - 1) {
+              last = true;
+            }
+            if (num !== 0) {
+              first = false;
+            }
+
+            return (<FormSection key={num} section={section} isLast={last} windowSize={this.props.windowSize}
+                                 isFirst={first} _navigate={this.props._navigate} _back={this.props._back}
+                                 _changeAddress={this.props._changeAddress}
+                                 _changeSection={this.props._changeSection} _scrollUp={this.props._scrollUp}
+                                 sectionPosition={this.props.sectionPosition}/>);
+          })
+        }
+
+        {/* <Button fluid inverted color="blue" content="Riktig" className="registration-form__btn submit"/>  */}
+
+      </Form>
+    );
+
   }
 }
 export default RegistrationForm = reduxForm({

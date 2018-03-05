@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import React, {Component} from "react";
+import {Form} from "semantic-ui-react";
 // import DayPicker from 'react-day-picker';
 // import moment from 'moment';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
-import '../css/datepicker.css';
+import "../../css/datepicker.css";
 
 class Datepicker extends Component {
   constructor() {

@@ -1,7 +1,7 @@
 const question = {
   text: 'Test Question',
   id: 'test',
-  type: 'radioQuestionTwo',
+  type: 'radioGroup',
   options: [
     { id: 'a', text: 'Wawa' },
     { id: 'b', text: 'Gaga' },
