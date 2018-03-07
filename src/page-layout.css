@@ -1,0 +1,27 @@
+.page-container {
+  height: 100vh;
+  background-color: #999999;
+  padding: 0;
+  margin: 0;
+}
+.page-header{
+  background-color: #dedede;
+  height: auto;
+}
+.page-content-container{
+  background-color: #e7e7e7;
+  min-height: 80vh;
+}
+.page-content{
+  background-color: #ffffff;
+  height: 100%;
+}
+
+#container {
+  height: 100vh;
+  margin: 0;
+}
+
+.test-class{
+  background-color: white;
+}

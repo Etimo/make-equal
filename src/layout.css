@@ -19,16 +19,11 @@
   /* overflow-y: auto; */
 }
 
+
 .l-bottom {
   /*height: 20vh;*/
 }
 
-.child-container1 {
-  height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 /* ********** Font *********** */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
@@ -89,7 +84,7 @@
   margin: 0;
 }
 
-.child-container {
+.form-container {
   /* height: max-content; */
   display: flex;
   flex-direction: column;
@@ -99,9 +94,12 @@
 }
 
 .content {
-  height: 60vh;
+  /*height: 60vh;*/
+  padding:1em;
 }
+.form-content{
 
+}
 .form-buttons {
   /*width: 100vw !important;*/
   margin:0 !important;

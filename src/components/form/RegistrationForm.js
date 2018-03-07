@@ -92,22 +92,24 @@ class RegistrationForm extends Component {
             if (num !== 0) {
               first = false;
             }
-
-            return (<FormSection key={num} section={section} isLast={last} windowSize={this.props.windowSize}
-                                 isFirst={first} _navigate={this.props._navigate} _back={this.props._back}
-                                 _changeAddress={this.props._changeAddress}
-                                 _changeSection={this.props._changeSection} _scrollUp={this.props._scrollUp}
-                                 sectionPosition={this.props.sectionPosition}/>);
+            return (
+              <FormSection key={num} section={section} isLast={last}
+                           windowSize={this.props.windowSize}
+                           isFirst={first} _navigate={this.props._navigate}
+                           _back={this.props._back}
+                           _changeAddress={this.props._changeAddress}
+                           _changeSection={this.props._changeSection}
+                           _scrollUp={this.props._scrollUp}
+                           sectionPosition={this.props.sectionPosition}/>
+            );
           })
         }
-
-        {/* <Button fluid inverted color="blue" content="Riktig" className="registration-form__btn submit"/>  */}
-
       </Form>
     );
 
   }
 }
+
 export default RegistrationForm = reduxForm({
   // a unique name for the form
   form: 'TestForm1'

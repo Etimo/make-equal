@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import Header from "./components/Header";
 import RegistrationForm from "./components/form/RegistrationForm";
 import QuestionSection from "./resources/questions/FormQuestions";
-import {Button, Container, Grid, Progress} from "semantic-ui-react";
+import {Button, Container, Grid, GridRow, GridColumn, Progress} from "semantic-ui-react";
 // import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import "./css/formSection.css";
-import './layout.css';
+// import './layout.css';
+import './page-layout.css';
 
 // import FormSection from './sampleSections';
 
@@ -186,10 +187,10 @@ class App extends Component {
     );
   }
 
-  render() {
+  render3() {
     return (
       <Container className='App'>
-        <Grid className="container" verticalAlign='middle'>
+        <Grid className="container" verticalAlign='top'>
 
           <Grid.Row className='top m-wide ' centered columns={1}>
             <Grid.Column className={'m-wide'} computer={10} tablet={10} mobile={16}>
@@ -201,8 +202,6 @@ class App extends Component {
           <Grid.Row className='l-middle' centered>
             <Grid.Column computer={10} tablet={16} mobile={16}>
               {this.state.showForm === true ? this.progbar() : ''}
-            </Grid.Column>
-            <Grid.Column computer={10} tablet={16} mobile={16}>
               {this.state.showForm === true ? this.regForm() : this.welcomeBox()}
             </Grid.Column>
           </Grid.Row>
@@ -212,6 +211,29 @@ class App extends Component {
     );
   }
 
+  pageContent() {
+    return (
+      <div className={'page-content'}>
+        {this.regForm()}
+      </div>
+    );
+  }
+
+  render() {
+    const Column = (props) => <GridColumn verticalAlign={props.verticalAlign} className={props.className} computer={10}
+                                          tablet={16} mobile={16}>{props.children}</GridColumn>;
+    const Content = () => this.pageContent();
+    return (
+      <Grid columns={1} container centered className={'test-class'} id={'container'}>
+        <Column className={'page-header'}>
+          <Header/>
+        </Column>
+        <Column className={'page-content-container'}>
+          <Content/>
+        </Column>
+      </Grid>
+    );
+  }
 }
 
 export default App;

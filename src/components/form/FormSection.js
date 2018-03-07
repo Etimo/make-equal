@@ -110,8 +110,8 @@ class FormSection extends Component {
     return (
       <div>
         <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
-          <div className='child-container'>
-            <div className='content'>
+          <div className='form-container'>
+            <div className='form-content'>
               {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
               {/* {
              question.questions.map((question, num) => {
@@ -120,13 +120,14 @@ class FormSection extends Component {
              } */}
               {this._renderQuestionType(question)}
             </div>
-          </div>
-          <div className='form-buttons'>
-            { this._isMobile() }
+            <div className='form-buttons'>
+              {this._isMobile()}
+            </div>
           </div>
         </section>
       </div>
     )
   };
 }
+
 export default FormSection;
