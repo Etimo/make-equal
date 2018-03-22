@@ -1,0 +1,25 @@
+.question-base {
+  padding: 1em;
+
+}
+
+.question-title {
+
+}
+
+.option-container {
+background-color: #2997fe;
+  display: flex;
+  flex-direction: column;
+}
+label.option-row {
+  width: 100% !important;
+  background-color: gray;
+}
+label.option-row-selected {
+  width: 100% !important;
+  background-color: #999999;
+}
+.pull-right{
+  float: right;
+}
