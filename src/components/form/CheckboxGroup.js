@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
-import {Checkbox, Grid} from "semantic-ui-react";
+import {Checkbox} from "semantic-ui-react";
 import "../../css/checkboxGroup.css";
-import {QuestionBase, OptionRow} from "../QuestionBase";
+import {OptionRow, QuestionBase} from "../QuestionBase";
 
 // import 'semantic-ui-css/semantic.min.css';
 
@@ -39,13 +39,14 @@ class CheckboxGroup extends Component {
           {
             question.options.map((option, num) => {
               return (
-                <OptionRow key={num} selected={option.isChecked} text={option.text}>
-                    <Field name={question.id + " " + option.id} component={renderSemanticUICheckbox}
-                           options={option} onChange={() => this._handleChange(num)}/>
-                </OptionRow>
-            )
+                <label key={num} onChange={() => this._handleChange(num)}
+                       className={option.isChecked ? "option selected" : "option"}>
+                  <Field name={question.id + option.id} component={renderSemanticUICheckbox}
+                         options={option} onChange={() => this._handleChange(num)}/>
+                </label>
+              )
             })
-            }
+          }
         </QuestionBase>
       </FormSection>
     );
@@ -55,9 +56,12 @@ class CheckboxGroup extends Component {
 
 
 const renderSemanticUICheckbox = (props) => (
-  <Checkbox type="checkbox" value={props.options.id}
-            onChange={() => props.input.onChange(props.input.value == "" ? true : "")}
-            {...props} />
+  <OptionRow text={props.options.text}>
+    <Checkbox type="checkbox" value={props.options.id}
+              onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
+              {...props} />
+  </OptionRow>
 );
+
 
 export default CheckboxGroup;

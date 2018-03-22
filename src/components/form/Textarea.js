@@ -4,7 +4,6 @@ import {Field} from "redux-form";
 
 const Textarea = props => {
   const x = props.questions;
-  const value = {...props.input};
 
   return (
     <Field name={x.label} label={x.label} placeholder="Text" component={renderSemanticUITextarea}/>

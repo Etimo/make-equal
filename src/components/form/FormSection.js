@@ -7,7 +7,7 @@ import SelectGroup from "./SelectGroup";
 import Datepicker from "./Datepicker";
 import {Button} from "semantic-ui-react";
 import "../../css/formSection.css";
-
+import "../../css/FormBase.css";
 // import {Icon} from 'semantic-ui-react';
 // import {Field} from 'redux-form';
 // import ScrollToTop from 'react-scroll-up';
@@ -105,27 +105,22 @@ class FormSection extends Component {
   render() {
     const question = this.props.section;
     const sameSection = this.props.sectionPosition === question.id;
+    const RenderQuestionType = () => this._renderQuestionType(question);
     // const windowSize = this.props.windowSize;
     // console.log(question)
     return (
-      <div>
-        <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
-          <div className='form-container'>
-            <div className='form-content'>
-              {/* <h1 className='form-section__header Roboto'>{section.name}</h1> */}
-              {/* {
-             question.questions.map((question, num) => {
 
-             })
-             } */}
-              {this._renderQuestionType(question)}
-            </div>
-            <div className='form-buttons'>
-              {this._isMobile()}
-            </div>
+      <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
+        <div className='form-section-base'>
+          <div className='form-section-content'>
+            <RenderQuestionType/>
           </div>
-        </section>
-      </div>
+          <div className='form-section-buttons'>
+            {this._isMobile()}
+          </div>
+        </div>
+      </section>
+
     )
   };
 }

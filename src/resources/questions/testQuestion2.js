@@ -1,6 +1,6 @@
 const question = {
   title: 'Test Question2',
-  id: 'test2',
+  id: '1',
   type: 'checkboxGroup',
   options: [
     { id: 'a', text: 'Wawa' },
@@ -11,6 +11,9 @@ const question = {
     { id: 'f', text: 'Gaga' },
     { id: 'g', text: 'Sawa' },
     { id: 'h', text: 'Haga' },
+    { id: 'i', text: 'Gaga' },
+    { id: 'j', text: 'Sawa' },
+    { id: 'k', text: 'Haga' },
   ]
 }
 export default question;

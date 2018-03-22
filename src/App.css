@@ -14,7 +14,6 @@ body {
 .App {
   font-family: 'Roboto Slab', serif;
   font-size: 1.5em;
-  /* margin: 0 0 0 0; */
   padding: 0;
   width: 100%;
 
@@ -30,13 +29,8 @@ body {
 }
 
 .l-top {
-  /*height: 20vh;*/
-  /* height: auto; */
   margin: 0;
-  /* display: flex;
-  flex-flow: column;
-  justify-content: space-between; */
-   background-color: red !important;
+  background-color: red !important;
 }
 
 .l-middle {
@@ -181,3 +175,6 @@ label {
 .simple-list li {
   list-style: outside none;
 }
+/*.ui.grid>.row {*/
+  /*padding: 40px !important;*/
+/*}*/

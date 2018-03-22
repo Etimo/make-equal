@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Header from "./components/Header";
 import RegistrationForm from "./components/form/RegistrationForm";
 import QuestionSection from "./resources/questions/FormQuestions";
-import {Button, Container, Grid, GridRow, GridColumn, Progress} from "semantic-ui-react";
+import {Button, Container, Grid, GridColumn, Progress} from "semantic-ui-react";
 // import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import "./css/formSection.css";
@@ -60,6 +60,7 @@ class App extends Component {
           currentPercentage: param > 0 ? this.state.currentPercentage + this.state.sectionPercentageIncrement : this.state.currentPercentage - this.state.sectionPercentageIncrement,
         });
       }
+      return false;
     });
   }
 
@@ -74,7 +75,6 @@ class App extends Component {
         sectionPosition: position,
         address: `${window.location.origin}/#${position}`,
       });
-
       window.location.replace(this.state.address);
     }
   }
@@ -106,23 +106,23 @@ class App extends Component {
     }
   }
 
-
   submit = (values) => {
     console.log('submit');
     console.log(values);
     this.setState({
       currentPercentage: 100,
     })
-  }
+  };
+
   showForm = function () {
     this.setState({
       showForm: true,
     })
-  }
+  };
 
   handleChange = (values) => {
     // console.log(values);
-  }
+  };
 
   regForm() {
     return (
@@ -153,68 +153,10 @@ class App extends Component {
     );
   }
 
-
-  render2() {
-    return (
-      <Container className='App'>
-        <Grid>
-
-          <Grid.Row centered>
-            <Grid.Column computer={10} tablet={16} mobile={16}>
-              <Header/>
-              {/*<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the*/}
-              {/*industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and*/}
-              {/*scrambled it to make a type specimen book.</p>*/}
-            </Grid.Column>
-            <Grid.Column computer={10} tablet={16} mobile={16}>
-              {this.state.showForm === true ? this.progbar() : ''}
-              {/*<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the*/}
-              {/*industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and*/}
-              {/*scrambled it to make a type specimen book.</p>*/}
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row centered>
-            <Grid.Column computer={10} tablet={16} mobile={16}>
-              {/*{this.state.showForm === true ? this.regForm() : this.welcomeBox()}*/}
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book.</p>
-            </Grid.Column>
-          </Grid.Row>
-
-        </Grid>
-      </Container>
-    );
-  }
-
-  render3() {
-    return (
-      <Container className='App'>
-        <Grid className="container" verticalAlign='top'>
-
-          <Grid.Row className='top m-wide ' centered columns={1}>
-            <Grid.Column className={'m-wide'} computer={10} tablet={10} mobile={16}>
-              <Header/>
-            </Grid.Column>
-
-          </Grid.Row>
-
-          <Grid.Row className='l-middle' centered>
-            <Grid.Column computer={10} tablet={16} mobile={16}>
-              {this.state.showForm === true ? this.progbar() : ''}
-              {this.state.showForm === true ? this.regForm() : this.welcomeBox()}
-            </Grid.Column>
-          </Grid.Row>
-
-        </Grid>
-      </Container>
-    );
-  }
-
   pageContent() {
     return (
       <div className={'page-content'}>
+        {this.progbar()}
         {this.regForm()}
       </div>
     );
@@ -230,6 +172,7 @@ class App extends Component {
           <Header/>
         </Column>
         <Column className={'page-content-container'}>
+
           <Content/>
         </Column>
       </Grid>

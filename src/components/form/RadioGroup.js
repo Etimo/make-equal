@@ -1,13 +1,16 @@
 import React, {Component} from "react";
-import {Form, Grid} from "semantic-ui-react";
 import {Field, FormSection} from "redux-form";
 import "../../css/radioGroup.css";
 import "semantic-ui-css/semantic.min.css";
+import {OptionRow, QuestionBase} from "../QuestionBase";
+import {Radio, Checkbox} from "semantic-ui-react";
+
+'../QuestionBase';
 
 class RadioGroup extends Component {
   constructor() {
     super();
-    this.state = {value: null,}
+    this.state = {value: "",}
   }
 
   _handleChange(value) {
@@ -17,49 +20,49 @@ class RadioGroup extends Component {
   }
 
   render() {
-    const x = this.props.questions;
+    const question = this.props.questions;
 
     return (
-      <FormSection name={x.id}>
-        <div className='component-box'>
-          <p className='question-box'>{x.text}</p>
+      <FormSection name={question.id}>
+        <QuestionBase title={question.title}>
           {
-            x.options.map((el, num) => {
+            question.options.map((option, num) => {
               return (
-                <Grid key={num}>
-                  <Grid.Row className={this.state.value === el.value ? 'box-fill' : 'box-nofill'}>
-                    <Grid.Column computer={16} tablet={16} mobile={16}>
-                      <div className='answer-text'>
-                        <label onClick={() => this._handleChange(el.value)}>
-                          <Form.Field>
-                            <div>
-                              {el.text}
-                              <span className='right'>
-                                <Field name={x.id} label={el.text} value={el.value}
-                                       type='radio' component={renderRadioQuestion}/>
-                              </span>
-                            </div>
-                          </Form.Field>
-                        </label>
-                      </div>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
+                <label key={num} className={this.state.value === option.id ? "option selected" : "option"}
+                       onChange={() => this._handleChange(option.value)}>
+                  <Field name={question.id + option.id} component={this.renderRadioQuestion2}
+                         options={option} onChange={() => this._handleChange(option.id)}/>
+                </label>
               );
             })
           }
-        </div>
+        </QuestionBase>
       </FormSection>
     )
   }
 
+  wawa = (event) => {
+    console.log(event.target);
+  };
+  renderRadioQuestion2 = (props) => {
+    console.log(props);
+    return (
+      <OptionRow text={props.options.text}>
+        <Checkbox radio onChange={this.wawa}
+                  {...props} />
+      </OptionRow>
+    );
+  };
+
 }
 
 const renderRadioQuestion = (props) => (
-
-  <input type='radio' {...props.input}
-         className='radioGroup__radio ui radio checkbox unchecked'/>
-
+  <OptionRow text={props.options.text}>
+    <Checkbox radio value={props.options.id}
+           onChange={() => props.input.onChange}
+           {...props} />
+    {/*{console.log(props)}*/}
+  </OptionRow>
 )
 
 export default RadioGroup;

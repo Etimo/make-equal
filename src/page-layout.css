@@ -6,11 +6,11 @@
 }
 .page-header{
   background-color: #dedede;
-  height: auto;
+  height: 15vh;
 }
 .page-content-container{
   background-color: #e7e7e7;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 .page-content{
   background-color: #ffffff;
@@ -24,4 +24,10 @@
 
 .test-class{
   background-color: white;
+}
+.ui.progress{
+  margin-bottom: 0 !important;
+}
+.ui.grid .column{
+  padding: 0 !important;
 }

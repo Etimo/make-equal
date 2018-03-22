@@ -1,14 +1,9 @@
 .container {
-  /*margin: 0 auto;*/
   padding: 0;
-  /*height: fit-content;*/
-  /* width: 50%; */
   background-color: #f7f7f7;
 }
 
 .top {
-  /*height: auto;*/
-  /*padding: 1em 1em 1em 1em !important;*/
   padding: 0 !important;
   display: flex;
   flex-direction: column;
@@ -16,7 +11,6 @@
 
 .l-middle {
   height: 80vh;
-  /* overflow-y: auto; */
 }
 
 
@@ -178,4 +172,9 @@
 }
 .ui.grid .column{
   padding: 0!important;
+}
+
+.ui.progress {
+  margin-bottom: 0!important;
+  height: 200px;
 }

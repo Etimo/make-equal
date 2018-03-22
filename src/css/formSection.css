@@ -1,7 +1,9 @@
-.form-section{
+.form-section {
   /* min-height: auto; */
-  padding: 1em 0;
-  width: 100%;
+  /*padding: 1em 0;*/
+  /*width: 100%;*/
+  margin-top: 0 !important;
+
 }
 
 .form-section__header{

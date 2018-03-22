@@ -3,7 +3,9 @@ import React from 'react';
 export const QuestionBase = (props) => {
   return (
     <div className={"question-base"}>
-      <div className={"question-title"}><h3>{props.title}</h3></div>
+      <div className={"question-title"}>
+        <h3>{props.title}</h3>
+      </div>
       <div className={"option-container"}>
         {props.children}
       </div>
@@ -12,13 +14,11 @@ export const QuestionBase = (props) => {
 };
 export const OptionRow = (props) => {
   return (
-    <label className={props.selected ? "option-row-selected" : "option-row"}>
-      <div >
-        {props.text}
-        <div className={"pull-right"}>
-          {props.children}
-        </div>
-      </div>
-    </label>
+    <div className={"option-row"}>
+      {props.text}
+      <span className={"pull-right"}>
+        {props.children}
+      </span>
+    </div>
   );
 };
