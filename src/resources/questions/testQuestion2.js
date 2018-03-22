@@ -1,5 +1,5 @@
 const question = {
-  text: 'Test Question2',
+  title: 'Test Question2',
   id: 'test2',
   type: 'checkboxGroup',
   options: [

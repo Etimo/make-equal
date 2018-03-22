@@ -29,26 +29,26 @@ class CheckboxGroup extends Component {
   }
 
   render() {
-    const x = this.state.question;
+    const question = this.state.question;
 
     return (
-      <FormSection name={x.id}>
+      <FormSection name={question.id}>
         <div className='component-box'>
-          <p className='question-box'>{x.text}</p>
+          <p className='question-box'>{question.title}</p>
           <Grid >
             <Grid.Row>
               <Grid.Column computer={16} tablet={16} mobile={16}>
                 <div >
                   {
-                    x.options.map((option, num) => {
+                    question.options.map((option, num) => {
                       return (
-                        <Grid key={option.text}>
+                        <Grid key={num}>
                           <Grid.Row className={ option.isChecked ? 'box-fill' : 'box-nofill'}>
                             <Grid.Column computer={16} tablet={16} mobile={16}>
                               <label className='answer-text' onChange={() => this._handleChange(num)}>
                                 <div>
                                   <span className='right'>
-                                    <Field name={option.id} component={renderSemanticUICheckbox}
+                                    <Field name={question.id + " " + option.id} component={renderSemanticUICheckbox}
                                            options={option} onChange={() => this._handleChange(num)}/>
                                   </span>
                                   {option.text}
@@ -76,6 +76,6 @@ const renderSemanticUICheckbox = (props) => (
   <Checkbox type="checkbox" value={props.options.id}
             onChange={() => props.input.onChange(props.input.value == "" ? true : "")}
             {...props} />
-)
+);
 
 export default CheckboxGroup;
