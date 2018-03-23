@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import Header from "./components/Header";
 import RegistrationForm from "./components/form/RegistrationForm";
 import QuestionSection from "./resources/questions/FormQuestions";
-import {Button, Container, Grid, GridColumn, Progress} from "semantic-ui-react";
+import {Button, Grid, GridColumn, Progress} from "semantic-ui-react";
 // import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import "./css/formSection.css";
 // import './layout.css';
 import './page-layout.css';
 import './css/questionBase.css';
+import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
+import DeterminePath from './components/DeterminePath';
 
 // import FormSection from './sampleSections';
 
@@ -23,14 +25,15 @@ class App extends Component {
     // this._back = this._back.bind(this);
     this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
-      sectionPosition: QuestionSection[0].id,
+      sectionPosition: questionTree[0].id,
       address: window.location.origin,
       windowSize: '',
       showForm: true,
-      numberOfSections: QuestionSection.length,
+      numberOfSections: questionTree.length,
       currentPercentage: 0,
-      sectionPercentageIncrement: 100 / QuestionSection.length,
-    }
+      sectionPercentageIncrement: 100 / questionTree.length,
+      targetPath: undefined
+    };
   }
 
   componentWillMount() {
@@ -52,9 +55,9 @@ class App extends Component {
 
   //Navigate BACK and FORTH with button
   _navigate(param) {
-    QuestionSection.map((obj, num) => {
+    questionTree.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
-        const newSectionPosition = QuestionSection[num + param].id;
+        const newSectionPosition = questionTree[num + param].id;
         this.setState({
           sectionPosition: newSectionPosition,
           currentPercentage: param > 0 ? this.state.currentPercentage + this.state.sectionPercentageIncrement : this.state.currentPercentage - this.state.sectionPercentageIncrement,
@@ -66,7 +69,7 @@ class App extends Component {
 
   _changeAddress(position) {
     if (position === this.state.sectionPosition) {
-      QuestionSection.map((obj, num) => {
+      questionTree.map((obj, num) => {
         console.log(obj);
         console.log('change address');
       });
@@ -82,14 +85,14 @@ class App extends Component {
   _changeSection() {
     let newSectionPosition;
     let lastSection = false;
-    QuestionSection.map((obj, num) => {
+    questionTree.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
         console.log('with waypoitn');
-        if ((QuestionSection.length - 1) > num) { //if not last section
-          newSectionPosition = QuestionSection[num + 1].id;
+        if ((questionTree.length - 1) > num) { //if not last section
+          newSectionPosition = questionTree[num + 1].id;
           console.log('with waypoitn1');
         } else {
-          newSectionPosition = QuestionSection[num].id;
+          newSectionPosition = questionTree[num].id;
           lastSection = true;
           console.log('with waypoitn2');
         }
@@ -127,39 +130,54 @@ class App extends Component {
   regForm() {
     return (
       <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
-                        sections={QuestionSection} windowSize={this.state.windowSize}
+                        sections={questionTree} windowSize={this.state.windowSize}
                         _navigate={this._navigate} _back={this._back}
                         _changeAddress={this._changeAddress} _changeSection={this._changeSection}
-                        _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
+                        _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}
+                        targetPath={this.state.targetPath}/>
     );
   }
 
   welcomeBox() {
     return (
-      <label className='welcome-box'>
+      <div className='welcome-box'>
         <h2>Welcome to this page</h2>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
           industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book.</p>
         <Button primary={true} type="button" fluid onClick={() => this.showForm()} content="Fortsätt"
                 className="registration-form__btn next"/>
-      </label>
+      </div>
     );
   }
 
   progbar() {
     return (
-      <Progress percent={this.state.currentPercentage} color='yellow'/>
+      <div className={"progress-container"}>
+        <Progress percent={this.state.currentPercentage} color='yellow'/>
+      </div>
     );
   }
 
+  targetPath = (props) => {
+    console.log(props);
+    this.setState({targetPath: props})
+  };
+
   pageContent() {
-    return (
-      <div className={'page-content'}>
-        {this.progbar()}
-        {this.regForm()}
-      </div>
-    );
+    let output = <div className={'page-content'}>{this.welcomeBox()}</div>;
+    if (this.state.showForm) {
+      if (!this.state.targetPath) {
+        output = <div className={'page-content'}>
+          <DeterminePath targetPath={this.targetPath} questions={baseQuestions}/></div>;
+      } else {
+        output = <div className={'page-content'}>
+          {this.progbar()}
+          {this.regForm()}
+        </div>;
+      }
+    }
+    return (output);
   }
 
   render() {
@@ -172,7 +190,6 @@ class App extends Component {
           <Header/>
         </Column>
         <Column className={'page-content-container'}>
-
           <Content/>
         </Column>
       </Grid>

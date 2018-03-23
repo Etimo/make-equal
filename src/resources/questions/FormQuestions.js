@@ -1,5 +1,5 @@
 import testQuestion from './testQuestion';
-import testQuestion2 from './testQuestion2';
+// import testQuestion2 from './testQuestion2';
 // import testQuestion3 from './testQuestion3';
 // import question_1 from './question-1';
 // import question_2 from './question-2';

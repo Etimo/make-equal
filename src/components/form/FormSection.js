@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CheckboxGroup from "./CheckboxGroup";
+import CheckboxGroupWithSubOptions from "./CheckboxGroupWithSubOptions";
 import RadioGroup from "./RadioGroup";
 import Textfield from "./Textfield";
 import Textarea from "./Textarea";
@@ -78,24 +79,27 @@ class FormSection extends Component {
     let input;
     switch (question.type) {
       case 'checkboxGroup':
-        input = <CheckboxGroup key={question.id} questions={question}/>;
-        break
+        input = <CheckboxGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>;
+        break;
+      case 'checkboxGroupWithSubOptions':
+        input =
+          <CheckboxGroupWithSubOptions key={question.id} questions={question} targetPath={this.props.targetPath}/>;
+        break;
       case 'textfield':
-        input = <Textfield key={question.id} questions={question}/>
-        break
+        input = <Textfield key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        break;
       case 'textarea':
-        input = <Textarea key={question.id} questions={question}/>
-        break
+        input = <Textarea key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        break;
       case 'selectGroup':
-        input = <SelectGroup key={question.id} questions={question}/>
-        break
+        input = <SelectGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        break;
       case 'radioGroup':
-        input = <RadioGroup key={question.id} questions={question}/>
-        break
+        input = <RadioGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        break;
       case 'datepicker':
-        input = <Datepicker key={question.id} questions={question}/>
-        break
-
+        input = <Datepicker key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        break;
       default:
         break;
     }

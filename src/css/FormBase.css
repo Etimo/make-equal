@@ -4,11 +4,10 @@
 
 .form-section-content {
   height: 80%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .form-section-buttons {
-height: 20%;
+  height: 20%;
   padding: 0.5em;
-
 }

@@ -5,7 +5,7 @@
   margin: 0;
 }
 .page-header{
-  background-color: #dedede;
+  /*background-color: #dedede;*/
   height: 15vh;
 }
 .page-content-container{
@@ -30,4 +30,11 @@
 }
 .ui.grid .column{
   padding: 0 !important;
+}
+.welcome-box {
+  padding: 1em;
+}
+.progress-container{
+  padding-left: .5em;
+  padding-right: .5em;
 }

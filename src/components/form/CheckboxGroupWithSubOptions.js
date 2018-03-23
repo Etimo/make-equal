@@ -6,17 +6,17 @@ import {OptionRow, QuestionBase} from "../QuestionBase";
 
 // import 'semantic-ui-css/semantic.min.css';
 
-class CheckboxGroup extends Component {
+class CheckboxGroupWithSubOptions extends Component {
   constructor(props) {
     super();
-    props = this.initUnchecked(props)
+    props = this.initUnchecked(props);
     this.state = {
       question: props.questions,
+      targetPath: props.targetPath,
     }
   }
 
   initUnchecked(props) {
-    // console.log(props.questions[props.targetPath]);
     props.questions[props.targetPath].options.forEach(option => {
       option.isChecked = false
     });
@@ -24,7 +24,7 @@ class CheckboxGroup extends Component {
   }
 
   _handleChange(num) {
-    const question = this.state.question;
+    const question = this.state.question
     question[this.props.targetPath].options[num].isChecked = !question[this.props.targetPath].options[num].isChecked;
     this.setState({
       question: question
@@ -33,7 +33,7 @@ class CheckboxGroup extends Component {
 
   render() {
     const question = this.state.question;
-    const options = question[this.props.targetPath].options;
+    const options = question[this.state.targetPath].options;
     return (
       <FormSection name={question.id}>
         <QuestionBase title={question.title}>
@@ -65,4 +65,4 @@ const renderSemanticUICheckbox = (props) => (
 );
 
 
-export default CheckboxGroup;
+export default CheckboxGroupWithSubOptions;
