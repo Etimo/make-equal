@@ -36,7 +36,7 @@ class CheckboxGroup extends Component {
     const options = question[this.props.targetPath].options;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.title}>
+        <QuestionBase title={question[this.props.targetPath].text}>
           {
             options.map((option, num) => {
               return (

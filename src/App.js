@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Header from "./components/Header";
 import RegistrationForm from "./components/form/RegistrationForm";
-import QuestionSection from "./resources/questions/FormQuestions";
 import {Button, Grid, GridColumn, Progress} from "semantic-ui-react";
 // import "./App.css";
 import "semantic-ui-css/semantic.min.css";
@@ -11,6 +10,7 @@ import './page-layout.css';
 import './css/questionBase.css';
 import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
 import DeterminePath from './components/DeterminePath';
+import {generateQuestionListForTarget} from "./resources/questions/QuestionList";
 
 // import FormSection from './sampleSections';
 
@@ -34,7 +34,16 @@ class App extends Component {
       sectionPercentageIncrement: 100 / questionTree.length,
       targetPath: undefined
     };
+    this.wawa();
   }
+
+  wawa() {
+    console.log(generateQuestionListForTarget("selfInPresent"));
+    // console.log(generateQuestionListForTarget("selfInPast"));
+    // console.log(generateQuestionListForTarget("otherInPresent"));
+    // console.log(generateQuestionListForTarget("otherInPast"));
+  }
+
 
   componentWillMount() {
     this._setScreenSize();

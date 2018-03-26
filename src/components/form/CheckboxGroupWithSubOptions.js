@@ -24,7 +24,7 @@ class CheckboxGroupWithSubOptions extends Component {
   }
 
   _handleChange(num) {
-    const question = this.state.question
+    const question = this.state.question;
     question[this.props.targetPath].options[num].isChecked = !question[this.props.targetPath].options[num].isChecked;
     this.setState({
       question: question
@@ -36,7 +36,7 @@ class CheckboxGroupWithSubOptions extends Component {
     const options = question[this.state.targetPath].options;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.title}>
+        <QuestionBase title={question[this.props.targetPath].text}>
           {
             options.map((option, num) => {
               return (

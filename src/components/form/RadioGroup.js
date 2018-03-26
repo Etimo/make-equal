@@ -23,7 +23,7 @@ class RadioGroup extends Component {
     const question = this.props.questions;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.text}>
+        <QuestionBase title={question[this.props.targetPath].text}>
           {
             question[this.props.targetPath].options.map((option, num) => {
               return (

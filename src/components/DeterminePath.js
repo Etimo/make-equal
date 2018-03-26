@@ -27,7 +27,7 @@ export default class DeterminePath extends Component {
       case '0b1b':
         targetPath = "otherInPast";
         break;
-      default:
+      default: // '0a1a'
         targetPath = "selfInPresent";
         break;
     }
