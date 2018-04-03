@@ -1,4 +1,4 @@
-import QuestionList from '../QuestionList';
+import {UntargetedQuestions} from "./tmp/FormQuestionLists";
 
 /**
  * The combination of the first two questions determine which target and tempus to use for the questions
@@ -6,8 +6,8 @@ import QuestionList from '../QuestionList';
  * */
 export const generateQuestionListForTarget = function (targetInTime) {
   let questionsForTarget = [];
-  for (let i in QuestionList) {
-    const questionSourceObject = QuestionList[i];
+  for (let i in UntargetedQuestions) {
+    const questionSourceObject = UntargetedQuestions[i];
     try {
       let question = {
         id: questionSourceObject.id,

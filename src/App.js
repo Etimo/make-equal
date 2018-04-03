@@ -1,18 +1,18 @@
 import React, {Component} from "react";
-import Header from "./components/Header";
-import RegistrationForm from "./components/form/RegistrationForm";
 import {Button, Grid, GridColumn, Progress} from "semantic-ui-react";
-// import "./App.css";
-import "semantic-ui-css/semantic.min.css";
-import "./css/formSection.css";
-// import './layout.css';
-import './page-layout.css';
-import './css/questionBase.css';
-import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
-import DeterminePath from './components/DeterminePath';
-import {generateQuestionListForTarget} from "./resources/questions/QuestionList";
 
-// import FormSection from './sampleSections';
+import "semantic-ui-css/semantic.min.css";
+import './page-layout.css';
+import "./css/formSection.css";
+import './css/questionBase.css';
+import RegistrationForm from "./components/form/RegistrationForm";
+import Header from "./components/Header";
+import DeterminePath from './components/DeterminePath';
+
+import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
+import {generateQuestionListForTarget} from "./resources/questions/TargetedQuestionListBuilder";
+// import './layout.css';
+// import "./App.css";
 
 class App extends Component {
   constructor() {
