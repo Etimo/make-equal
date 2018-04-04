@@ -1,21 +1,21 @@
-import q0 from './question-q0';
-import q1 from './question-q1';
-import q2 from './question-q2';
-import q3 from './question-q3';
-import q4 from './question-q4';
-import q5 from './question-q5';
-import q6 from './question-q6';
-import q7 from './question-q7';
-import q8 from './question-q8';
-import q9 from './question-q9';
-import q10 from './question-q10';
-import q11 from './question-q11';
-import q12 from './question-q12';
-import q13 from './question-q13';
-import q14 from './question-q14';
-import q15 from './question-q15';
-import q16 from './question-q16';
-import q17 from './question-q17';
+import q0 from './question-0';
+import q1 from './question-1';
+import q2 from './question-2';
+import q3 from './question-3';
+import q4 from './question-4';
+import q5 from './question-5';
+import q6 from './question-6';
+import q7 from './question-7';
+import q8 from './question-8';
+import q9 from './question-9';
+import q10 from './question-10';
+import q11 from './question-11';
+import q12 from './question-12';
+import q13 from './question-13';
+import q14 from './question-14';
+import q15 from './question-15';
+import q16 from './question-16';
+import q17 from './question-17';
 
 /**
  * This list contains the two base questions that determine who the subject of the following form questions will be about,
@@ -23,7 +23,7 @@ import q17 from './question-q17';
  * (q0) The affected person is: "me" or "another person"
  * (q1) Present or past tense
  */
-export const pathSettingQuestions = [
+export const introductionQuestions = [
   q0, q1,
 ];
 
@@ -37,6 +37,7 @@ export const pathSettingQuestions = [
  * eg. question.questionText[noTarget] = "Where?" or question.options[i].optionText[noTarget] = "Yes"
  *     question.options[i].subOptions[j].optionText[noTarget] = "some option"
  */
-export const UntargetedQuestions = [
-  q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17,
+export const followupQuestions = [
+  // q2, q3, q4, q5, q6, q7,
+  q8, q9, q10, q11, q12, q13, q14, q15, q16, q17,
 ];

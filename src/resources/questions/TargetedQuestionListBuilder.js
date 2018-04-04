@@ -1,4 +1,4 @@
-import {UntargetedQuestions} from "./tmp/FormQuestionLists";
+import {followupQuestions} from "./tmp/FormQuestionLists";
 
 /**
  * The combination of the first two questions determine which target and tempus to use for the questions
@@ -6,8 +6,8 @@ import {UntargetedQuestions} from "./tmp/FormQuestionLists";
  * */
 export const generateQuestionListForTarget = function (targetInTime) {
   let questionsForTarget = [];
-  for (let i in UntargetedQuestions) {
-    const questionSourceObject = UntargetedQuestions[i];
+  for (let i in followupQuestions) {
+    const questionSourceObject = followupQuestions[i];
     try {
       let question = {
         id: questionSourceObject.id,
@@ -17,6 +17,7 @@ export const generateQuestionListForTarget = function (targetInTime) {
       };
       questionsForTarget.push(question);
     } catch (e) {
+      console.log(followupQuestions[i]);
       console.log(e);
     }
   }
