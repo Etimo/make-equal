@@ -21,11 +21,12 @@ class RadioGroup extends Component {
 
   render() {
     const question = this.props.questions;
+    // console.log(question);
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question[this.props.targetPath].text}>
+        <QuestionBase title={question.text}>
           {
-            question[this.props.targetPath].options.map((option, num) => {
+            question.options.map((option, num) => {
               return (
                 <label key={num} className={this.state.value === option.id ? "option selected" : "option"}
                        onChange={() => this._handleChange(option.id)}>
@@ -49,7 +50,7 @@ const renderRadioQuestion = (props) => {
     <OptionRow text={props.options.text}>
       <Checkbox radio readOnly={false} value={props.options.id}
                 onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
-                {...props.checked} />
+                {...props} />
     </OptionRow>
   );
 };

@@ -17,7 +17,7 @@ class CheckboxGroupWithSubOptions extends Component {
   }
 
   initUnchecked(props) {
-    props.questions[props.targetPath].options.forEach(option => {
+    props.questions.options.forEach(option => {
       option.isChecked = false
     });
     return props;
@@ -25,7 +25,7 @@ class CheckboxGroupWithSubOptions extends Component {
 
   _handleChange(num) {
     const question = this.state.question;
-    question[this.props.targetPath].options[num].isChecked = !question[this.props.targetPath].options[num].isChecked;
+    question.options[num].isChecked = !question.options[num].isChecked;
     this.setState({
       question: question
     })
@@ -33,10 +33,10 @@ class CheckboxGroupWithSubOptions extends Component {
 
   render() {
     const question = this.state.question;
-    const options = question[this.state.targetPath].options;
+    const options = question.options;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question[this.props.targetPath].text}>
+        <QuestionBase title={question.text}>
           {
             options.map((option, num) => {
               return (

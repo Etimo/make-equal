@@ -16,7 +16,7 @@ export default class DeterminePath extends Component {
   determineTargetPath (){
     const subjectAndTempus = this.state.subject + this.state.tempus;
     let targetPath = "";
-    console.log(subjectAndTempus);
+    // console.log(subjectAndTempus);
     switch (subjectAndTempus) {
       case '0a1b':
         targetPath = "selfInPast";

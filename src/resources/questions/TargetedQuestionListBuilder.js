@@ -1,4 +1,4 @@
-import {followupQuestions} from "./tmp/FormQuestionLists";
+import {introductionQuestions,followupQuestions} from "./tmp/FormQuestionLists";
 
 /**
  * The combination of the first two questions determine which target and tempus to use for the questions
@@ -52,3 +52,4 @@ const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptio
 const matchTextForTargetInTime = function (target, textObject) {
   return textObject[target] ? textObject[target] : textObject["noTarget"];
 };
+export const getIntroductionQuestions = () => introductionQuestions;

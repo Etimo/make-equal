@@ -18,7 +18,7 @@ const question = {
     ],
   },
     {
-      id: "b", optionText: "Externa forum",
+      id: "b", optionText: {noTarget:"Externa forum"},
       subOptions: [
         {id: "ba", optionText: {noTarget: "Flashback"},},
         {id: "bb", optionText: {noTarget: "Familjeliv"},},

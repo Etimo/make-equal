@@ -9,8 +9,8 @@ import RegistrationForm from "./components/form/RegistrationForm";
 import Header from "./components/Header";
 import DeterminePath from './components/DeterminePath';
 
-import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
-import {generateQuestionListForTarget} from "./resources/questions/TargetedQuestionListBuilder";
+// import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
+import {getIntroductionQuestions,generateQuestionListForTarget} from "./resources/questions/TargetedQuestionListBuilder";
 // import './layout.css';
 // import "./App.css";
 
@@ -25,25 +25,34 @@ class App extends Component {
     // this._back = this._back.bind(this);
     this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
-      sectionPosition: questionTree[0].id,
       address: window.location.origin,
       windowSize: '',
       showForm: true,
-      numberOfSections: questionTree.length,
+      introductionQuestions: getIntroductionQuestions(),
       currentPercentage: 0,
-      sectionPercentageIncrement: 100 / questionTree.length,
-      targetPath: undefined
     };
-    this.wawa();
+    // this.wawa();
   }
+
+  targetPath = (props) => {
+    const formQuestions = generateQuestionListForTarget(props);
+    console.log(formQuestions);
+    this.setState({
+      targetPath: props,
+      formQuestions:formQuestions,
+      sectionPosition: formQuestions[0].id,
+      numberOfSections: formQuestions.length,
+      sectionPercentageIncrement: 100 / formQuestions.length,
+    })
+  };
+
 
   wawa() {
     console.log(generateQuestionListForTarget("selfInPresent"));
     // console.log(generateQuestionListForTarget("selfInPast"));
-    // console.log(generateQuestionListForTarget("otherInPresent"));
+    console.log(generateQuestionListForTarget("otherInPresent"));
     // console.log(generateQuestionListForTarget("otherInPast"));
   }
-
 
   componentWillMount() {
     this._setScreenSize();
@@ -64,9 +73,10 @@ class App extends Component {
 
   //Navigate BACK and FORTH with button
   _navigate(param) {
-    questionTree.map((obj, num) => {
+    const formQuestions = this.state.formQuestions;
+    formQuestions.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
-        const newSectionPosition = questionTree[num + param].id;
+        const newSectionPosition = formQuestions[num + param].id;
         this.setState({
           sectionPosition: newSectionPosition,
           currentPercentage: param > 0 ? this.state.currentPercentage + this.state.sectionPercentageIncrement : this.state.currentPercentage - this.state.sectionPercentageIncrement,
@@ -78,7 +88,7 @@ class App extends Component {
 
   _changeAddress(position) {
     if (position === this.state.sectionPosition) {
-      questionTree.map((obj, num) => {
+      this.state.formQuestions.map((obj, num) => {
         console.log(obj);
         console.log('change address');
       });
@@ -94,14 +104,15 @@ class App extends Component {
   _changeSection() {
     let newSectionPosition;
     let lastSection = false;
-    questionTree.map((obj, num) => {
+
+    this.state.formQuestions.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
         console.log('with waypoitn');
-        if ((questionTree.length - 1) > num) { //if not last section
-          newSectionPosition = questionTree[num + 1].id;
+        if ((this.state.formQuestions.length - 1) > num) { //if not last section
+          newSectionPosition = this.state.formQuestions[num + 1].id;
           console.log('with waypoitn1');
         } else {
-          newSectionPosition = questionTree[num].id;
+          newSectionPosition = this.state.formQuestions[num].id;
           lastSection = true;
           console.log('with waypoitn2');
         }
@@ -139,7 +150,7 @@ class App extends Component {
   regForm() {
     return (
       <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
-                        sections={questionTree} windowSize={this.state.windowSize}
+                        sections={this.state.formQuestions} windowSize={this.state.windowSize}
                         _navigate={this._navigate} _back={this._back}
                         _changeAddress={this._changeAddress} _changeSection={this._changeSection}
                         _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}
@@ -168,17 +179,14 @@ class App extends Component {
     );
   }
 
-  targetPath = (props) => {
-    console.log(props);
-    this.setState({targetPath: props})
-  };
+
 
   pageContent() {
     let output = <div className={'page-content'}>{this.welcomeBox()}</div>;
     if (this.state.showForm) {
       if (!this.state.targetPath) {
         output = <div className={'page-content'}>
-          <DeterminePath targetPath={this.targetPath} questions={baseQuestions}/></div>;
+          <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/></div>;
       } else {
         output = <div className={'page-content'}>
           {this.progbar()}

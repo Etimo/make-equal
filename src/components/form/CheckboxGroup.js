@@ -9,7 +9,7 @@ import {OptionRow, QuestionBase} from "../QuestionBase";
 class CheckboxGroup extends Component {
   constructor(props) {
     super();
-    props = this.initUnchecked(props)
+    props = this.initUnchecked(props);
     this.state = {
       question: props.questions,
     }
@@ -17,7 +17,7 @@ class CheckboxGroup extends Component {
 
   initUnchecked(props) {
     // console.log(props.questions[props.targetPath]);
-    props.questions[props.targetPath].options.forEach(option => {
+    props.questions.options.forEach(option => {
       option.isChecked = false
     });
     return props;
@@ -25,7 +25,7 @@ class CheckboxGroup extends Component {
 
   _handleChange(num) {
     const question = this.state.question;
-    question[this.props.targetPath].options[num].isChecked = !question[this.props.targetPath].options[num].isChecked;
+    question.options[num].isChecked = !question.options[num].isChecked;
     this.setState({
       question: question
     })
@@ -33,10 +33,10 @@ class CheckboxGroup extends Component {
 
   render() {
     const question = this.state.question;
-    const options = question[this.props.targetPath].options;
+    const options = question.options;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question[this.props.targetPath].text}>
+        <QuestionBase title={question.text}>
           {
             options.map((option, num) => {
               return (
