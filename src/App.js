@@ -104,7 +104,6 @@ class App extends Component {
   _changeSection() {
     let newSectionPosition;
     let lastSection = false;
-
     this.state.formQuestions.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
         console.log('with waypoitn');
@@ -117,7 +116,6 @@ class App extends Component {
           console.log('with waypoitn2');
         }
       }
-
     });
     this.setState({
       sectionPosition: newSectionPosition,
@@ -137,7 +135,7 @@ class App extends Component {
     })
   };
 
-  showForm = function () {
+  showForm = () => {
     this.setState({
       showForm: true,
     })
@@ -153,8 +151,7 @@ class App extends Component {
                         sections={this.state.formQuestions} windowSize={this.state.windowSize}
                         _navigate={this._navigate} _back={this._back}
                         _changeAddress={this._changeAddress} _changeSection={this._changeSection}
-                        _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}
-                        targetPath={this.state.targetPath}/>
+                        _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
     );
   }
 

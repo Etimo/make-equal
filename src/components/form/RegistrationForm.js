@@ -35,8 +35,7 @@ class RegistrationForm extends Component {
                            _changeAddress={this.props._changeAddress}
                            _changeSection={this.props._changeSection}
                            _scrollUp={this.props._scrollUp}
-                           sectionPosition={this.props.sectionPosition}
-                           targetPath={this.props.targetPath}/>
+                           sectionPosition={this.props.sectionPosition}/>
             );
           })
         }

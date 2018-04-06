@@ -79,26 +79,26 @@ class FormSection extends Component {
     let input;
     switch (question.type) {
       case 'checkboxGroup':
-        input = <CheckboxGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>;
+        input = <CheckboxGroup key={question.id} questions={question}/>;
         break;
       case 'checkboxGroupWithSubOptions':
         input =
-          <CheckboxGroupWithSubOptions key={question.id} questions={question} targetPath={this.props.targetPath}/>;
+          <CheckboxGroupWithSubOptions key={question.id} questions={question}/>;
         break;
       case 'textfield':
-        input = <Textfield key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        input = <Textfield key={question.id} questions={question}/>;
         break;
       case 'textarea':
-        input = <Textarea key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        input = <Textarea key={question.id} questions={question}/>;
         break;
       case 'selectGroup':
-        input = <SelectGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        input = <SelectGroup key={question.id} questions={question}/>;
         break;
       case 'radioGroup':
-        input = <RadioGroup key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        input = <RadioGroup key={question.id} questions={question}/>;
         break;
       case 'datepicker':
-        input = <Datepicker key={question.id} questions={question} targetPath={this.props.targetPath}/>
+        input = <Datepicker key={question.id} questions={question}/>;
         break;
       default:
         break;
