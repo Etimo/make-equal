@@ -1,6 +1,15 @@
 import React, {Component} from "react";
 import axios from "axios";
 
+export const GetWordsFromExternalApi = (props) => {
+  let url = "https://analytics.makeequal.se/api/words/sv";
+  axios.get(url).then(response => {
+    console.log(response);
+  }).catch(error => {
+    console.log(error);
+  });
+};
+
 class TestRequest extends Component {
   constructor() {
     super();
