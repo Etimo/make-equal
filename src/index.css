@@ -22,13 +22,16 @@ h1, h2, h3, h4 {
 .form-button:hover {
     background-color: rgb(254,205,27) !important;
 }
-.form-button-alternate  {
+.form-button.alternate {
   font-family: 'Roboto Slab', serif !important;
   background-color: #ffffff !important;
   color: #333333 !important;
-  /*border-radius: 0!important;*/
-  box-shadow: 0 0 0 2px #FCEA10 inset!important;
+  border: 2px solid #FCEA10 !important;
+
 }
-/*.form-button-alternate:hover  {*/
+.form-button.alternate:hover  {
   /*background-color: #FCEA10 !important;*/
-/*}*/
+  background-color: rgb(254,205,27) !important;
+  /*box-shadow: 0 0 0 2px rgb(254,205,27) inset!important;*/
+}
+

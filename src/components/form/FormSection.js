@@ -60,21 +60,17 @@ class FormSection extends Component {
   _isMobile() {
     if (this.props.windowSize > 991) {
       return (
-        <label>
-          <Button.Group widths='2'>
-            {this._isNotFirst()}
-            {this._isNotLast()}
-          </Button.Group>
-        </label>
+        <Button.Group widths='2'>
+          {this._isNotFirst()}
+          {this._isNotLast()}
+        </Button.Group>
       )
     } else {
       return (
-        <label>
-          <Button.Group widths='2'>
-            {this._isNotFirst()}
-            {this._isNotLast()}
-          </Button.Group>
-        </label>
+        <Button.Group widths='2'>
+          {this._isNotFirst()}
+          {this._isNotLast()}
+        </Button.Group>
       )
     }
   }
