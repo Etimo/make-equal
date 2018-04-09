@@ -3,64 +3,54 @@ import {QuestionBase, OptionRow} from "./QuestionBase";
 import {SectionedTextContainer, TextRow, TextColumn, InformationBox} from "./layout/Layout-components";
 import {informationHeader, pathSetupInformationText} from "../resources/other/page-text-content";
 import {Button} from 'semantic-ui-react'
+
 export default class DeterminePath extends Component {
   constructor() {
     super();
     this.state = {
-      subject: "",
+      target: "",
       tempus: "",
-      fieldsReady: false,
     };
   }
 
   determineTargetPath() {
-    const subjectAndTempus = this.state.subject + this.state.tempus;
-    let targetPath = "";
-    // console.log(subjectAndTempus);
-    switch (subjectAndTempus) {
+    const selectedTargetAndTime = this.state.target + this.state.tempus;
+    let targetInTime = "";
+    switch (selectedTargetAndTime) {
       case '0a1b':
-        targetPath = "selfInPast";
+        targetInTime = "selfInPast";
         break;
       case '0b1a':
-        targetPath = "otherInPresent";
+        targetInTime = "otherInPresent";
         break;
       case '0b1b':
-        targetPath = "otherInPast";
+        targetInTime = "otherInPast";
         break;
       default: // '0a1a'
-        targetPath = "selfInPresent";
+        targetInTime = "selfInPresent";
         break;
     }
-    this.props.targetPath(targetPath);
+    this.props.targetPath(targetInTime);
     return false;
   };
 
-  handleSubjectChange = (ev) => {
+  handleTargetChange = (ev) => {
     this.setState(
-      {subject: ev.target.value},
-      () => {
-        if (this.state.tempus !== "") {
-          this.determineTargetPath();
-        }
-      }
+      {target: ev.target.value}
     );
   };
-  handleTempusChange = (ev) => {
+  handleTimeChange = (ev) => {
     this.setState(
-      {tempus: ev.target.value},
-      () => {
-        if (this.state.subject !== "") {
-          this.determineTargetPath();
-        }
-      }
+      {tempus: ev.target.value}
     );
+  };
+  checkFieldsReady = () => {
+    return this.state.tempus !== "" && this.state.target !== "";
   };
 
   render() {
-    // console.log(this.props);
-    const subject = this.props.questions[0];
+    const target = this.props.questions[0];
     const tempus = this.props.questions[1];
-    // console.log(subject)
     return (
       <SectionedTextContainer>
         <TextRow>
@@ -69,22 +59,24 @@ export default class DeterminePath extends Component {
           </TextColumn>
         </TextRow>
         <TextRow>
-          <TextColumn>
-            <QuestionBase title={subject.text}>
+          <TextColumn width={5}>
+            <QuestionBase title={target.text}>
               {
-                subject.options.map((option, num) => {
-                  const id = subject.id + option.id;
+                target.options.map((option, num) => {
+                  const id = target.id + option.id;
                   return (
-                    <label key={num} className={this.state.subject === id ? "option selected" : "option"}>
+                    <label key={num} className={this.state.target === id ? "option selected" : "option"}>
                       <OptionRow text={option.text}>
-                        <input value={id} checked={this.state.subject === id} type={"radio"}
-                               onChange={this.handleSubjectChange}/>
+                        <input value={id} checked={this.state.target === id} type={"radio"}
+                               onChange={this.handleTargetChange}/>
                       </OptionRow>
                     </label>
                   );
                 })
               }
             </QuestionBase>
+            </TextColumn>
+            <TextColumn width={5}>
             <QuestionBase title={tempus.text}>
               {
                 tempus.options.map((option, num) => {
@@ -93,7 +85,7 @@ export default class DeterminePath extends Component {
                     <label key={num} className={this.state.tempus === id ? "option selected" : "option"}>
                       <OptionRow text={option.text}>
                         <input value={id} checked={this.state.tempus === id} type={"radio"}
-                               onChange={this.handleTempusChange}/>
+                               onChange={this.handleTimeChange}/>
                       </OptionRow>
                     </label>
                   );
@@ -103,7 +95,11 @@ export default class DeterminePath extends Component {
           </TextColumn>
         </TextRow>
         <TextRow>
-          <Button disabled={!this.state.fieldsReady} content={"Tryck här för att komma igång"} onClick={() => {console.log("wawa")}}/>
+          <TextColumn centered>
+            <Button content={"Fortsätt med nästa fråga"} className={"form-button"}
+                    disabled={!this.checkFieldsReady()}
+                    onClick={() => this.determineTargetPath()}/>
+          </TextColumn>
         </TextRow>
       </SectionedTextContainer>
     );

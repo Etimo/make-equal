@@ -3,6 +3,7 @@ import {SectionedTextContainer, TextColumn, TextRow} from "./layout/Layout-compo
 import {frontPageSectionOne, frontPageSectionTwo, frontPageTitle} from '../resources/other/page-text-content';
 import {Button} from "semantic-ui-react";
 
+
 const FrontPage = (props) => {
   return (
     <SectionedTextContainer>

@@ -7,12 +7,11 @@ class TestRequest extends Component {
     this.state = {
       data: [],
       status: ""
-    }
-    this.getSomething();
+    };
+    this.requestDataFromApi();
   }
 
-
-  getSomething() {
+  requestDataFromApi() {
     // https://analytics.makeequal.se/api/words
     let filteredDataTitles = [];
     axios.get('https://analytics.makeequal.se/api/words/sv')
