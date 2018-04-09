@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {QuestionBase, OptionRow} from "./QuestionBase";
-
+import {SectionedTextContainer, TextRow, TextColumn, InformationBox} from "./layout/Layout-components";
+import {informationHeader, pathSetupInformationText} from "../resources/other/page-text-content";
+import {Button} from 'semantic-ui-react'
 export default class DeterminePath extends Component {
   constructor() {
     super();
     this.state = {
       subject: "",
-      tempus: ""
+      tempus: "",
+      fieldsReady: false,
     };
   }
 
-  determineTargetPath (){
+  determineTargetPath() {
     const subjectAndTempus = this.state.subject + this.state.tempus;
     let targetPath = "";
     // console.log(subjectAndTempus);
@@ -31,12 +34,15 @@ export default class DeterminePath extends Component {
     this.props.targetPath(targetPath);
     return false;
   };
+
   handleSubjectChange = (ev) => {
     this.setState(
       {subject: ev.target.value},
-      ()=>{if (this.state.tempus !== ""){
-        this.determineTargetPath();
-      }}
+      () => {
+        if (this.state.tempus !== "") {
+          this.determineTargetPath();
+        }
+      }
     );
   };
   handleTempusChange = (ev) => {
@@ -48,7 +54,6 @@ export default class DeterminePath extends Component {
         }
       }
     );
-
   };
 
   render() {
@@ -57,38 +62,50 @@ export default class DeterminePath extends Component {
     const tempus = this.props.questions[1];
     // console.log(subject)
     return (
-      <div>
-        <QuestionBase title={subject.text}>
-          {
-            subject.options.map((option, num) => {
-              const id = subject.id + option.id;
-              return (
-                <label key={num} className={this.state.subject === id ? "option selected" : "option"}>
-                  <OptionRow text={option.text}>
-                    <input value={id} checked={this.state.subject === id} type={"radio"}
-                           onChange={this.handleSubjectChange}/>
-                  </OptionRow>
-                </label>
-              );
-            })
-          }
-        </QuestionBase>
-        <QuestionBase title={tempus.text}>
-          {
-            tempus.options.map((option, num) => {
-              const id = tempus.id + option.id;
-              return (
-                <label key={num} className={this.state.tempus === id ? "option selected" : "option"}>
-                  <OptionRow text={option.text}>
-                    <input value={id} checked={this.state.tempus === id} type={"radio"}
-                           onChange={this.handleTempusChange}/>
-                  </OptionRow>
-                </label>
-              );
-            })
-          }
-        </QuestionBase>
-      </div>
+      <SectionedTextContainer>
+        <TextRow>
+          <TextColumn>
+            <InformationBox title={informationHeader} text={pathSetupInformationText}/>
+          </TextColumn>
+        </TextRow>
+        <TextRow>
+          <TextColumn>
+            <QuestionBase title={subject.text}>
+              {
+                subject.options.map((option, num) => {
+                  const id = subject.id + option.id;
+                  return (
+                    <label key={num} className={this.state.subject === id ? "option selected" : "option"}>
+                      <OptionRow text={option.text}>
+                        <input value={id} checked={this.state.subject === id} type={"radio"}
+                               onChange={this.handleSubjectChange}/>
+                      </OptionRow>
+                    </label>
+                  );
+                })
+              }
+            </QuestionBase>
+            <QuestionBase title={tempus.text}>
+              {
+                tempus.options.map((option, num) => {
+                  const id = tempus.id + option.id;
+                  return (
+                    <label key={num} className={this.state.tempus === id ? "option selected" : "option"}>
+                      <OptionRow text={option.text}>
+                        <input value={id} checked={this.state.tempus === id} type={"radio"}
+                               onChange={this.handleTempusChange}/>
+                      </OptionRow>
+                    </label>
+                  );
+                })
+              }
+            </QuestionBase>
+          </TextColumn>
+        </TextRow>
+        <TextRow>
+          <Button disabled={!this.state.fieldsReady} content={"Tryck här för att komma igång"} onClick={() => {console.log("wawa")}}/>
+        </TextRow>
+      </SectionedTextContainer>
     );
   }
 }

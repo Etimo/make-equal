@@ -23,3 +23,13 @@ export const TextColumn = (props) => {
     <div className={style}>{props.children}</div>
   );
 };
+export const InformationBox = (props) => {
+  let title = props.title;
+  let text = props.text;
+  return (
+    <div className={"information-box"}>
+      {title}
+      {text}
+    </div>
+  );
+}

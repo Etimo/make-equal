@@ -2,39 +2,24 @@
   margin: 0;
   padding: 0;
 }
-
-.text-section {
-  /*float: left;*/
-  /*width: 50%;*/
+.information-box {
+  padding: 1em;
+  width: 100%;
 }
-
-.text-section .full {
-  /*float: left;*/
-  /*width: 50%;*/
+.information-box h1 {
+  float: left;
+  clear: right;
 }
-
-.text-section.split {
-  /*float: left;*/
-  /*width: 50%;*/
-}
-
-.section-button {
-  /*float: right;*/
-  /*margin: inherit!important;*/
-
+.information-box {
+  float: left;
 }
 
 .text-row {
-  /*padding: 0.5em;*/
   margin: 0.5em;
 }
 
-/*.text-column {*/
-/*!*margin: 0.5em;*!*/
-/*!*padding: 0.5em;*!*/
-/*}*/
 .text-column {
-  /*float: left;*/
+  float: left;
   padding: 1em;
 }
 
