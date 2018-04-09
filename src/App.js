@@ -22,10 +22,8 @@ class App extends Component {
     super();
     this._changeSection = this._changeSection.bind(this);
     this._changeAddress = this._changeAddress.bind(this);
-    // this._scrollUp = this._scrollUp.bind(this);
     this._stepsClick = this._stepsClick.bind(this);
     this._navigate = this._navigate.bind(this);
-    // this._back = this._back.bind(this);
     this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
       address: window.location.origin,
@@ -114,7 +112,6 @@ class App extends Component {
     this.setState({
       sectionPosition: newSectionPosition,
     });
-
     if (!lastSection) {
       this._changeAddress();
       console.log('with waypoitnlast');
@@ -139,24 +136,6 @@ class App extends Component {
     // console.log(values);
   };
 
-  regForm() {
-    return (
-      <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
-                        sections={this.state.formQuestions} windowSize={this.state.windowSize}
-                        _navigate={this._navigate} _back={this._back}
-                        _changeAddress={this._changeAddress} _changeSection={this._changeSection}
-                        _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
-    );
-  }
-
-  progbar() {
-    return (
-      <div className={"progress-container"}>
-        <Progress percent={this.state.currentPercentage} color='yellow'/>
-      </div>
-    );
-  }
-
   pageContent() {
     let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
     if (this.state.showForm) {
@@ -166,8 +145,14 @@ class App extends Component {
         </div>;
       } else {
         output = <div className={'page-content'}>
-          {this.progbar()}
-          {this.regForm()}
+          <div className={"progress-container"}>
+            <Progress percent={this.state.currentPercentage}/>
+          </div>
+          <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
+                            sections={this.state.formQuestions} windowSize={this.state.windowSize}
+                            _navigate={this._navigate} _back={this._back}
+                            _changeAddress={this._changeAddress} _changeSection={this._changeSection}
+                            _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
         </div>;
       }
     }
@@ -176,7 +161,7 @@ class App extends Component {
 
   render() {
     const Column = (props) => <GridColumn verticalAlign={props.verticalAlign} className={props.className}
-                                          >{props.children}</GridColumn>;
+    >{props.children}</GridColumn>;
     const Content = () => this.pageContent();
     return (
       <Grid columns={1} container centered id={'container'}>

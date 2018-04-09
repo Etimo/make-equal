@@ -26,11 +26,13 @@ class FormSection extends Component {
   _isNotFirst() {
     if (!this.props.isFirst) {
       if (this.props.windowSize > 991) {
-        return <Button inverted type="button" color="blue" content="Förgående" className="registration-form__btn back"
+        return <Button type="button" content="Förgående"
+                       className="form-button alternate"
                        onClick={() => this.props._navigate(-1)}/>
       } else {
-        return <Button inverted fluid type="button" color="blue" content="Förgående"
-                       className="registration-form__btn back" onClick={() => this.props._navigate(-1)}/>
+        return <Button fluid type="button" content="Förgående"
+                       className="form-button alternate"
+                       onClick={() => this.props._navigate(-1)}/>
       }
     }
   }
@@ -38,17 +40,19 @@ class FormSection extends Component {
   _isNotLast() {
     if (!this.props.isLast) {
       if (this.props.windowSize > 991) {
-        return <Button primary={true} type="button" onClick={() => this.props._navigate(1)} content="Fortsätt"
-                       className="registration-form__btn next"/>
+        return <Button type="button"
+                       onClick={() => this.props._navigate(1)} content="Fortsätt"
+                       className="form-button"/>
       } else {
-        return <Button primary={true} type="button" fluid onClick={() => this.props._navigate(1)} content="Fortsätt"
-                       className="registration-form__btn next"/>
+        return <Button type="button" fluid
+                       onClick={() => this.props._navigate(1)} content="Fortsätt"
+                       className="form-button"/>
       }
     } else {
       if (this.props.windowSize > 991) {
-        return <Button color="blue" content="Skicka in" type="submit" className="registration-form__btn submit"/>
+        return <Button color="blue" content="Skicka in" type="submit" className="form-button"/>
       } else {
-        return <Button color="blue" fluid content="Skicka in" type='submit' className="registration-form__btn submit"/>
+        return <Button color="blue" fluid content="Skicka in" type='submit' className="form-button"/>
       }
     }
   }
@@ -57,7 +61,7 @@ class FormSection extends Component {
     if (this.props.windowSize > 991) {
       return (
         <label>
-          <Button.Group widths='3'>
+          <Button.Group widths='2'>
             {this._isNotFirst()}
             {this._isNotLast()}
           </Button.Group>
