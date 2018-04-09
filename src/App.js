@@ -8,9 +8,12 @@ import './css/questionBase.css';
 import RegistrationForm from "./components/form/RegistrationForm";
 import Header from "./components/Header";
 import DeterminePath from './components/DeterminePath';
-
+import StartPage from './components/FrontPage';
 // import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
-import {getIntroductionQuestions,generateQuestionListForTarget} from "./resources/questions/TargetedQuestionListBuilder";
+import {
+  getIntroductionQuestions,
+  generateQuestionListForTarget
+} from "./resources/questions/TargetedQuestionListBuilder";
 // import './layout.css';
 // import "./App.css";
 
@@ -27,11 +30,10 @@ class App extends Component {
     this.state = {
       address: window.location.origin,
       windowSize: '',
-      showForm: true,
+      showForm: false,
       introductionQuestions: getIntroductionQuestions(),
       currentPercentage: 0,
     };
-    // this.wawa();
   }
 
   targetPath = (props) => {
@@ -39,20 +41,12 @@ class App extends Component {
     console.log(formQuestions);
     this.setState({
       targetPath: props,
-      formQuestions:formQuestions,
+      formQuestions: formQuestions,
       sectionPosition: formQuestions[0].id,
       numberOfSections: formQuestions.length,
       sectionPercentageIncrement: 100 / formQuestions.length,
     })
   };
-
-
-  wawa() {
-    console.log(generateQuestionListForTarget("selfInPresent"));
-    // console.log(generateQuestionListForTarget("selfInPast"));
-    console.log(generateQuestionListForTarget("otherInPresent"));
-    // console.log(generateQuestionListForTarget("otherInPast"));
-  }
 
   componentWillMount() {
     this._setScreenSize();
@@ -155,19 +149,6 @@ class App extends Component {
     );
   }
 
-  welcomeBox() {
-    return (
-      <div className='welcome-box'>
-        <h2>Welcome to this page</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.</p>
-        <Button primary={true} type="button" fluid onClick={() => this.showForm()} content="Fortsätt"
-                className="registration-form__btn next"/>
-      </div>
-    );
-  }
-
   progbar() {
     return (
       <div className={"progress-container"}>
@@ -176,14 +157,13 @@ class App extends Component {
     );
   }
 
-
-
   pageContent() {
-    let output = <div className={'page-content'}>{this.welcomeBox()}</div>;
+    let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
     if (this.state.showForm) {
       if (!this.state.targetPath) {
         output = <div className={'page-content'}>
-          <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/></div>;
+          <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/>
+        </div>;
       } else {
         output = <div className={'page-content'}>
           {this.progbar()}
@@ -195,11 +175,11 @@ class App extends Component {
   }
 
   render() {
-    const Column = (props) => <GridColumn verticalAlign={props.verticalAlign} className={props.className} computer={10}
-                                          tablet={16} mobile={16}>{props.children}</GridColumn>;
+    const Column = (props) => <GridColumn verticalAlign={props.verticalAlign} className={props.className}
+                                          >{props.children}</GridColumn>;
     const Content = () => this.pageContent();
     return (
-      <Grid columns={1} container centered className={'test-class'} id={'container'}>
+      <Grid columns={1} container centered id={'container'}>
         <Column className={'page-header'}>
           <Header/>
         </Column>

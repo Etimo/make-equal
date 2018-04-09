@@ -10,9 +10,6 @@ export default class DeterminePath extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   console.log("awdas")
-  // }
   determineTargetPath (){
     const subjectAndTempus = this.state.subject + this.state.tempus;
     let targetPath = "";
