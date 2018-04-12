@@ -49,7 +49,7 @@ class RadioGroup extends Component {
 const renderRadioQuestion = (props) => {
   return (
     <OptionRow text={props.options.text}>
-      <Checkbox radio value={props.options.id}
+      <Checkbox type={"radio"} radio value={props.options.id}
                 onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
                 {...props} />
     </OptionRow>

@@ -1,4 +1,4 @@
-import {introductionQuestions,followupQuestions} from "./tmp/FormQuestionLists";
+import {introductionQuestions, followupQuestions} from "./tmp/FormQuestionLists";
 
 /**
  * The combination of the first two questions determine which target and tempus to use for the questions
@@ -30,11 +30,25 @@ const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptio
     // Add the containing options of the questions with text directed at targetInTime
     if (Array.isArray(questionOptions)) {
       for (let i in questionOptions) {
+        let option = {};
+        let subOptions = [];
         if (questionOptions[i].id) {
-          options.push({
+          if (questionOptions[i].subOptions && questionOptions[i].subOptions.length > 0) {
+            for (let j in questionOptions[i].subOptions) {
+              subOptions.push({
+                id: questionOptions[i].subOptions[j].id,
+                text: matchTextForTargetInTime(targetInTime, questionOptions[i].subOptions[j].optionText)
+              });
+            }
+          }
+          option = {
             id: questionOptions[i].id,
             text: matchTextForTargetInTime(targetInTime, questionOptions[i].optionText)
-          });
+          };
+          if (subOptions && subOptions.length > 0) {
+            option.subOptions = subOptions;
+          }
+          options.push(option);
         } else {
           throw new Error(`An option for the question is missing the ID property: ${questionOptions[i]}`);
         }
