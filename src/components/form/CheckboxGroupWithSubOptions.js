@@ -37,7 +37,7 @@ class CheckboxGroupWithSubOptions extends Component {
     const options = question.options;
 
     const renderSemanticUICheckbox = (props) => {
-      console.log(props.options.subOptions);
+      // console.log(props.options.subOptions);
 
       return (
         props.options.subOptions && props.options.subOptions.length > 0 ?
@@ -58,7 +58,6 @@ class CheckboxGroupWithSubOptions extends Component {
             <Checkbox type="checkbox" value={props.options.id}
                       onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
                       {...props} />
-            {console.log(props)}
           </OptionRow>
       );
     };

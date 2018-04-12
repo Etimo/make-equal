@@ -40,7 +40,7 @@ class FrontPage extends Component {
             <Accordion fluid styled>
               <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
                 <Icon name='dropdown'/>
-                {tip1.title}
+                Tips 1 - texten från själva frågan som ställdes?
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 0}>
                 {tip1.text}
