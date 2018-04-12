@@ -9,6 +9,7 @@ import RegistrationForm from "./components/form/RegistrationForm";
 import Header from "./components/Header";
 import DeterminePath from './components/DeterminePath';
 import StartPage from './components/FrontPage';
+import MockAnswerPage from './components/MockAnswerPage';
 // import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
 import {
   getIntroductionQuestions,
@@ -29,6 +30,7 @@ class App extends Component {
       address: window.location.origin,
       windowSize: '',
       showForm: false,
+      showAnswers: false,
       introductionQuestions: getIntroductionQuestions(),
       currentPercentage: 0,
     };
@@ -123,6 +125,7 @@ class App extends Component {
     console.log(values);
     this.setState({
       currentPercentage: 100,
+      showAnswers:true,
     })
   };
 
@@ -138,22 +141,27 @@ class App extends Component {
 
   pageContent() {
     let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
+    // let output = <div className={'page-content'}><MockAnswerPage showForm={this.showForm}/></div>;
     if (this.state.showForm) {
-      if (!this.state.targetPath) {
-        output = <div className={'page-content'}>
-          <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/>
-        </div>;
+      if (!this.state.showAnswers){
+        if (!this.state.targetPath) {
+          output = <div className={'page-content'}>
+            <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/>
+          </div>;
+        } else {
+          output = <div className={'page-content'}>
+            <div className={"progress-container"}>
+              <Progress percent={this.state.currentPercentage}/>
+            </div>
+            <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
+                              sections={this.state.formQuestions} windowSize={this.state.windowSize}
+                              _navigate={this._navigate} _back={this._back}
+                              _changeAddress={this._changeAddress} _changeSection={this._changeSection}
+                              _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
+          </div>;
+        }
       } else {
-        output = <div className={'page-content'}>
-          <div className={"progress-container"}>
-            <Progress percent={this.state.currentPercentage}/>
-          </div>
-          <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
-                            sections={this.state.formQuestions} windowSize={this.state.windowSize}
-                            _navigate={this._navigate} _back={this._back}
-                            _changeAddress={this._changeAddress} _changeSection={this._changeSection}
-                            _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
-        </div>;
+        output = <div className={'page-content'}><MockAnswerPage showForm={this.showForm}/></div>;
       }
     }
     return (output);

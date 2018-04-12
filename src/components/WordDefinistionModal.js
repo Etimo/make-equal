@@ -9,20 +9,20 @@ class WordDefinitionModal extends Component {
   render() {
     const {open, size} = this.state;
     return (
-       <div>
-         <a onClick={this.show('small')}>{this.props.word}</a>
-         <Modal size={size} open={open} onClose={this.close}>
-           <Modal.Header>
-             {this.props.word}
-           </Modal.Header>
-           <Modal.Content>
-             <p>{this.props.wordDefinition}</p>
-           </Modal.Content>
-           <Modal.Actions>
-
-           </Modal.Actions>
-         </Modal>
-       </div>
+      <div>
+        <a className={"make-equal-purple"} onClick={this.show('small')}>{this.props.word}</a>
+        <Modal size={size} open={open} onClose={this.close}>
+          <Modal.Header>
+            <h1 className={"make-equal-purple"}>
+              {this.props.word}
+            </h1>
+          </Modal.Header>
+          <Modal.Content>
+            <p className={"word-modal-text-thing"}>Defenition: </p>
+            <p className={"word-modal-text"}>{this.props.wordDefinition}</p>
+          </Modal.Content>
+        </Modal>
+      </div>
     )
   }
 }

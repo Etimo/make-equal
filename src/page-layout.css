@@ -3,16 +3,19 @@
   padding: 0;
   margin: 0;
 }
-.page-header{
+
+.page-header {
   height: 15vh;
-  width: calc(723px + 2rem)!important;
+  width: calc(723px + 2rem) !important;
 }
-.page-content-container{
+
+.page-content-container {
   min-height: 85vh;
-  width: calc(723px + 2rem)!important;
+  width: calc(723px + 2rem) !important;
   /*padding: 0 !important;*/
 }
-.page-content{
+
+.page-content {
   /*margin-top: -1em;*/
   height: 99%;
   background-color: #ffffff;
@@ -26,35 +29,60 @@
   background-color: #ffffff;
 }
 
-
-.test-class{
+.test-class {
   background-color: white;
 }
-.ui.progress{
+
+.ui.progress {
   margin-bottom: 0 !important;
 }
-.ui.grid .column{
+
+.ui.grid .column {
   padding: 0 !important;
 }
+
 .welcome-box {
   padding: 1em;
 }
-.progress-container{
+
+.progress-container {
   padding-left: .5em;
   padding-right: .5em;
 }
-.progress-container .ui.progress .bar{
+
+.progress-container .ui.progress .bar {
   /*background-color: #FCEA10;*/
   background-color: rgb(254, 205, 27);
+}
+
+.make-equal-purple {
+  color: #ee2a7b;
+  cursor: pointer;
+}
+
+.make-equal-purple:hover {
+  color: #ee2a7b;
+  cursor: pointer;
+}
+
+.word-modal-text {
+  line-height: 1.8em;
+  color: #333333;
+}
+.word-modal-text-thing {
+  color: #ee2a7b;
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 500px) {
   .page-header {
     height: 10vh;
   }
+
   body {
     background-color: #ffffff !important;
   }
+
   #container {
     margin: 0 !important;
     padding: 1em;
