@@ -1,19 +1,18 @@
 import React, {Component} from "react";
-import {Button, Grid, GridColumn, Progress} from "semantic-ui-react";
-
+import {Grid, GridColumn, Progress} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import './page-layout.css';
 import "./css/formSection.css";
 import './css/questionBase.css';
-import RegistrationForm from "./components/form/RegistrationForm";
-import Header from "./components/Header";
-import DeterminePath from './components/DeterminePath';
-import StartPage from './components/FrontPage';
-import MockAnswerPage from './components/MockAnswerPage';
+import RegistrationForm from "./services/form/RegistrationForm";
+import Header from "./view/components/Header";
+import DeterminePath from './services/DeterminePath';
+import StartPage from './services/FrontPage';
+import MockAnswerPage from './services/MockAnswerPage';
 // import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
 import {
-  getIntroductionQuestions,
-  generateQuestionListForTarget
+  generateQuestionListForTarget,
+  getIntroductionQuestions
 } from "./resources/questions/TargetedQuestionListBuilder";
 // import './layout.css';
 // import "./App.css";
@@ -38,7 +37,7 @@ class App extends Component {
 
   targetPath = (props) => {
     const formQuestions = generateQuestionListForTarget(props);
-    console.log(formQuestions);
+    // console.log(formQuestions);
     this.setState({
       targetPath: props,
       formQuestions: formQuestions,
@@ -123,11 +122,9 @@ class App extends Component {
   submit = (values) => {
     console.log('submit');
     console.log(values);
-    console.log("state");
-    console.log(this.state);
     this.setState({
       currentPercentage: 100,
-      showAnswers:true,
+      showAnswers: true,
     })
   };
 
@@ -138,14 +135,14 @@ class App extends Component {
   };
 
   handleChange = (values) => {
-    // console.log(values);
+    console.log(values);
   };
 
   pageContent() {
     let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
     // let output = <div className={'page-content'}><MockAnswerPage showForm={this.showForm}/></div>;
     if (this.state.showForm) {
-      if (!this.state.showAnswers){
+      if (!this.state.showAnswers) {
         if (!this.state.targetPath) {
           output = <div className={'page-content'}>
             <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/>

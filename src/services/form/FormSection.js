@@ -2,18 +2,9 @@ import React, {Component} from "react";
 import CheckboxGroup from "./CheckboxGroup";
 import CheckboxGroupWithSubOptions from "./CheckboxGroupWithSubOptions";
 import RadioGroup from "./RadioGroup";
-import Textfield from "./Textfield";
-import Textarea from "./Textarea";
-import SelectGroup from "./SelectGroup";
-import Datepicker from "./Datepicker";
 import {Button} from "semantic-ui-react";
 import "../../css/formSection.css";
 import "../../css/FormBase.css";
-// import {Icon} from 'semantic-ui-react';
-// import {Field} from 'redux-form';
-// import ScrollToTop from 'react-scroll-up';
-// import Waypoint from 'react-waypoint';
-
 
 class FormSection extends Component {
   constructor() {
@@ -85,20 +76,8 @@ class FormSection extends Component {
         input =
           <CheckboxGroupWithSubOptions key={question.id} questions={question}/>;
         break;
-      case 'textfield':
-        input = <Textfield key={question.id} questions={question}/>;
-        break;
-      case 'textarea':
-        input = <Textarea key={question.id} questions={question}/>;
-        break;
-      case 'selectGroup':
-        input = <SelectGroup key={question.id} questions={question}/>;
-        break;
       case 'radioGroup':
         input = <RadioGroup key={question.id} questions={question}/>;
-        break;
-      case 'datepicker':
-        input = <Datepicker key={question.id} questions={question}/>;
         break;
       default:
         break;
@@ -109,7 +88,6 @@ class FormSection extends Component {
   render() {
     const question = this.props.section;
     const sameSection = this.props.sectionPosition === question.id;
-    const RenderQuestionType = () => this._renderQuestionType(question);
     // const windowSize = this.props.windowSize;
     // console.log(question)
     return (

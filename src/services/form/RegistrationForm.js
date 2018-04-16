@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {Form} from "semantic-ui-react";
-import {reduxForm} from "redux-form";
+// import {Form} from "semantic-ui-react";
+import {Form,reduxForm} from "redux-form";
 import FormSection from "./FormSection";
 import "../../css/registrationForm.css";
 
