@@ -1,7 +1,7 @@
-import {introductionQuestions, followupQuestions} from "./questions/FormQuestionLists";
+import {introductionQuestions, followupQuestions} from "./FormQuestionLists";
 
 /**
- * The combination of the first two questions determine which target and tempus to use for the questions
+ * The combination of the first two form-form-questions determine which target and tempus to use for the form-form-questions
  * 0a1a selfInPresent , 0a1b selfInPast, 0b1a otherInPresent, 0b1b otherInPast
  * */
 export const generateQuestionListForTarget = function (targetInTime) {
@@ -27,7 +27,7 @@ export const generateQuestionListForTarget = function (targetInTime) {
 const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptions) {
   if (targetInTime && questionOptions) {
     let options = [];
-    // Add the containing options of the questions with text directed at targetInTime
+    // Add the containing options of the form-form-questions with text directed at targetInTime
     if (Array.isArray(questionOptions)) {
       for (let i in questionOptions) {
         let option = {};

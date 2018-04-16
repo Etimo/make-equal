@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import CheckboxGroup from "./CheckboxGroup";
-import CheckboxGroupWithSubOptions from "./CheckboxGroupWithSubOptions";
-import RadioGroup from "./RadioGroup";
+import CheckboxGroup from "./input-components/CheckboxGroup";
+import CheckboxGroupWithSubOptions from "./input-components/CheckboxGroupWithSubOptions";
+import RadioGroup from "./input-components/RadioGroup";
 import {Button} from "semantic-ui-react";
-import "../../view/style/formSection.css";
-import "../../view/style/FormBase.css";
+import "../view/style/formSection.css";
+// import "../view/style/FormBase.css";
 
 class FormSection extends Component {
   constructor() {
@@ -88,11 +88,9 @@ class FormSection extends Component {
   render() {
     const question = this.props.section;
     const sameSection = this.props.sectionPosition === question.id;
-    // const windowSize = this.props.windowSize;
-    // console.log(question)
-    return (
 
-      <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
+    return (
+      <div className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
         <div className='form-section-base'>
           <div className='form-section-content'>
             {this._renderQuestionType(question)}
@@ -101,7 +99,7 @@ class FormSection extends Component {
             {this._isMobile()}
           </div>
         </div>
-      </section>
+      </div>
 
     )
   };

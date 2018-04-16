@@ -21,6 +21,9 @@ class WordDefinitionModal extends Component {
             <p className={"word-modal-text-thing"}>Defenition: </p>
             <p className={"word-modal-text"}>{this.props.wordDefinition}</p>
           </Modal.Content>
+          <Modal.Actions>
+            <Button className={"form-button"} content={"Stäng"} onClick={()=>this.close()} />
+          </Modal.Actions>
         </Modal>
       </div>
     )

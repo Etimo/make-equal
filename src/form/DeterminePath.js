@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {QuestionBase, OptionRow} from "../view/components/QuestionBase";
-import {SectionedTextContainer, TextRow, TextColumn, InformationBox} from "../view/components/Layout-components";
-import {informationHeader, pathSetupInformationText} from "../resources/other/page-text-content";
+// import {} from "../view/components/QuestionBase";
+import {QuestionContainer, OptionRow,SimpleGridContainer, SimpleGridRow, SimpleGridColumn, InformationBox} from "../view/components/Layout-components";
 import {Button} from 'semantic-ui-react'
 
 export default class DeterminePath extends Component {
@@ -52,15 +51,15 @@ export default class DeterminePath extends Component {
     const target = this.props.questions[0];
     const tempus = this.props.questions[1];
     return (
-      <SectionedTextContainer>
-        <TextRow>
-          <TextColumn>
+      <SimpleGridContainer>
+        <SimpleGridRow>
+          <SimpleGridColumn>
             <InformationBox title={informationHeader} text={pathSetupInformationText}/>
-          </TextColumn>
-        </TextRow>
-        <TextRow>
-          <TextColumn width={5}>
-            <QuestionBase title={target.text}>
+          </SimpleGridColumn>
+        </SimpleGridRow>
+        <SimpleGridRow>
+          <SimpleGridColumn width={5}>
+            <QuestionContainer title={target.text}>
               {
                 target.options.map((option, num) => {
                   const id = target.id + option.id;
@@ -74,10 +73,10 @@ export default class DeterminePath extends Component {
                   );
                 })
               }
-            </QuestionBase>
-            </TextColumn>
-            <TextColumn width={5}>
-            <QuestionBase title={tempus.text}>
+            </QuestionContainer>
+            </SimpleGridColumn>
+            <SimpleGridColumn width={5}>
+            <QuestionContainer title={tempus.text}>
               {
                 tempus.options.map((option, num) => {
                   const id = tempus.id + option.id;
@@ -91,17 +90,22 @@ export default class DeterminePath extends Component {
                   );
                 })
               }
-            </QuestionBase>
-          </TextColumn>
-        </TextRow>
-        <TextRow>
-          <TextColumn centered>
+            </QuestionContainer>
+          </SimpleGridColumn>
+        </SimpleGridRow>
+        <SimpleGridRow>
+          <SimpleGridColumn centered>
             <Button content={"Fortsätt med nästa fråga"} className={"form-button"}
                     disabled={!this.checkFieldsReady()}
                     onClick={() => this.determineTargetPath()}/>
-          </TextColumn>
-        </TextRow>
-      </SectionedTextContainer>
+          </SimpleGridColumn>
+        </SimpleGridRow>
+      </SimpleGridContainer>
     );
   }
 }
+// placing the text here so it doesn't get in the way
+const informationHeader = <h1>Information</h1>;
+const pathSetupInformationText = <p>
+  För att frågorna ska vara relevanta för dig behöver du först svara på dessa frågor.
+</p>;

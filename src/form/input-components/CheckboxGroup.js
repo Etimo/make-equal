@@ -1,10 +1,8 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
 import {Checkbox} from "semantic-ui-react";
-import "../../view/style/checkboxGroup.css";
-import {OptionRow, QuestionBase} from "../../view/components/QuestionBase";
+import {OptionRow, QuestionContainer} from "../../view/components/Layout-components";
 
-// import 'semantic-ui-css/semantic.min.css';
 
 class CheckboxGroup extends Component {
   constructor(props) {
@@ -46,19 +44,19 @@ class CheckboxGroup extends Component {
     const question = this.state.question;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.text}>
+        <QuestionContainer title={question.text}>
           {
             question.options.map((option, num) => {
               return (
                 <label key={num} onChange={() => this._handleChange(num)}
                        className={option.isChecked ? "option selected" : "option"}>
                   <Field name={question.id + option.id} component={this.renderSemanticUICheckbox}
-                         options={option} />
+                         options={option}/>
                 </label>
               )
             })
           }
-        </QuestionBase>
+        </QuestionContainer>
       </FormSection>
     );
   }

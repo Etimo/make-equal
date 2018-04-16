@@ -1,18 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-export const getWordsFromExternalApi = (props) => {
-  // console.log(props);
-  let url = "https://analytics.makeequal.se/api/words/sv";
-  axios.get(url).then(response => {
-    // console.log(response);
-    // console.log(props);
-    props.handleWordsFromApi(response)
-  }).catch(error => {
-    console.log(error);
-  });
-};
-
 class MakeEqualAnalyticsWordsApi extends Component {
   constructor() {
     super();

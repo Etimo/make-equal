@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
-import {SectionedTextContainer, TextColumn, TextRow} from "../view/components/Layout-components";
-import {Button} from "semantic-ui-react";
-import MakeEqualAnalyticsWordsApi from "./external-api/MakeEqualAnalyticsWordsApi";
-import WordDefinitionModal from './WordDefinistionModal';
-import {QuestionBase, OptionRow} from "../view/components/QuestionBase";
-import {InformationBox} from "../view/components/Layout-components";
-import {Accordion, Icon, Segment} from 'semantic-ui-react'
+import {InformationBox, SimpleGridContainer, SimpleGridColumn, SimpleGridRow} from "./Layout-components";
+import {Accordion, Icon, Segment} from "semantic-ui-react";
 
 class FrontPage extends Component {
   state = {activeIndex: 0};
@@ -16,7 +11,7 @@ class FrontPage extends Component {
     const newIndex = activeIndex === index ? -1 : index;
 
     this.setState({activeIndex: newIndex})
-  }
+  };
 
   render() {
     const {activeIndex} = this.state;
@@ -34,9 +29,9 @@ class FrontPage extends Component {
     };
 
     return (
-      <SectionedTextContainer>
-        <TextRow>
-          <TextColumn width={7}>
+      <SimpleGridContainer>
+        <SimpleGridRow>
+          <SimpleGridColumn width={7}>
             <Accordion fluid styled>
               <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
                 <Icon name='dropdown'/>
@@ -60,50 +55,50 @@ class FrontPage extends Component {
                 {tip3.text}
               </Accordion.Content>
             </Accordion>
-          </TextColumn>
-          <TextColumn width={3}>
+          </SimpleGridColumn>
+          <SimpleGridColumn width={3}>
             <InformationBox title={<h1>Exempel</h1>}
                             text={<p>Förra gången pratade vi om att ha ett fält för mer generella råd detta är ett
                               exempel på hur det kan se ut.</p>}/>
-          </TextColumn>
-        </TextRow>
-        <TextRow>
-          <TextColumn width={10}>
+          </SimpleGridColumn>
+        </SimpleGridRow>
+        <SimpleGridRow>
+          <SimpleGridColumn width={10}>
             <Segment>
-            <Accordion>
-              <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-                <Icon name='dropdown'/>
-                Tips 1 - texten från själva frågan som ställdes?
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 0}>
-                <p>
-                  Ta det som hänt på lika stort allvar som om kränkningen ägt rum utanför nätet.
-                </p>
-              </Accordion.Content>
-              <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
-                <Icon name='dropdown'/>
-                Tips 2
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 1}>
-                <p>
-                  Prata med personen och fråga hur du kan vara till hjälp.
-                </p>
-              </Accordion.Content>
+              <Accordion>
+                <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+                  <Icon name='dropdown'/>
+                  Tips 1 - texten från själva frågan som ställdes?
+                </Accordion.Title>
+                <Accordion.Content active={activeIndex === 0}>
+                  <p>
+                    Ta det som hänt på lika stort allvar som om kränkningen ägt rum utanför nätet.
+                  </p>
+                </Accordion.Content>
+                <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
+                  <Icon name='dropdown'/>
+                  Tips 2
+                </Accordion.Title>
+                <Accordion.Content active={activeIndex === 1}>
+                  <p>
+                    Prata med personen och fråga hur du kan vara till hjälp.
+                  </p>
+                </Accordion.Content>
 
-              <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
-                <Icon name='dropdown'/>
-                Tips 3
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 2}>
-                <p>
-                  Anmäl opassande beteenden via respektive sajters eller sociala mediers anmälningsfunktioner.
-                </p>
-              </Accordion.Content>
-            </Accordion>
-          </Segment>
-          </TextColumn>
-        </TextRow>
-      </SectionedTextContainer>
+                <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
+                  <Icon name='dropdown'/>
+                  Tips 3
+                </Accordion.Title>
+                <Accordion.Content active={activeIndex === 2}>
+                  <p>
+                    Anmäl opassande beteenden via respektive sajters eller sociala mediers anmälningsfunktioner.
+                  </p>
+                </Accordion.Content>
+              </Accordion>
+            </Segment>
+          </SimpleGridColumn>
+        </SimpleGridRow>
+      </SimpleGridContainer>
     );
   }
 }

@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
-import "../../view/style/radioGroup.css";
-import "semantic-ui-css/semantic.min.css";
-import {OptionRow, QuestionBase} from "../../view/components/QuestionBase";
+import {OptionRow, QuestionContainer} from "../../view/components/Layout-components";
 import {Checkbox} from "semantic-ui-react";
 
 
 class RadioGroup extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {value: "",};
+    console.log(props);
   }
 
   _handleChange(value) {
@@ -23,7 +22,7 @@ class RadioGroup extends Component {
     const question = this.props.questions;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.text}>
+        <QuestionContainer title={question.text}>
           {
             question.options.map((option, num) => {
               return (
@@ -36,7 +35,7 @@ class RadioGroup extends Component {
               );
             })
           }
-        </QuestionBase>
+        </QuestionContainer>
       </FormSection>
     )
   }

@@ -1,29 +1,17 @@
-.text-container {
+.simple-grid-container {
   margin: 0;
   padding: 0;
 }
-.information-box {
-  padding: 1em;
-  width: 100%;
-}
-.information-box h1 {
-  float: left;
-  clear: right;
-}
-.information-box {
-  float: left;
+.simple-grid-container .simple-row {
+  padding: 0.5em;
 }
 
-.text-row {
-  margin: 0.5em;
-}
-
-.text-column {
+.simple-grid-container .simple-row .simple-column {
   float: left;
   padding: 1em;
 }
 
-.text-column h1 {
+.simple-column h1 {
   float: left;
   background-color: #FCEA10;
   display: inline-block;
@@ -34,24 +22,31 @@
   padding: 0.3em;
 }
 
-.text-column p {
+.simple-column p {
   /*padding: 0.5em;*/
   font-size: 1.1em;
 }
 
-.text-column button {
+.simple-column button {
   font-family: 'Roboto Slab', serif !important;
   background-color: #FCEA10 !important;
   color: #000000 !important;
   border-radius: 0!important;
 }
 
+/* Positioning */
 .centered {
   display: inline-flex;
   justify-content: center;
 }
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
 
-/*Column widths*/
+/* Column widths */
 .col-width-1 {
   width: 10%;
 }

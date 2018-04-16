@@ -1,11 +1,7 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
-import {Checkbox, Accordion} from "semantic-ui-react";
-import "../../view/style/checkboxGroup.css";
-import {OptionRow, QuestionBase, OptionRowAlt, SubOptionContainer,SubOptionBase} from "../../view/components/QuestionBase";
-import {TextRow, TextColumn} from "../../view/components/Layout-components";
-
-// import 'semantic-ui-css/semantic.min.css';
+import {Checkbox} from "semantic-ui-react";
+import {OptionRow, QuestionContainer, OptionRowWithSubOptionContainer, SubOptionRow} from "../../view/components/Layout-components";
 
 class CheckboxGroupWithSubOptions extends Component {
   constructor(props) {
@@ -19,7 +15,7 @@ class CheckboxGroupWithSubOptions extends Component {
     const question = this.state.question;
     return (
       <FormSection name={question.id}>
-        <QuestionBase title={question.text}>
+        <QuestionContainer title={question.text}>
           {
             question.options.map((option, index) => {
               option.questionId = question.id;
@@ -37,13 +33,13 @@ class CheckboxGroupWithSubOptions extends Component {
                   <label key={index} onChange={() => this._handleChange(index)}
                          className={option.isChecked ? "option selected" : "option"}>
                     <Field name={question.id + option.id} component={this.renderSingleCheckbox}
-                           options={option} />
+                           options={option}/>
                   </label>
                 )
               }
             })
           }
-        </QuestionBase>
+        </QuestionContainer>
       </FormSection>
     );
   }
@@ -86,7 +82,7 @@ class CheckboxGroupWithSubOptions extends Component {
   };
   _subOptionChanged = (index, subOptionIndex) => {
     const question = this.state.question;
-    if (!question.options[index].subOptions[subOptionIndex].isChecked ) {
+    if (!question.options[index].subOptions[subOptionIndex].isChecked) {
       question.options[index].isChecked = true;
       question.options[index].subOptions[subOptionIndex].isChecked = true;
     } else {
@@ -96,13 +92,13 @@ class CheckboxGroupWithSubOptions extends Component {
   };
 
   renderCheckboxForOptionWithSubOptions = (props) => (
-    <SubOptionBase>
+    <OptionRowWithSubOptionContainer>
       <OptionRow text={props.options.text}>
         <Checkbox type="checkbox" value={props.options.id} checked={props.options.isChecked}
                   onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
                   {...props} />
       </OptionRow>
-      <SubOptionContainer>
+      <SubOptionRow>
         {
           props.options.subOptions ?
             props.options.subOptions.map((subOption, subOptionIndex) => {
@@ -115,8 +111,8 @@ class CheckboxGroupWithSubOptions extends Component {
               );
             }) : "wawaw"
         }
-      </SubOptionContainer>
-    </SubOptionBase>
+      </SubOptionRow>
+    </OptionRowWithSubOptionContainer>
   );
 
   renderSingleCheckbox = (props) => (

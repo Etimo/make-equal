@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-// import {Form} from "semantic-ui-react";
-import {Form,reduxForm} from "redux-form";
+import {Form, reduxForm} from "redux-form";
 import FormSection from "./FormSection";
-import "../../view/style/registrationForm.css";
-import '../../view/style/questionBase.css';
+// import "../view/style/registrationForm.css";
+
 class RegistrationForm extends Component {
 
   componentDidMount() {
@@ -14,10 +13,8 @@ class RegistrationForm extends Component {
     let last = false;
     let first = true;
     const {handleSubmit} = this.props;
-    // console.log(this.props);
 
     return (
-
       <Form onSubmit={handleSubmit}>
         {
           sectionsArr.map((section, num) => {
@@ -28,25 +25,21 @@ class RegistrationForm extends Component {
               first = false;
             }
             return (
-              <FormSection key={num} section={section} isLast={last}
-                           windowSize={this.props.windowSize}
-                           isFirst={first} _navigate={this.props._navigate}
-                           _back={this.props._back}
+              <FormSection key={num} section={section} isLast={last} isFirst={first}
+                           windowSize={this.props.windowSize} _navigate={this.props._navigate}
                            _changeAddress={this.props._changeAddress}
                            _changeSection={this.props._changeSection}
-                           _scrollUp={this.props._scrollUp}
                            sectionPosition={this.props.sectionPosition}/>
             );
           })
         }
       </Form>
     );
-
   }
 }
 
 export default RegistrationForm = reduxForm({
-  // a unique name for the form
+  // a unique name for the form-form
   form: 'TestForm1'
 })(RegistrationForm)
 

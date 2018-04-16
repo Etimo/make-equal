@@ -1,3 +1,18 @@
+.information-box {
+  padding: 1em;
+  width: 100%;
+}
+
+.information-box h1 {
+  float: left;
+  clear: right;
+}
+
+.information-box {
+  float: left;
+}
+
+/* Question and Options */
 .question-base {
   padding: 1em;
 
@@ -30,10 +45,6 @@
   width: 100% !important;
   background-color: rgb(236, 236, 236);
   border-radius: 2em;
-}
-
-.pull-right {
-  float: right;
 }
 
 .sub-option-container {

@@ -2,22 +2,21 @@ import React, {Component} from "react";
 import {Grid, GridColumn, Progress} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import './view/style/App.css';
-import RegistrationForm from "./components/form/RegistrationForm";
+import RegistrationForm from "./form/RegistrationForm";
 import Header from "./view/components/Header";
-import DeterminePath from './components/DeterminePath';
-import StartPage from './components/FrontPage';
-import MockAnswerPage from './components/MockAnswerPage';
+import DeterminePath from './form/DeterminePath';
+import StartPage from './view/components/FrontPage';
+import MockAnswerPage from './view/components/MockAnswerPage';
 import {
   generateQuestionListForTarget,
   getIntroductionQuestions
-} from "./resources/TargetedQuestionListBuilder";
+} from "./form/TargetedQuestionListBuilder";
 
 class App extends Component {
   constructor() {
     super();
     this._changeSection = this._changeSection.bind(this);
     this._changeAddress = this._changeAddress.bind(this);
-    this._stepsClick = this._stepsClick.bind(this);
     this._navigate = this._navigate.bind(this);
     this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
@@ -32,7 +31,6 @@ class App extends Component {
 
   targetPath = (props) => {
     const formQuestions = generateQuestionListForTarget(props);
-    // console.log(formQuestions);
     this.setState({
       targetPath: props,
       formQuestions: formQuestions,
@@ -43,21 +41,14 @@ class App extends Component {
   };
 
   componentWillMount() {
-    this._setScreenSize();
-    window.addEventListener("resize", this._setScreenSize); // for resizing window
+    // console.log("will it mount?");
+    // this._setScreenSize();
+    // window.addEventListener("resize", this._setScreenSize); // for resizing window
   }
 
   _setScreenSize() {
     const size = window.innerWidth;
     this.setState({windowSize: size});
-  }
-
-  //Navigate with Steps
-  _stepsClick(number) {
-    console.log("wawa");
-    this.setState({
-      sectionPosition: number
-    });
   }
 
   //Navigate BACK and FORTH with button
@@ -76,6 +67,7 @@ class App extends Component {
   }
 
   _changeAddress(position) {
+    console.log("assume the position!");
     if (position === this.state.sectionPosition) {
       this.state.formQuestions.map((obj, num) => {
         console.log(obj);
@@ -136,7 +128,6 @@ class App extends Component {
 
   pageContent() {
     let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
-    // let output = <div className={'page-content'}><MockAnswerPage showForm={this.showForm}/></div>;
     if (this.state.showForm) {
       if (!this.state.showAnswers) {
         if (!this.state.targetPath) {
@@ -150,9 +141,9 @@ class App extends Component {
             </div>
             <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
                               sections={this.state.formQuestions} windowSize={this.state.windowSize}
-                              _navigate={this._navigate} _back={this._back}
-                              _changeAddress={this._changeAddress} _changeSection={this._changeSection}
-                              _scrollUp={this._scrollUp} sectionPosition={this.state.sectionPosition}/>
+                              _navigate={this._navigate}  _changeAddress={this._changeAddress}
+                              _changeSection={this._changeSection}
+                              sectionPosition={this.state.sectionPosition}/>
           </div>;
         }
       } else {

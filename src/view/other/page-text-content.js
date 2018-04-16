@@ -14,7 +14,3 @@ export const frontPageSectionTwo = <p>
   Råden som visas kommer vara anpassade till de angivna svaren (i så stor utsträckning som möjligt) men även mer
   generella tips som är relevanta för situationen kan förekomma.
 </p>;
-export const informationHeader = <h1>Information</h1>;
-export const pathSetupInformationText = <p>
-  För att frågorna ska vara relevanta för dig behöver du först svara på dessa frågor.
-</p>;
