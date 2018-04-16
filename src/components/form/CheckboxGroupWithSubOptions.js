@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
 import {Checkbox, Accordion} from "semantic-ui-react";
-import "../../css/checkboxGroup.css";
-import {OptionRow, QuestionBase, OptionRowAlt, SubOptionContainer,SubOptionBase} from "../QuestionBase";
-import {TextRow, TextColumn} from "../layout/Layout-components";
+import "../../view/style/checkboxGroup.css";
+import {OptionRow, QuestionBase, OptionRowAlt, SubOptionContainer,SubOptionBase} from "../../view/components/QuestionBase";
+import {TextRow, TextColumn} from "../../view/components/Layout-components";
 
 // import 'semantic-ui-css/semantic.min.css';
 

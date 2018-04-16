@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {QuestionBase, OptionRow} from "./QuestionBase";
-import {SectionedTextContainer, TextRow, TextColumn, InformationBox} from "./layout/Layout-components";
+import {QuestionBase, OptionRow} from "../view/components/QuestionBase";
+import {SectionedTextContainer, TextRow, TextColumn, InformationBox} from "../view/components/Layout-components";
 import {informationHeader, pathSetupInformationText} from "../resources/other/page-text-content";
 import {Button} from 'semantic-ui-react'
 

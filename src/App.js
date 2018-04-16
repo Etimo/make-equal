@@ -1,21 +1,16 @@
 import React, {Component} from "react";
 import {Grid, GridColumn, Progress} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import './page-layout.css';
-import "./css/formSection.css";
-import './css/questionBase.css';
-import RegistrationForm from "./services/form/RegistrationForm";
+import './view/style/App.css';
+import RegistrationForm from "./components/form/RegistrationForm";
 import Header from "./view/components/Header";
-import DeterminePath from './services/DeterminePath';
-import StartPage from './services/FrontPage';
-import MockAnswerPage from './services/MockAnswerPage';
-// import {baseQuestions, questionTree} from "./resources/questions/tmp/QuestionTree";
+import DeterminePath from './components/DeterminePath';
+import StartPage from './components/FrontPage';
+import MockAnswerPage from './components/MockAnswerPage';
 import {
   generateQuestionListForTarget,
   getIntroductionQuestions
-} from "./resources/questions/TargetedQuestionListBuilder";
-// import './layout.css';
-// import "./App.css";
+} from "./resources/TargetedQuestionListBuilder";
 
 class App extends Component {
   constructor() {
@@ -59,6 +54,7 @@ class App extends Component {
 
   //Navigate with Steps
   _stepsClick(number) {
+    console.log("wawa");
     this.setState({
       sectionPosition: number
     });

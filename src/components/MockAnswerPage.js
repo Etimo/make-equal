@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {SectionedTextContainer, TextColumn, TextRow} from "./layout/Layout-components";
+import {SectionedTextContainer, TextColumn, TextRow} from "../view/components/Layout-components";
 import {Button} from "semantic-ui-react";
 import MakeEqualAnalyticsWordsApi from "./external-api/MakeEqualAnalyticsWordsApi";
 import WordDefinitionModal from './WordDefinistionModal';
-import {QuestionBase, OptionRow} from "./QuestionBase";
-import {InformationBox} from "./layout/Layout-components";
+import {QuestionBase, OptionRow} from "../view/components/QuestionBase";
+import {InformationBox} from "../view/components/Layout-components";
 import {Accordion, Icon, Segment} from 'semantic-ui-react'
 
 class FrontPage extends Component {

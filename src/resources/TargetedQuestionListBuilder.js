@@ -1,4 +1,4 @@
-import {introductionQuestions, followupQuestions} from "./tmp/FormQuestionLists";
+import {introductionQuestions, followupQuestions} from "./questions/FormQuestionLists";
 
 /**
  * The combination of the first two questions determine which target and tempus to use for the questions

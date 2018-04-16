@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {SectionedTextContainer, TextColumn, TextRow} from "./layout/Layout-components";
+import {SectionedTextContainer, TextColumn, TextRow} from "../view/components/Layout-components";
 import {frontPageSectionOne, frontPageSectionTwo, frontPageTitle} from '../resources/other/page-text-content';
 import {Button} from "semantic-ui-react";
-import MakeEqualAnalyticsWordsApi from "./external-api/MakeEqualAnalyticsWordsApi";
 import WordDefinitionModal from './WordDefinistionModal';
 
 class FrontPage extends Component {

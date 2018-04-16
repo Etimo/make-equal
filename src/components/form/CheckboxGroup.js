@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
 import {Checkbox} from "semantic-ui-react";
-import "../../css/checkboxGroup.css";
-import {OptionRow, QuestionBase} from "../QuestionBase";
+import "../../view/style/checkboxGroup.css";
+import {OptionRow, QuestionBase} from "../../view/components/QuestionBase";
 
 // import 'semantic-ui-css/semantic.min.css';
 

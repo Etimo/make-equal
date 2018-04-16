@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
-import "../../css/radioGroup.css";
+import "../../view/style/radioGroup.css";
 import "semantic-ui-css/semantic.min.css";
-import {OptionRow, QuestionBase} from "../QuestionBase";
+import {OptionRow, QuestionBase} from "../../view/components/QuestionBase";
 import {Checkbox} from "semantic-ui-react";
 
 

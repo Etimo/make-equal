@@ -3,8 +3,8 @@ import CheckboxGroup from "./CheckboxGroup";
 import CheckboxGroupWithSubOptions from "./CheckboxGroupWithSubOptions";
 import RadioGroup from "./RadioGroup";
 import {Button} from "semantic-ui-react";
-import "../../css/formSection.css";
-import "../../css/FormBase.css";
+import "../../view/style/formSection.css";
+import "../../view/style/FormBase.css";
 
 class FormSection extends Component {
   constructor() {

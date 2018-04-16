@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../resources/style/TextContainer.css'
+import '../style/textContainer.css'
 
 export const SectionedTextContainer = (props) => (
   <div className={'text-container'}>
