@@ -40,7 +40,8 @@ class RegistrationForm extends Component {
 
 export default RegistrationForm = reduxForm({
   // a unique name for the form-form
-  form: 'TestForm1'
+  form: 'TestForm1',
+  destroyOnUnmount: false,
 })(RegistrationForm)
 
 

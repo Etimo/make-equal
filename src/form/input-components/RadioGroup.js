@@ -8,7 +8,6 @@ class RadioGroup extends Component {
   constructor(props) {
     super();
     this.state = {value: "",};
-    console.log(props);
   }
 
   _handleChange(value) {
