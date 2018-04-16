@@ -9,41 +9,51 @@ import {OptionRow, QuestionBase} from "../QuestionBase";
 class CheckboxGroup extends Component {
   constructor(props) {
     super();
-    props = this.initUnchecked(props);
     this.state = {
       question: props.questions,
     }
   }
 
-  initUnchecked(props) {
-    // console.log(props.questions[props.targetPath]);
-    props.questions.options.forEach(option => {
-      option.isChecked = false
-    });
-    return props;
-  }
 
-  _handleChange(num) {
-    const question = this.state.question;
-    question.options[num].isChecked = !question.options[num].isChecked;
+  _handleChange = (index) => {
+    let question = this.state.question;
+    if (index) {
+      question = this._superOptionChanged(index);
+    }
+    // question.options[index].isChecked = !question.options[index].isChecked;
     this.setState({
-      question: question
+      question
     })
-  }
+  };
+
+  _superOptionChanged = (index) => {
+    const question = this.state.question;
+    if (question.options[index].isChecked) {
+      if (question.options[index].isChecked === true) {
+        if (this.hasSubOptionsChecked(question.options[index])) {
+          question.options[index].isChecked = true;
+        } else {
+          question.options[index].isChecked = false;
+        }
+      } else {
+        question.options[index].isChecked = true;
+      }
+    }
+    return question;
+  };
 
   render() {
     const question = this.state.question;
-    const options = question.options;
     return (
       <FormSection name={question.id}>
         <QuestionBase title={question.text}>
           {
-            options.map((option, num) => {
+            question.options.map((option, num) => {
               return (
                 <label key={num} onChange={() => this._handleChange(num)}
                        className={option.isChecked ? "option selected" : "option"}>
-                  <Field name={question.id + option.id} component={renderSemanticUICheckbox}
-                         options={option} onChange={() => this._handleChange(num)}/>
+                  <Field name={question.id + option.id} component={this.renderSemanticUICheckbox}
+                         options={option} />
                 </label>
               )
             })
@@ -53,16 +63,14 @@ class CheckboxGroup extends Component {
     );
   }
 
+  renderSemanticUICheckbox = (props) => (
+    <OptionRow text={props.options.text}>
+      <Checkbox type="checkbox" value={props.options.id} checked={props.options.isChecked}
+                onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
+                {...props} />
+    </OptionRow>
+  );
 }
-
-
-const renderSemanticUICheckbox = (props) => (
-  <OptionRow text={props.options.text}>
-    <Checkbox type="checkbox" value={props.options.id}
-              onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
-              {...props} />
-  </OptionRow>
-);
 
 
 export default CheckboxGroup;

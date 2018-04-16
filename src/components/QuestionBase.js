@@ -32,17 +32,20 @@ export const OptionRowAlt = (props) => {
 </div>
   );
 };
-
-
-export const QuestionWithSubOptionBase = (props) => {
+export const SubOptionBase = (props) => {
   return (
     <div className={"question-base"}>
-      <div className={"question-title"}>
-        <h3>{props.title}</h3>
-      </div>
       <div className={"option-container"}>
-
+        {props.children}
       </div>
+    </div>
+  );
+};
+
+export const SubOptionContainer = (props) => {
+  return (
+    <div className={"sub-option-container"}>
+      {props.children}
     </div>
   );
 };

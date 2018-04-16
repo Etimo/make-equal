@@ -18,9 +18,6 @@ class RadioGroup extends Component {
       value: value,
     });
   };
-  componentDidUpdate() {
-    console.log("something happened");
-  }
 
   render() {
     const question = this.props.questions;
@@ -55,7 +52,6 @@ const renderRadioQuestion = (props) => {
     </OptionRow>
   );
 };
-
 
 
 export default RadioGroup;

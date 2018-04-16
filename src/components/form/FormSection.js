@@ -117,7 +117,7 @@ class FormSection extends Component {
       <section className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
         <div className='form-section-base'>
           <div className='form-section-content'>
-            <RenderQuestionType/>
+            {this._renderQuestionType(question)}
           </div>
           <div className='form-section-buttons'>
             {this._isMobile()}

@@ -123,6 +123,8 @@ class App extends Component {
   submit = (values) => {
     console.log('submit');
     console.log(values);
+    console.log("state");
+    console.log(this.state);
     this.setState({
       currentPercentage: 100,
       showAnswers:true,
