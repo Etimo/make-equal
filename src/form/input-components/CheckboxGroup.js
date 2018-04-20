@@ -43,21 +43,19 @@ class CheckboxGroup extends Component {
   render() {
     const question = this.state.question;
     return (
-      <FormSection name={question.id}>
-        <QuestionContainer title={question.text}>
-          {
-            question.options.map((option, num) => {
-              return (
-                <label key={num} onChange={() => this._handleChange(num)}
-                       className={option.isChecked ? "option selected" : "option"}>
-                  <Field name={question.id + option.id} component={this.renderSemanticUICheckbox}
-                         options={option}/>
-                </label>
-              )
-            })
-          }
-        </QuestionContainer>
-      </FormSection>
+      <QuestionContainer title={question.text}>
+        {
+          question.options.map((option, num) => {
+            return (
+              <label key={num} onChange={() => this._handleChange(num)}
+                     className={option.isChecked ? "option selected" : "option"}>
+                <Field name={question.id + option.id} component={this.renderSemanticUICheckbox}
+                       options={option}/>
+              </label>
+            )
+          })
+        }
+      </QuestionContainer>
     );
   }
 

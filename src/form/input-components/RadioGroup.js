@@ -20,25 +20,22 @@ class RadioGroup extends Component {
   render() {
     const question = this.props.questions;
     return (
-      <FormSection name={question.id}>
-        <QuestionContainer title={question.text}>
-          {
-            question.options.map((option, num) => {
-              return (
-                <label key={num} className={this.state.value === option.id ? "option selected" : "option"}
-                       onChange={() => this._handleChange(option.id)}>
-                  <Field name={question.id + option.id} component={renderRadioQuestion} value={option.id}
-                         options={option} checked={this.state.value === option.id}
-                  />
-                </label>
-              );
-            })
-          }
-        </QuestionContainer>
-      </FormSection>
+      <QuestionContainer title={question.text}>
+        {
+          question.options.map((option, num) => {
+            return (
+              <label key={num} className={this.state.value === option.id ? "option selected" : "option"}
+                     onChange={() => this._handleChange(option.id)}>
+                <Field name={question.id + option.id} component={renderRadioQuestion} value={option.id}
+                       options={option} checked={this.state.value === option.id}
+                />
+              </label>
+            );
+          })
+        }
+      </QuestionContainer>
     )
   }
-
 }
 
 const renderRadioQuestion = (props) => {

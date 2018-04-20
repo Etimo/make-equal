@@ -1,7 +1,12 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
 import {Checkbox} from "semantic-ui-react";
-import {OptionRow, QuestionContainer, OptionRowWithSubOptionContainer, SubOptionRow} from "../../view/components/Layout-components";
+import {
+  OptionRow,
+  QuestionContainer,
+  OptionRowWithSubOptionContainer,
+  SubOptionRow
+} from "../../view/components/Layout-components";
 
 class CheckboxGroupWithSubOptions extends Component {
   constructor(props) {
@@ -14,33 +19,31 @@ class CheckboxGroupWithSubOptions extends Component {
   render() {
     const question = this.state.question;
     return (
-      <FormSection name={question.id}>
-        <QuestionContainer title={question.text}>
-          {
-            question.options.map((option, index) => {
-              option.questionId = question.id;
-              if (option.subOptions && option.subOptions.length >= 1) {
-                return (
-                  <label key={index} onChange={() => this._handleChange(index)}
-                         className={option.isChecked ? "option selected" : "option"}>
-                    <Field name={question.id + option.id} index={index}
-                           component={this.renderCheckboxForOptionWithSubOptions}
-                           options={option} onChange={() => this._handleChange(index)}/>
-                  </label>
-                )
-              } else {
-                return (
-                  <label key={index} onChange={() => this._handleChange(index)}
-                         className={option.isChecked ? "option selected" : "option"}>
-                    <Field name={question.id + option.id} component={this.renderSingleCheckbox}
-                           options={option}/>
-                  </label>
-                )
-              }
-            })
-          }
-        </QuestionContainer>
-      </FormSection>
+      <QuestionContainer title={question.text}>
+        {
+          question.options.map((option, index) => {
+            option.questionId = question.id;
+            if (option.subOptions && option.subOptions.length >= 1) {
+              return (
+                <label key={index} onChange={() => this._handleChange(index)}
+                       className={option.isChecked ? "option selected" : "option"}>
+                  <Field name={question.id + option.id} index={index}
+                         component={this.renderCheckboxForOptionWithSubOptions}
+                         options={option} onChange={() => this._handleChange(index)}/>
+                </label>
+              )
+            } else {
+              return (
+                <label key={index} onChange={() => this._handleChange(index)}
+                       className={option.isChecked ? "option selected" : "option"}>
+                  <Field name={question.id + option.id} component={this.renderSingleCheckbox}
+                         options={option}/>
+                </label>
+              )
+            }
+          })
+        }
+      </QuestionContainer>
     );
   }
 

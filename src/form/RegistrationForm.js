@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Form, reduxForm} from "redux-form";
 import FormSection from "./FormSection";
+
 // import "../view/style/registrationForm.css";
 
 class RegistrationForm extends Component {
@@ -42,6 +43,8 @@ export default RegistrationForm = reduxForm({
   // a unique name for the form-form
   form: 'TestForm1',
   destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(RegistrationForm)
 
 
