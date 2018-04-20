@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Field, FormSection} from "redux-form";
-import {Checkbox} from "semantic-ui-react";
+import {Checkbox, Accordion, Icon} from "semantic-ui-react";
 import {
   OptionRow,
   QuestionContainer,
@@ -13,8 +13,31 @@ class CheckboxGroupWithSubOptions extends Component {
     super();
     this.state = {
       question: props.questions,
-    }
+    };
   }
+
+  // todo: disable uncheck on parent option that has a child checked.
+  _handleChange = (index, subOptionIndex) => {
+    console.log(index);
+    if (subOptionIndex) {
+      console.log(subOptionIndex.target.checked);
+    }
+    // console.log(this.props);
+    let question = this.state.question;
+  };
+  hasSubOptions = (option) => {
+    return option.subOptions && option.subOptions.length > 0;
+  };
+  hasCheckedSubOptions = (option) => {
+    if (this.hasSubOptions(option)) {
+      for (let i in option.subOptions) {
+        if (option.subOptions[i].isChecked && option.subOptions[i].isChecked === true) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
 
   render() {
     const question = this.state.question;
@@ -23,108 +46,66 @@ class CheckboxGroupWithSubOptions extends Component {
         {
           question.options.map((option, index) => {
             option.questionId = question.id;
-            if (option.subOptions && option.subOptions.length >= 1) {
-              return (
-                <label key={index} onChange={() => this._handleChange(index)}
-                       className={option.isChecked ? "option selected" : "option"}>
-                  <Field name={question.id + option.id} index={index}
-                         component={this.renderCheckboxForOptionWithSubOptions}
-                         options={option} onChange={() => this._handleChange(index)}/>
-                </label>
-              )
-            } else {
-              return (
-                <label key={index} onChange={() => this._handleChange(index)}
-                       className={option.isChecked ? "option selected" : "option"}>
-                  <Field name={question.id + option.id} component={this.renderSingleCheckbox}
-                         options={option}/>
-                </label>
-              )
-            }
+            return (
+              <Field key={index} name={question.id + option.id} component={this.renderOptionCheckbox}
+                     type={"checkbox"} options={option} index={index}/>
+            )
           })
         }
       </QuestionContainer>
     );
   }
 
-  _handleChange = (index, subOptionIndex) => {
-    let question = this.state.question;
-    if (index && !subOptionIndex) {
-      question = this._superOptionChanged(index);
-    } else if (index && subOptionIndex) {
-      question = this._subOptionChanged(index, subOptionIndex);
+  renderOptionCheckbox = (props) => {
+    console.log(props);
+    let renderSubOptions;
+    let hasSubOptions = false;
+    if (this.hasSubOptions(props.options)) {
+      renderSubOptions = props.options.subOptions.map((subOption, subIndex) => {
+        subOption.parentIndex = props.index;
+        subOption.subIndex = subOption;
+        hasSubOptions = true;
+        return (
+          <Accordion.Content key={subIndex} active={props.input.checked}>
+            <Field type={"checkbox"} name={props.options.questionId + subOption.id}
+                   options={subOption} component={this.renderSubOptionCheckbox}
+            />
+          </Accordion.Content>
+        );
+      });
     }
-
-    // question.options[index].isChecked = !question.options[index].isChecked;
-    this.setState({
-      question
-    })
+    return (
+      <OptionRowWithSubOptionContainer>
+        <Accordion.Title active={props.input.checked}>
+          <label onChange={() => this._handleChange(props.index)}
+                 className={props.input.checked ? "option selected" : "option"}>
+            <OptionRow text={props.options.text} icon={hasSubOptions}>
+              <Checkbox disabled={this.hasCheckedSubOptions(props.options)} type="checkbox" value={props.options.id}
+                        checked={props.input.checked}
+                        onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
+                        {...props} />
+            </OptionRow>
+          </label>
+        </Accordion.Title>
+        {renderSubOptions}
+      </OptionRowWithSubOptionContainer>
+    );
   };
-  hasSubOptionsChecked = (option) => {
-    for (let i in option.subOptions) {
-      if (option.subOptions[i].isChecked && option.subOptions[i].isChecked === true) {
-        return true;
-      }
-    }
-    return false;
-  };
-  _superOptionChanged = (index) => {
-    const question = this.state.question;
-    if (question.options[index].isChecked) {
-      if (question.options[index].isChecked === true) {
-        if (this.hasSubOptionsChecked(question.options[index])) {
-          question.options[index].isChecked = true;
-        } else {
-          question.options[index].isChecked = false;
-        }
-      } else {
-        question.options[index].isChecked = true;
-      }
-    }
-    return question;
-  };
-  _subOptionChanged = (index, subOptionIndex) => {
-    const question = this.state.question;
-    if (!question.options[index].subOptions[subOptionIndex].isChecked) {
-      question.options[index].isChecked = true;
-      question.options[index].subOptions[subOptionIndex].isChecked = true;
-    } else {
-      question.options[index].subOptions[subOptionIndex].isChecked = false;
-    }
-    return question;
-  };
-
-  renderCheckboxForOptionWithSubOptions = (props) => (
-    <OptionRowWithSubOptionContainer>
-      <OptionRow text={props.options.text}>
-        <Checkbox type="checkbox" value={props.options.id} checked={props.options.isChecked}
-                  onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
-                  {...props} />
-      </OptionRow>
+  renderSubOptionCheckbox = (props) => {
+    return (
       <SubOptionRow>
-        {
-          props.options.subOptions ?
-            props.options.subOptions.map((subOption, subOptionIndex) => {
-              return (
-                <label key={subOptionIndex} onChange={() => this._handleChange(props.index, subOptionIndex)}
-                       className={subOption.isChecked ? "option selected" : "option"}>
-                  <Field name={props.options.questionId + subOption.id} component={this.renderSingleCheckbox}
-                         options={subOption} onChange={() => this._handleChange(props.index, subOptionIndex)}/>
-                </label>
-              );
-            }) : "wawaw"
-        }
+        <label onChange={(e, a) => this._handleChange(props.options.subIndex, e)}
+               className={props.input.checked ? "option selected" : "option"}>
+          <OptionRow text={props.options.text}>
+            <Checkbox type="checkbox" value={props.options.id} checked={props.input.checked}
+                      onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
+                      {...props} />
+          </OptionRow>
+        </label>
       </SubOptionRow>
-    </OptionRowWithSubOptionContainer>
-  );
+    );
+  };
 
-  renderSingleCheckbox = (props) => (
-    <OptionRow text={props.options.text}>
-      <Checkbox type="checkbox" value={props.options.id} checked={props.options.isChecked}
-                onChange={() => props.input.onChange(props.input.value === "" ? true : "")}
-                {...props} />
-    </OptionRow>
-  );
 
 }
 

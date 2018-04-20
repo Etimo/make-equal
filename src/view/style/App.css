@@ -6,20 +6,18 @@
 
 .page-header {
   height: 15vh;
+  min-height: 100px;
   width: calc(723px + 2rem) !important;
 }
 
 .page-content-container {
   min-height: 85vh;
   width: calc(723px + 2rem) !important;
-  /*padding: 0 !important;*/
 }
 
 .page-content {
-  /*margin-top: -1em;*/
   height: 99%;
   background-color: #ffffff;
-  /*height: 100%;*/
 }
 
 #container {
@@ -51,7 +49,6 @@
 }
 
 .progress-container .ui.progress .bar {
-  /*background-color: #FCEA10;*/
   background-color: rgb(254, 205, 27);
 }
 

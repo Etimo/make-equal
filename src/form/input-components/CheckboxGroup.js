@@ -28,11 +28,7 @@ class CheckboxGroup extends Component {
     const question = this.state.question;
     if (question.options[index].isChecked) {
       if (question.options[index].isChecked === true) {
-        if (this.hasSubOptionsChecked(question.options[index])) {
-          question.options[index].isChecked = true;
-        } else {
           question.options[index].isChecked = false;
-        }
       } else {
         question.options[index].isChecked = true;
       }

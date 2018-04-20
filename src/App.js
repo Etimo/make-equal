@@ -123,7 +123,7 @@ class App extends Component {
   };
 
   handleChange = (values) => {
-    console.log(values);
+    // console.log(values);
   };
 
   pageContent() {

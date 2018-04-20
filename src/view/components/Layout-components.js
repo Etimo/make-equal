@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/layout-components.css'
 import '../style/simple-grid.css';
-
+import {Icon, Accordion} from "semantic-ui-react";
 export const InformationBox = (props) => (
   <div className={"information-box"}>
     {props.title}
@@ -55,10 +55,11 @@ export const QuestionContainer = (props) => {
     </div>
   );
 };
-
+const DropdownIcon = <Icon name='dropdown'/>;
 export const OptionRow = (props) => {
   return (
     <div className={"option-row"}>
+      {props.icon?DropdownIcon:""}
       {props.text}
       <span className={"pull-right"}>
         {props.children}
@@ -69,17 +70,15 @@ export const OptionRow = (props) => {
 
 export const OptionRowWithSubOptionContainer = (props) => {
   return (
-    <div className={"question-base"}>
-      <div className={"option-container"}>
-        {props.children}
-      </div>
-    </div>
+    <Accordion styled fluid className={"option-container"}>
+      {props.children}
+    </Accordion>
   );
 };
 
 export const SubOptionRow = (props) => {
   return (
-    <div className={"sub-option-container"}>
+    <div className={"sub-option-container option-container"}>
       {props.children}
     </div>
   );
