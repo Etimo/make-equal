@@ -59,6 +59,7 @@
 .accordion {
   padding-bottom: .4em !important;
   font-size: 14px !important;
+  margin-bottom: .3em;
 }
 .ui.styled.accordion .accordion .active.title,
 .ui.styled.accordion .accordion .title:hover,
@@ -68,6 +69,9 @@
   font-family: 'Roboto Slab', serif !important;
   font-weight: 400!important;
   font-size: 16px !important;
+  height: 100% !important;
+  padding-top: 0!important;
+  padding-bottom: 0!important;
 }
 .question-base .active.title {
   width: 100% !important;
