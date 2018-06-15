@@ -11,6 +11,7 @@ import {
   generateQuestionListForTarget,
   getIntroductionQuestions
 } from "./form/TargetedQuestionListBuilder";
+import titleCase from 'title-case';
 
 class App extends Component {
   constructor() {
@@ -29,10 +30,12 @@ class App extends Component {
     };
   }
 
-  targetPath = (props) => {
-    const formQuestions = generateQuestionListForTarget(props);
+  targetPath = (targetInTime) => {
+    let {target, tempus} = targetInTime;
+    let targetInTimeStr = `${targetInTime.target}In${titleCase(targetInTime.tempus)}`;
+    const formQuestions = generateQuestionListForTarget(targetInTimeStr);
     this.setState({
-      targetPath: props,
+      targetPath: targetInTime,
       formQuestions: formQuestions,
       sectionPosition: formQuestions[0].id,
       numberOfSections: formQuestions.length,

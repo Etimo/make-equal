@@ -6,45 +6,21 @@ import {Button} from 'semantic-ui-react'
 export default class DeterminePath extends Component {
   constructor() {
     super();
-    this.state = {
-      target: "",
-      tempus: "",
-    };
+    this.state = {};
   }
 
   determineTargetPath() {
-    const selectedTargetAndTime = this.state.target + this.state.tempus;
-    let targetInTime = "";
-    switch (selectedTargetAndTime) {
-      case '0a1b':
-        targetInTime = "selfInPast";
-        break;
-      case '0b1a':
-        targetInTime = "otherInPresent";
-        break;
-      case '0b1b':
-        targetInTime = "otherInPast";
-        break;
-      default: // '0a1a'
-        targetInTime = "selfInPresent";
-        break;
-    }
-    this.props.targetPath(targetInTime);
+    this.props.targetPath(this.state);
     return false;
   };
 
-  handleTargetChange = (ev) => {
-    this.setState(
-      {target: ev.target.value}
-    );
-  };
-  handleTimeChange = (ev) => {
-    this.setState(
-      {tempus: ev.target.value}
-    );
-  };
+  handleAnswerChange = (questionId) => (ev) => {
+    let newState = {};
+    newState[questionId] = ev.target.value;
+    this.setState(newState);
+  }
   checkFieldsReady = () => {
-    return this.state.tempus !== "" && this.state.target !== "";
+    return this.state.tempus && this.state.target;
   };
 
   render() {
@@ -58,40 +34,26 @@ export default class DeterminePath extends Component {
           </SimpleGridColumn>
         </SimpleGridRow>
         <SimpleGridRow>
-          <SimpleGridColumn width={5}>
-            <QuestionContainer title={target.text}>
-              {
-                target.options.map((option, num) => {
-                  const id = target.id + option.id;
-                  return (
-                    <label key={num} className={this.state.target === id ? "option selected" : "option"}>
-                      <OptionRow text={option.text}>
-                        <input value={id} checked={this.state.target === id} type={"radio"}
-                               onChange={this.handleTargetChange}/>
-                      </OptionRow>
-                    </label>
-                  );
-                })
-              }
-            </QuestionContainer>
-            </SimpleGridColumn>
-            <SimpleGridColumn width={5}>
-            <QuestionContainer title={tempus.text}>
-              {
-                tempus.options.map((option, num) => {
-                  const id = tempus.id + option.id;
-                  return (
-                    <label key={num} className={this.state.tempus === id ? "option selected" : "option"}>
-                      <OptionRow text={option.text}>
-                        <input value={id} checked={this.state.tempus === id} type={"radio"}
-                               onChange={this.handleTimeChange}/>
-                      </OptionRow>
-                    </label>
-                  );
-                })
-              }
-            </QuestionContainer>
-          </SimpleGridColumn>
+          {
+            this.props.questions.map(
+              (question) =>
+                <SimpleGridColumn key={`question-${question.id}`} width={5}>
+                    <QuestionContainer title={target.text}>
+                        {
+                          question.options.map(
+                            (option, num) =>
+                              <label key={num} className={this.state[question.id] === option.id ? "option selected" : "option"}>
+                                  <OptionRow text={option.text}>
+                                      <input value={option.id} checked={this.state[question.id] === option.id} type={"radio"}
+                                               onChange={this.handleAnswerChange(question.id)}/>
+                                    </OptionRow>
+                                </label>
+                          )
+                        }
+                    </QuestionContainer>
+                </SimpleGridColumn>
+            )
+          }
         </SimpleGridRow>
         <SimpleGridRow>
           <SimpleGridColumn centered>

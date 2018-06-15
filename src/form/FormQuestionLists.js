@@ -1,5 +1,5 @@
-import q0 from './form-questions/question-0';
-import q1 from './form-questions/question-1';
+import qTarget from './form-questions/question-0-target';
+import qTempus from './form-questions/question-1-tempus';
 import q2 from './form-questions/question-2';
 import q3 from './form-questions/question-3';
 import q4 from './form-questions/question-4';
@@ -24,7 +24,7 @@ import q17 from './form-questions/question-17';
  * (q1) Present or past tense
  */
 export const introductionQuestions = [
-  q0, q1,
+  qTarget, qTempus,
 ];
 
 /**

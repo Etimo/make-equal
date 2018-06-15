@@ -1,9 +1,9 @@
 const question = {
-  id: "1",
+  id: "tempus",
   text: "Pågår det just nu?",
   options: [
-    {id: "a", text: "Ja"},
-    {id: "b", text: "Nej"}
+    {id: "present", text: "Ja"},
+    {id: "past", text: "Nej"}
   ],
 };
 export default question;
