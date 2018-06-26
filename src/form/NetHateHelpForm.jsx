@@ -4,7 +4,7 @@ import FormSection from './FormSection';
 
 // import "../view/style/registrationForm.css";
 
-class RegistrationForm extends Component {
+class NetHateHelpForm extends Component {
   componentDidMount() {}
 
   render() {
@@ -40,12 +40,12 @@ class RegistrationForm extends Component {
   }
 }
 
-export default (RegistrationForm = reduxForm({
+export default (NetHateHelpForm = reduxForm({
   // a unique name for the form-form
-  form: 'TestForm1',
+  form: 'NetHateHelpForm',
   destroyOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true
-})(RegistrationForm));
+})(NetHateHelpForm));
 
 // export default RegistrationForm;

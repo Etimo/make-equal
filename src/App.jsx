@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, GridColumn, Progress } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './view/style/App.css';
-import RegistrationForm from './form/RegistrationForm';
+import NetHateHelpForm from './form/NetHateHelpForm';
 import Header from './view/components/Header';
 import DeterminePath from './form/DeterminePath';
 import StartPage from './view/components/FrontPage';
@@ -147,7 +147,7 @@ class App extends Component {
               <div className={'progress-container'}>
                 <Progress percent={this.state.currentPercentage} />
               </div>
-              <RegistrationForm
+              <NetHateHelpForm
                 onSubmit={this.submit}
                 onChange={this.handleChange}
                 sections={this.state.formQuestions}
