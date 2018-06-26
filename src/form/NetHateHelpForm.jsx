@@ -22,9 +22,6 @@ class NetHateHelpForm extends Component {
   }
 
   render() {
-    const sectionsArr = this.props.sections;
-    const { handleSubmit } = this.props;
-
     const currentSection = this.props.sections[this.state.currentSection];
     console.log(this.state.currentSection, currentSection);
 
@@ -32,7 +29,7 @@ class NetHateHelpForm extends Component {
     const last = this.state.currentSection === this.props.sections.length - 1;
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={this.props.onSubmit}>
         <div className={'progress-container'}>
           <Progress
             value={this.state.currentSection}

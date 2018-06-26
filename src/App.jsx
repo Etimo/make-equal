@@ -23,7 +23,7 @@ class App extends Component {
     };
   }
 
-  targetPath = targetInTime => {
+  targetPath(targetInTime) {
     let { target, tempus } = targetInTime;
     let targetInTimeStr = `${targetInTime.target}In${titleCase(
       targetInTime.tempus
@@ -33,22 +33,22 @@ class App extends Component {
       targetPath: targetInTime,
       formQuestions: formQuestions
     });
-  };
+  }
 
-  submit = values => {
+  submit(values) {
     console.log('submit');
     console.log(values);
     this.setState({
       currentPercentage: 100,
       showAnswers: true
     });
-  };
+  }
 
-  showForm = () => {
+  showForm() {
     this.setState({
       showForm: true
     });
-  };
+  }
 
   pageContent() {
     if (this.state.showForm) {
@@ -56,7 +56,7 @@ class App extends Component {
         return (
           <div className={'page-content'}>
             <DeterminePath
-              targetPath={this.targetPath}
+              targetPath={targetInTime => this.targetPath(targetInTime)}
               questions={this.state.introductionQuestions}
             />
           </div>
@@ -65,8 +65,7 @@ class App extends Component {
         return (
           <div className={'page-content'}>
             <NetHateHelpForm
-              onSubmit={this.submit}
-              onChange={this.handleChange}
+              onSubmit={values => this.submit(values)}
               sections={this.state.formQuestions}
             />
           </div>
@@ -74,14 +73,14 @@ class App extends Component {
       } else {
         return (
           <div className={'page-content'}>
-            <MockAnswerPage showForm={this.showForm} />
+            <MockAnswerPage showForm={() => this.showForm()} />
           </div>
         );
       }
     } else {
       return (
         <div className={'page-content'}>
-          <StartPage showForm={this.showForm} />
+          <StartPage showForm={() => this.showForm()} />
         </div>
       );
     }
