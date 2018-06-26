@@ -1,16 +1,16 @@
-import React, {Component} from "react";
-import {Grid, GridColumn, Progress} from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
+import React, { Component } from 'react';
+import { Grid, GridColumn, Progress } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import './view/style/App.css';
-import RegistrationForm from "./form/RegistrationForm";
-import Header from "./view/components/Header";
+import RegistrationForm from './form/RegistrationForm';
+import Header from './view/components/Header';
 import DeterminePath from './form/DeterminePath';
 import StartPage from './view/components/FrontPage';
 import MockAnswerPage from './view/components/MockAnswerPage';
 import {
   generateQuestionListForTarget,
   getIntroductionQuestions
-} from "./form/TargetedQuestionListBuilder";
+} from './form/TargetedQuestionListBuilder';
 import titleCase from 'title-case';
 
 class App extends Component {
@@ -19,40 +19,29 @@ class App extends Component {
     this._changeSection = this._changeSection.bind(this);
     this._changeAddress = this._changeAddress.bind(this);
     this._navigate = this._navigate.bind(this);
-    this._setScreenSize = this._setScreenSize.bind(this);
     this.state = {
       address: window.location.origin,
-      windowSize: '',
       showForm: false,
       showAnswers: false,
       introductionQuestions: getIntroductionQuestions(),
-      currentPercentage: 0,
+      currentPercentage: 0
     };
   }
 
-  targetPath = (targetInTime) => {
-    let {target, tempus} = targetInTime;
-    let targetInTimeStr = `${targetInTime.target}In${titleCase(targetInTime.tempus)}`;
+  targetPath = targetInTime => {
+    let { target, tempus } = targetInTime;
+    let targetInTimeStr = `${targetInTime.target}In${titleCase(
+      targetInTime.tempus
+    )}`;
     const formQuestions = generateQuestionListForTarget(targetInTimeStr);
     this.setState({
       targetPath: targetInTime,
       formQuestions: formQuestions,
       sectionPosition: formQuestions[0].id,
       numberOfSections: formQuestions.length,
-      sectionPercentageIncrement: 100 / formQuestions.length,
-    })
+      sectionPercentageIncrement: 100 / formQuestions.length
+    });
   };
-
-  componentWillMount() {
-    // console.log("will it mount?");
-    // this._setScreenSize();
-    // window.addEventListener("resize", this._setScreenSize); // for resizing window
-  }
-
-  _setScreenSize() {
-    const size = window.innerWidth;
-    this.setState({windowSize: size});
-  }
 
   //Navigate BACK and FORTH with button
   _navigate(param) {
@@ -62,7 +51,12 @@ class App extends Component {
         const newSectionPosition = formQuestions[num + param].id;
         this.setState({
           sectionPosition: newSectionPosition,
-          currentPercentage: param > 0 ? this.state.currentPercentage + this.state.sectionPercentageIncrement : this.state.currentPercentage - this.state.sectionPercentageIncrement,
+          currentPercentage:
+            param > 0
+              ? this.state.currentPercentage +
+                this.state.sectionPercentageIncrement
+              : this.state.currentPercentage -
+                this.state.sectionPercentageIncrement
         });
       }
       return false;
@@ -70,7 +64,7 @@ class App extends Component {
   }
 
   _changeAddress(position) {
-    console.log("assume the position!");
+    console.log('assume the position!');
     if (position === this.state.sectionPosition) {
       this.state.formQuestions.map((obj, num) => {
         console.log(obj);
@@ -79,7 +73,7 @@ class App extends Component {
     } else {
       this.setState({
         sectionPosition: position,
-        address: `${window.location.origin}/#${position}`,
+        address: `${window.location.origin}/#${position}`
       });
       window.location.replace(this.state.address);
     }
@@ -91,7 +85,8 @@ class App extends Component {
     this.state.formQuestions.map((obj, num) => {
       if (obj.id === this.state.sectionPosition) {
         console.log('with waypoitn');
-        if ((this.state.formQuestions.length - 1) > num) { //if not last section
+        if (this.state.formQuestions.length - 1 > num) {
+          //if not last section
           newSectionPosition = this.state.formQuestions[num + 1].id;
           console.log('with waypoitn1');
         } else {
@@ -102,7 +97,7 @@ class App extends Component {
       }
     });
     this.setState({
-      sectionPosition: newSectionPosition,
+      sectionPosition: newSectionPosition
     });
     if (!lastSection) {
       this._changeAddress();
@@ -110,63 +105,88 @@ class App extends Component {
     }
   }
 
-  submit = (values) => {
+  submit = values => {
     console.log('submit');
     console.log(values);
     this.setState({
       currentPercentage: 100,
-      showAnswers: true,
-    })
+      showAnswers: true
+    });
   };
 
   showForm = () => {
     this.setState({
-      showForm: true,
-    })
+      showForm: true
+    });
   };
 
-  handleChange = (values) => {
+  handleChange = values => {
     // console.log(values);
   };
 
   pageContent() {
-    let output = <div className={'page-content'}><StartPage showForm={this.showForm}/></div>;
+    let output = (
+      <div className={'page-content'}>
+        <StartPage showForm={this.showForm} />
+      </div>
+    );
     if (this.state.showForm) {
       if (!this.state.showAnswers) {
         if (!this.state.targetPath) {
-          output = <div className={'page-content'}>
-            <DeterminePath targetPath={this.targetPath} questions={this.state.introductionQuestions}/>
-          </div>;
-        } else {
-          output = <div className={'page-content'}>
-            <div className={"progress-container"}>
-              <Progress percent={this.state.currentPercentage}/>
+          output = (
+            <div className={'page-content'}>
+              <DeterminePath
+                targetPath={this.targetPath}
+                questions={this.state.introductionQuestions}
+              />
             </div>
-            <RegistrationForm onSubmit={this.submit} onChange={this.handleChange}
-                              sections={this.state.formQuestions} windowSize={this.state.windowSize}
-                              _navigate={this._navigate}  _changeAddress={this._changeAddress}
-                              _changeSection={this._changeSection}
-                              sectionPosition={this.state.sectionPosition}/>
-          </div>;
+          );
+        } else {
+          output = (
+            <div className={'page-content'}>
+              <div className={'progress-container'}>
+                <Progress percent={this.state.currentPercentage} />
+              </div>
+              <RegistrationForm
+                onSubmit={this.submit}
+                onChange={this.handleChange}
+                sections={this.state.formQuestions}
+                _navigate={this._navigate}
+                _changeAddress={this._changeAddress}
+                _changeSection={this._changeSection}
+                sectionPosition={this.state.sectionPosition}
+              />
+            </div>
+          );
         }
       } else {
-        output = <div className={'page-content'}><MockAnswerPage showForm={this.showForm}/></div>;
+        output = (
+          <div className={'page-content'}>
+            <MockAnswerPage showForm={this.showForm} />
+          </div>
+        );
       }
     }
-    return (output);
+    return output;
   }
 
   render() {
-    const Column = (props) => <GridColumn verticalAlign={props.verticalAlign} className={props.className}
-    >{props.children}</GridColumn>;
+    const Column = props => (
+      <GridColumn
+        verticalAlign={props.verticalAlign}
+        className={props.className}
+      >
+        {props.children}
+      </GridColumn>
+    );
     const Content = () => this.pageContent();
     return (
       <Grid columns={1} container centered id={'container'}>
         <Column className={'page-header'}>
-          <Header/>
+          <Header />
         </Column>
         <Column className={'page-content-container'}>
-          <Content/>
+          <Content />
         </Column>
       </Grid>
     );
