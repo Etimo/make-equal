@@ -9,12 +9,9 @@ import '../view/style/formSection.css';
 class FormSection extends PureComponent {
   constructor() {
     super();
-    this._isNotFirst = this._isNotFirst.bind(this);
-    this._isNotLast = this._isNotLast.bind(this);
-    this._isMobile = this._isMobile.bind(this);
   }
 
-  _isNotFirst() {
+  get prevBtn() {
     if (!this.props.isFirst) {
       return (
         <Button
@@ -22,19 +19,20 @@ class FormSection extends PureComponent {
           type="button"
           content="Förgående"
           className="form-button alternate"
-          onClick={() => this.props._navigate(-1)}
+          onClick={() => this.props.goBack()}
         />
       );
     }
   }
 
-  _isNotLast() {
+  get nextBtn() {
     if (!this.props.isLast) {
       return (
         <Button
+          key="next"
           type="button"
           fluid
-          onClick={() => this.props._navigate(1)}
+          onClick={() => this.props.goForward()}
           content="Fortsätt"
           className="form-button"
         />
@@ -42,6 +40,7 @@ class FormSection extends PureComponent {
     } else {
       return (
         <Button
+          key="submit"
           color="blue"
           fluid
           content="Skicka in"
@@ -50,15 +49,6 @@ class FormSection extends PureComponent {
         />
       );
     }
-  }
-
-  _isMobile() {
-    return (
-      <Button.Group widths="2">
-        {this._isNotFirst()}
-        {this._isNotLast()}
-      </Button.Group>
-    );
   }
 
   _renderQuestionType(question) {
@@ -84,20 +74,21 @@ class FormSection extends PureComponent {
   render() {
     const question = this.props.section;
 
-    if (this.props.sectionPosition === question.id) {
-      return (
-        <div className="form-section" id={question.id}>
-          <div className="form-section-base">
-            <div className="form-section-content">
-              {this._renderQuestionType(question)}
-            </div>
-            <div className="form-section-buttons">{this._isMobile()}</div>
+    return (
+      <div className="form-section" id={question.id}>
+        <div className="form-section-base">
+          <div className="form-section-content">
+            {this._renderQuestionType(question)}
+          </div>
+          <div className="form-section-buttons">
+            <Button.Group widths="2">
+              {this.prevBtn}
+              {this.nextBtn}
+            </Button.Group>
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   }
 }
 

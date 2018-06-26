@@ -1,40 +1,53 @@
 import React, { Component } from 'react';
 import { Form, reduxForm } from 'redux-form';
 import FormSection from './FormSection';
+import { Progress } from 'semantic-ui-react';
 
 // import "../view/style/registrationForm.css";
 
 class NetHateHelpForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentSection: 0
+    };
+  }
+
   componentDidMount() {}
+
+  navigate(offset) {
+    this.setState({
+      currentSection: this.state.currentSection + offset
+    });
+  }
 
   render() {
     const sectionsArr = this.props.sections;
-    let last = false;
-    let first = true;
     const { handleSubmit } = this.props;
+
+    const currentSection = this.props.sections[this.state.currentSection];
+    console.log(this.state.currentSection, currentSection);
+
+    const first = this.state.currentSection === 0;
+    const last = this.state.currentSection === this.props.sections.length - 1;
 
     return (
       <Form onSubmit={handleSubmit}>
-        {sectionsArr.map((section, num) => {
-          if (num === sectionsArr.length - 1) {
-            last = true;
-          }
-          if (num !== 0) {
-            first = false;
-          }
-          return (
-            <FormSection
-              key={num}
-              section={section}
-              isLast={last}
-              isFirst={first}
-              _navigate={this.props._navigate}
-              _changeAddress={this.props._changeAddress}
-              _changeSection={this.props._changeSection}
-              sectionPosition={this.props.sectionPosition}
-            />
-          );
-        })}
+        <div className={'progress-container'}>
+          <Progress
+            value={this.state.currentSection}
+            total={this.props.sections.length}
+          />
+        </div>
+        <FormSection
+          section={currentSection}
+          isFirst={first}
+          isLast={last}
+          goBack={() => this.navigate(-1)}
+          goForward={() => this.navigate(1)}
+          _changeAddress={this.props._changeAddress}
+          _changeSection={this.props._changeSection}
+        />
       </Form>
     );
   }

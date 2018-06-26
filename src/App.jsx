@@ -125,49 +125,44 @@ class App extends Component {
   };
 
   pageContent() {
-    let output = (
-      <div className={'page-content'}>
-        <StartPage showForm={this.showForm} />
-      </div>
-    );
     if (this.state.showForm) {
-      if (!this.state.showAnswers) {
-        if (!this.state.targetPath) {
-          output = (
-            <div className={'page-content'}>
-              <DeterminePath
-                targetPath={this.targetPath}
-                questions={this.state.introductionQuestions}
-              />
-            </div>
-          );
-        } else {
-          output = (
-            <div className={'page-content'}>
-              <div className={'progress-container'}>
-                <Progress percent={this.state.currentPercentage} />
-              </div>
-              <NetHateHelpForm
-                onSubmit={this.submit}
-                onChange={this.handleChange}
-                sections={this.state.formQuestions}
-                _navigate={this._navigate}
-                _changeAddress={this._changeAddress}
-                _changeSection={this._changeSection}
-                sectionPosition={this.state.sectionPosition}
-              />
-            </div>
-          );
-        }
+      if (!this.state.targetPath) {
+        return (
+          <div className={'page-content'}>
+            <DeterminePath
+              targetPath={this.targetPath}
+              questions={this.state.introductionQuestions}
+            />
+          </div>
+        );
+      } else if (!this.state.showAnswers) {
+        return (
+          <div className={'page-content'}>
+            <NetHateHelpForm
+              onSubmit={this.submit}
+              onChange={this.handleChange}
+              sections={this.state.formQuestions}
+              _navigate={this._navigate}
+              _changeAddress={this._changeAddress}
+              _changeSection={this._changeSection}
+              sectionPosition={this.state.sectionPosition}
+            />
+          </div>
+        );
       } else {
-        output = (
+        return (
           <div className={'page-content'}>
             <MockAnswerPage showForm={this.showForm} />
           </div>
         );
       }
+    } else {
+      return (
+        <div className={'page-content'}>
+          <StartPage showForm={this.showForm} />
+        </div>
+      );
     }
-    return output;
   }
 
   render() {
