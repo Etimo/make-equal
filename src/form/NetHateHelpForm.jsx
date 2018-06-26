@@ -45,8 +45,6 @@ class NetHateHelpForm extends Component {
           isLast={last}
           goBack={() => this.navigate(-1)}
           goForward={() => this.navigate(1)}
-          _changeAddress={this.props._changeAddress}
-          _changeSection={this.props._changeSection}
         />
       </Form>
     );

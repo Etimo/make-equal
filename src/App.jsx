@@ -16,15 +16,10 @@ import titleCase from 'title-case';
 class App extends Component {
   constructor() {
     super();
-    this._changeSection = this._changeSection.bind(this);
-    this._changeAddress = this._changeAddress.bind(this);
-    this._navigate = this._navigate.bind(this);
     this.state = {
-      address: window.location.origin,
       showForm: false,
       showAnswers: false,
-      introductionQuestions: getIntroductionQuestions(),
-      currentPercentage: 0
+      introductionQuestions: getIntroductionQuestions()
     };
   }
 
@@ -36,74 +31,9 @@ class App extends Component {
     const formQuestions = generateQuestionListForTarget(targetInTimeStr);
     this.setState({
       targetPath: targetInTime,
-      formQuestions: formQuestions,
-      sectionPosition: formQuestions[0].id,
-      numberOfSections: formQuestions.length,
-      sectionPercentageIncrement: 100 / formQuestions.length
+      formQuestions: formQuestions
     });
   };
-
-  //Navigate BACK and FORTH with button
-  _navigate(param) {
-    const formQuestions = this.state.formQuestions;
-    formQuestions.map((obj, num) => {
-      if (obj.id === this.state.sectionPosition) {
-        const newSectionPosition = formQuestions[num + param].id;
-        this.setState({
-          sectionPosition: newSectionPosition,
-          currentPercentage:
-            param > 0
-              ? this.state.currentPercentage +
-                this.state.sectionPercentageIncrement
-              : this.state.currentPercentage -
-                this.state.sectionPercentageIncrement
-        });
-      }
-      return false;
-    });
-  }
-
-  _changeAddress(position) {
-    console.log('assume the position!');
-    if (position === this.state.sectionPosition) {
-      this.state.formQuestions.map((obj, num) => {
-        console.log(obj);
-        console.log('change address');
-      });
-    } else {
-      this.setState({
-        sectionPosition: position,
-        address: `${window.location.origin}/#${position}`
-      });
-      window.location.replace(this.state.address);
-    }
-  }
-
-  _changeSection() {
-    let newSectionPosition;
-    let lastSection = false;
-    this.state.formQuestions.map((obj, num) => {
-      if (obj.id === this.state.sectionPosition) {
-        console.log('with waypoitn');
-        if (this.state.formQuestions.length - 1 > num) {
-          //if not last section
-          newSectionPosition = this.state.formQuestions[num + 1].id;
-          console.log('with waypoitn1');
-        } else {
-          newSectionPosition = this.state.formQuestions[num].id;
-          lastSection = true;
-          console.log('with waypoitn2');
-        }
-      }
-    });
-    this.setState({
-      sectionPosition: newSectionPosition
-    });
-    if (!lastSection) {
-      this._changeAddress();
-      console.log('with waypoitnlast');
-    }
-  }
 
   submit = values => {
     console.log('submit');
@@ -118,10 +48,6 @@ class App extends Component {
     this.setState({
       showForm: true
     });
-  };
-
-  handleChange = values => {
-    // console.log(values);
   };
 
   pageContent() {
@@ -142,10 +68,6 @@ class App extends Component {
               onSubmit={this.submit}
               onChange={this.handleChange}
               sections={this.state.formQuestions}
-              _navigate={this._navigate}
-              _changeAddress={this._changeAddress}
-              _changeSection={this._changeSection}
-              sectionPosition={this.state.sectionPosition}
             />
           </div>
         );
@@ -174,14 +96,13 @@ class App extends Component {
         {props.children}
       </GridColumn>
     );
-    const Content = () => this.pageContent();
     return (
       <Grid columns={1} container centered id={'container'}>
         <Column className={'page-header'}>
           <Header />
         </Column>
         <Column className={'page-content-container'}>
-          <Content />
+          {this.pageContent()}
         </Column>
       </Grid>
     );
