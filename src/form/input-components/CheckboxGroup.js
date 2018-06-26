@@ -1,10 +1,10 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import {Field, FormSection} from "redux-form";
 import {Checkbox} from "semantic-ui-react";
 import {OptionRow, QuestionContainer} from "../../view/components/Layout-components";
 
 
-class CheckboxGroup extends Component {
+class CheckboxGroup extends PureComponent {
   constructor(props) {
     super();
     this.state = {

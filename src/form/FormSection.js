@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import CheckboxGroup from "./input-components/CheckboxGroup";
 import CheckboxGroupWithSubOptions from "./input-components/CheckboxGroupWithSubOptions";
 import RadioGroup from "./input-components/RadioGroup";
@@ -6,7 +6,7 @@ import {Button} from "semantic-ui-react";
 import "../view/style/formSection.css";
 // import "../view/style/FormBase.css";
 
-class FormSection extends Component {
+class FormSection extends PureComponent {
   constructor() {
     super();
     this._isNotFirst = this._isNotFirst.bind(this);
@@ -87,22 +87,24 @@ class FormSection extends Component {
 
   render() {
     const question = this.props.section;
-    const sameSection = this.props.sectionPosition === question.id;
 
-    return (
-      <div className={`form-section ${sameSection ? '' : ('hidden')}`} id={question.id}>
-        <div className='form-section-base'>
-          <div className='form-section-content'>
-            {this._renderQuestionType(question)}
-          </div>
-          <div className='form-section-buttons'>
-            {this._isMobile()}
+    if (this.props.sectionPosition === question.id) {
+      return (
+        <div className='form-section' id={question.id}>
+          <div className='form-section-base'>
+            <div className='form-section-content'>
+              {this._renderQuestionType(question)}
+            </div>
+            <div className='form-section-buttons'>
+              {this._isMobile()}
+            </div>
           </div>
         </div>
-      </div>
-
-    )
-  };
+      );
+    } else {
+      return null;
+    }
+  }
 }
 
 export default FormSection;
