@@ -2,6 +2,9 @@
  * The tips will be shown in order, assuming that the condition is satisfied
  *
  * Explanation of condition: it can be one of the following
+ * - true: Always true
+ * - false: Always true
+ * - undefined (missing): Always true
  * - "<question>-<answer>": True if the answer was given, for example "where-blogs" will match if the user ticked "blogs" on the question "where"
  * - { not: <condition> }: True if condition evaluates to false
  * - { any: [<condition1>, <condition2>, ...] }: True if any subcondition evaluates to true
@@ -53,7 +56,11 @@ const tips = [
 ];
 
 function checkCondition(condition, answers) {
-  if (typeof condition === 'string') {
+  if (condition === true || condition === undefined) {
+    return true;
+  } else if (condition === false) {
+    return false;
+  } else if (typeof condition === 'string') {
     return !!answers[condition];
   } else if (condition.not !== undefined) {
     return !checkCondition(condition.not, answers);
