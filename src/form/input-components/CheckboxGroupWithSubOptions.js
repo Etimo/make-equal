@@ -43,15 +43,13 @@ class CheckboxGroupWithSubOptions extends Component {
     const question = this.state.question;
     return (
       <QuestionContainer title={question.text}>
-        {
-          question.options.map((option, index) => {
-            option.questionId = question.id;
-            return (
-              <Field key={index} name={question.id + option.id} component={this.renderOptionCheckbox}
-                     type={"checkbox"} options={option} index={index}/>
-            )
-          })
-        }
+        {question.options.map((option, index) => {
+          option.questionId = question.id;
+          return (
+            <Field key={index} name={`${question.id}-${option.id}`} component={this.renderOptionCheckbox}
+                   type={"checkbox"} options={option} index={index}/>
+          );
+        })}
       </QuestionContainer>
     );
   }
@@ -67,7 +65,7 @@ class CheckboxGroupWithSubOptions extends Component {
         hasSubOptions = true;
         return (
           <Accordion.Content key={subIndex} active={props.input.checked}>
-            <Field type={"checkbox"} name={props.options.questionId + subOption.id}
+            <Field type={"checkbox"} name={`${props.options.questionId}-${subOption.id}`}
                    options={subOption} component={this.renderSubOptionCheckbox}
             />
           </Accordion.Content>

@@ -40,17 +40,15 @@ class CheckboxGroup extends PureComponent {
     const question = this.state.question;
     return (
       <QuestionContainer title={question.text}>
-        {
-          question.options.map((option, num) => {
-            return (
-              <label key={num} onChange={() => this._handleChange(num)}
-                     className={option.isChecked ? "option selected" : "option"}>
-                <Field name={question.id + option.id} component={this.renderSemanticUICheckbox}
-                       options={option}/>
-              </label>
-            )
-          })
-        }
+        {question.options.map((option, num) => {
+          return (
+            <label key={num} onChange={() => this._handleChange(num)}
+              className={option.isChecked ? "option selected" : "option"}>
+              <Field name={`${question.id}-${option.id}`} component={this.renderSemanticUICheckbox}
+                     options={option}/>
+            </label>
+          );
+        })}
       </QuestionContainer>
     );
   }
