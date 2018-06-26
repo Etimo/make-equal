@@ -1,46 +1,60 @@
 const question = {
-  id: "8",
-  type: "checkboxGroupWithSubOptions",
+  id: 'where',
+  type: 'checkboxGroupWithSubOptions',
   questionText: {
-    selfInPresent: "Var är du uthängd? Du kan kryssa i flera svar.",
-    selfInPast: "Var någonstans var du uthängd? Du kan kryssa i flera svar.",
-    otherInPresent: "Var är personen uthängd? Du kan kryssa i flera svar.",
-    otherInPast: "Var någonstans var personen uthängd? Du kan kryssa i flera svar.",
+    selfInPresent: 'Var är du uthängd? Du kan kryssa i flera svar.',
+    selfInPast: 'Var någonstans var du uthängd? Du kan kryssa i flera svar.',
+    otherInPresent: 'Var är personen uthängd? Du kan kryssa i flera svar.',
+    otherInPast:
+      'Var någonstans var personen uthängd? Du kan kryssa i flera svar.'
   },
-  options: [{
-    id: "a", optionText: {noTarget: "Sociala medier"},
-    subOptions: [
-      {id: "aa", optionText: {noTarget: "Snapchat"},},
-      {id: "ab", optionText: {noTarget: "Facebook"},},
-      {id: "ac", optionText: {noTarget: "Instagram"},},
-      {id: "ad", optionText: {noTarget: "Twitter"},},
-      {id: "ae", optionText: {noTarget: "Tumblr"},},
-    ],
-  },
+  options: [
     {
-      id: "b", optionText: {noTarget:"Externa forum"},
+      id: 'socialMedia',
+      optionText: { noTarget: 'Sociala medier' },
       subOptions: [
-        {id: "ba", optionText: {noTarget: "Flashback"},},
-        {id: "bb", optionText: {noTarget: "Familjeliv"},},
-        {id: "bc", optionText: {noTarget: "Annat"},},
-      ],
+        { id: 'snapchat', optionText: { noTarget: 'Snapchat' } },
+        { id: 'facebook', optionText: { noTarget: 'Facebook' } },
+        { id: 'instagram', optionText: { noTarget: 'Instagram' } },
+        { id: 'twitter', optionText: { noTarget: 'Twitter' } },
+        { id: 'tumblr', optionText: { noTarget: 'Tumblr' } }
+      ]
     },
     {
-      id: "c", optionText: {noTarget: "Externa bloggar"}, subOptions: [],
-    },
-    {
-      id: "d", optionText: {noTarget: "Högerextrema/rasistiska sidor"},
+      id: 'forums',
+      optionText: { noTarget: 'Externa forum' },
       subOptions: [
-        {id: "da", optionText: {noTarget: "Nordfront"},},
-        {id: "db", optionText: {noTarget: "Samhällsnytt (tidigare Avpixlat)"},},
-      ],
+        { id: 'flashback', optionText: { noTarget: 'Flashback' } },
+        { id: 'familjeliv', optionText: { noTarget: 'Familjeliv' } },
+        { id: 'otherForum', optionText: { noTarget: 'Annat' } }
+      ]
     },
     {
-      id: "e", optionText: {noTarget: "YouTube eller andra videokanaler"}, subOptions: [],
+      id: 'blogs',
+      optionText: { noTarget: 'Externa bloggar' },
+      subOptions: []
     },
     {
-      id: "f", optionText: {noTarget: "Porrsiter"}, subOptions: [],
+      id: 'altRight',
+      optionText: { noTarget: 'Högerextrema/rasistiska sidor' },
+      subOptions: [
+        { id: 'nordfront', optionText: { noTarget: 'Nordfront' } },
+        {
+          id: 'samhällsnytt',
+          optionText: { noTarget: 'Samhällsnytt (tidigare Avpixlat)' }
+        }
+      ]
     },
-  ],
+    {
+      id: 'video',
+      optionText: { noTarget: 'YouTube eller andra videokanaler' },
+      subOptions: []
+    },
+    {
+      id: 'porn',
+      optionText: { noTarget: 'Porrsiter' },
+      subOptions: []
+    }
+  ]
 };
 export default question;

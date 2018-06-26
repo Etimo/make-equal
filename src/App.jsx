@@ -35,12 +35,12 @@ class App extends Component {
     });
   }
 
-  submit(values) {
+  submit(answers) {
     console.log('submit');
-    console.log(values);
+    console.log(answers);
     this.setState({
-      currentPercentage: 100,
-      showAnswers: true
+      showAnswers: true,
+      answers: answers
     });
   }
 
@@ -80,7 +80,10 @@ class App extends Component {
       } else {
         return (
           <div className={'page-content'}>
-            <MockAnswerPage showForm={() => this.showForm()} />
+            <MockAnswerPage
+              showForm={() => this.showForm()}
+              answers={this.state.answers}
+            />
           </div>
         );
       }
