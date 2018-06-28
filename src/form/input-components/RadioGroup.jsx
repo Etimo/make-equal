@@ -12,15 +12,14 @@ class RadioGroup extends Component {
       <QuestionContainer title={question.text}>
         {question.options.map((option, num) => {
           return (
-            <label key={num} className="option">
-              <Field
-                name={question.id}
-                value={option.id}
-                label={option.text}
-                component={renderRadioQuestion}
-                type="radio"
-              />
-            </label>
+            <Field
+              key={num}
+              name={question.id}
+              value={option.id}
+              label={option.text}
+              component={renderRadioQuestion}
+              type="radio"
+            />
           );
         })}
       </QuestionContainer>
@@ -30,9 +29,11 @@ class RadioGroup extends Component {
 
 const renderRadioQuestion = props => {
   return (
-    <OptionRow text={props.label}>
-      <input type="radio" {...props.input} />
-    </OptionRow>
+    <label className={props.input.checked ? 'option selected' : 'option'}>
+      <OptionRow text={props.label}>
+        <input type="radio" {...props.input} />
+      </OptionRow>
+    </label>
   );
 };
 

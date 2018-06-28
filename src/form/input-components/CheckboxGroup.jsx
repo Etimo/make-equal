@@ -12,14 +12,13 @@ class CheckboxGroup extends PureComponent {
       <QuestionContainer title={question.text}>
         {question.options.map((option, num) => {
           return (
-            <label key={num} className="option">
-              <Field
-                name={`${question.id}-${option.id}`}
-                label={option.text}
-                component={this.renderSemanticUICheckbox}
-                type="checkbox"
-              />
-            </label>
+            <Field
+              key={num}
+              name={`${question.id}-${option.id}`}
+              label={option.text}
+              component={this.renderSemanticUICheckbox}
+              type="checkbox"
+            />
           );
         })}
       </QuestionContainer>
@@ -27,9 +26,11 @@ class CheckboxGroup extends PureComponent {
   }
 
   renderSemanticUICheckbox = props => (
-    <OptionRow text={props.label}>
-      <input type="checkbox" {...props.input} />
-    </OptionRow>
+    <label className={props.input.checked ? 'option selected' : 'option'}>
+      <OptionRow text={props.label}>
+        <input type="checkbox" {...props.input} />
+      </OptionRow>
+    </label>
   );
 }
 

@@ -70,7 +70,7 @@ class CheckboxGroupWithSubOptions extends Component {
   renderSubOptionCheckbox = props => {
     return (
       <SubOptionRow>
-        <label className="option">
+        <label className={props.input.checked ? 'option selected' : 'option'}>
           <OptionRow text={props.options.text}>
             <input type="checkbox" value={props.options.id} {...props.input} />
           </OptionRow>
