@@ -1,33 +1,25 @@
-import React, {Component} from "react";
-import {Field, FormSection} from "redux-form";
-import {OptionRow, QuestionContainer} from "../../view/components/Layout-components";
-import {Checkbox} from "semantic-ui-react";
-
+import React, { Component } from 'react';
+import { Field, FormSection } from 'redux-form';
+import {
+  OptionRow,
+  QuestionContainer
+} from '../../view/components/Layout-components';
 
 class RadioGroup extends Component {
-  constructor(props) {
-    super();
-    this.state = {value: "",};
-  }
-
-  _handleChange(value) {
-    // console.log(value);
-    this.setState({
-      value: value,
-    });
-  };
-
   render() {
-    const question = this.props.questions;
+    const question = this.props.question;
     return (
       <QuestionContainer title={question.text}>
         {question.options.map((option, num) => {
           return (
-            <label key={num} className={this.state.value === option.id ? "option selected" : "option"}
-                   onChange={() => this._handleChange(option.id)}>
-              <Field name={`${question.id}-${option.id}`} component={renderRadioQuestion} value={option.id}
-                     options={option} checked={this.state.value === option.id}
-                     />
+            <label key={num} className="option">
+              <Field
+                name={question.id}
+                value={option.id}
+                label={option.text}
+                component={renderRadioQuestion}
+                type="radio"
+              />
             </label>
           );
         })}
@@ -36,15 +28,12 @@ class RadioGroup extends Component {
   }
 }
 
-const renderRadioQuestion = (props) => {
+const renderRadioQuestion = props => {
   return (
-    <OptionRow text={props.options.text}>
-      <Checkbox type={"radio"} radio value={props.options.checked}
-                onChange={(e) => props.input.onChange(e.target.checked)}
-                {...props} />
+    <OptionRow text={props.label}>
+      <input type="radio" {...props.input} />
     </OptionRow>
   );
 };
-
 
 export default RadioGroup;

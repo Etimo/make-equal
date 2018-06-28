@@ -62,18 +62,12 @@ class App extends Component {
           </div>
         );
       } else if (!this.state.showAnswers) {
-        const initialValues = {};
-        for (let question of this.state.introductionQuestions) {
-          initialValues[
-            `${question.id}-${this.state.targetPath[question.id]}`
-          ] = true;
-        }
         return (
           <div className={'page-content'}>
             <NetHateHelpForm
               onSubmit={values => this.submit(values)}
               sections={this.state.formQuestions}
-              initialValues={initialValues}
+              initialValues={this.state.targetPath}
             />
           </div>
         );

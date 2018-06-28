@@ -55,15 +55,15 @@ class FormSection extends PureComponent {
     let input;
     switch (question.type) {
       case 'checkboxGroup':
-        input = <CheckboxGroup key={question.id} questions={question} />;
+        input = <CheckboxGroup key={question.id} question={question} />;
         break;
       case 'checkboxGroupWithSubOptions':
         input = (
-          <CheckboxGroupWithSubOptions key={question.id} questions={question} />
+          <CheckboxGroupWithSubOptions key={question.id} question={question} />
         );
         break;
       case 'radioGroup':
-        input = <RadioGroup key={question.id} questions={question} />;
+        input = <RadioGroup key={question.id} question={question} />;
         break;
       default:
         break;
