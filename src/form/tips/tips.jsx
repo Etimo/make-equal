@@ -30,11 +30,22 @@ const tips = [
     }
   },
   {
+    title: 'Myndig',
+    text: 'Detta visas bara för myndiga',
+    condition: 'q2-b'
+  },
+  {
     title: 'En testtitel',
     text:
       'Anmäl opassande beteenden via respektive sajters eller sociala mediers anmälningsfunktioner. Dock kan det vara bra att veta att kränkande material inte säkert tas bort bara för att det anmäls.',
     condition: {
-      any: ['8-a', '8-bc', '8-c', '8-e', '8-f', '8-g']
+      any: [
+        'where-socialMedia',
+        'where-otherForum',
+        'where-blogs',
+        'where-video',
+        'where-porn'
+      ]
     }
   },
   {
@@ -42,16 +53,13 @@ const tips = [
     text:
       'Om du orkar och kan - säg ifrån eller ta diskussionen! Gå ihop flera stycken om det känns svårt. Tänk på att fråga personen först, ibland kan det trigga mer än att hjälpa.',
     condition: {
-      all: ['1-b', { not: '14-d' }]
+      all: ['target-other', { not: 'q14-d' }]
     }
   },
   {
     title: 'En tredje testtitel',
     text:
-      'Tänk på att ta det som hänt på lika stort allvar som om kränkningen ägt rum utanför nätet.',
-    condition: {
-      all: []
-    }
+      'Tänk på att ta det som hänt på lika stort allvar som om kränkningen ägt rum utanför nätet.'
   }
 ];
 
@@ -61,7 +69,10 @@ function checkCondition(condition, answers) {
   } else if (condition === false) {
     return false;
   } else if (typeof condition === 'string') {
-    return !!answers[condition];
+    let [question, answer] = condition.split('-');
+    let checkboxTicked = !!answers[condition];
+    let radioBoxSelected = answers[question] === answer;
+    return checkboxTicked || radioBoxSelected;
   } else if (condition.not !== undefined) {
     return !checkCondition(condition.not, answers);
   } else if (condition.all !== undefined) {
