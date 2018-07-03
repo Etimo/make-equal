@@ -12,12 +12,10 @@ import {
   getIntroductionQuestions
 } from './form/TargetedQuestionListBuilder';
 import titleCase from 'title-case';
-import { WordAnnotator } from './services/WordAnnotator';
 
 class App extends Component {
   constructor() {
     super();
-    this.wordAnnotator = new WordAnnotator();
     this.state = {
       showForm: false,
       showAnswers: false,
@@ -85,10 +83,7 @@ class App extends Component {
     } else {
       return (
         <div className={'page-content'}>
-          <StartPage
-            wordAnnotator={this.wordAnnotator}
-            showForm={() => this.showForm()}
-          />
+          <StartPage showForm={() => this.showForm()} />
         </div>
       );
     }

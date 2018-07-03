@@ -34,20 +34,17 @@ class FrontPage extends Component {
         <SimpleGridRow>
           <SimpleGridColumn width={10}>
             {frontPageTitle}
-            <AnnotateText
-              annotator={this.props.wordAnnotator}
-              text={frontPageSectionOne}
-            />
+            <p>
+              <AnnotateText text={frontPageSectionOne} />
+            </p>
           </SimpleGridColumn>
         </SimpleGridRow>
         <SimpleGridRow>
           <SimpleGridColumn width={10}>
             {frontPageSectionTwo.map((paragraph, index) => (
-              <AnnotateText
-                key={index}
-                annotator={this.props.wordAnnotator}
-                text={paragraph}
-              />
+              <p key={index}>
+                <AnnotateText text={paragraph} />
+              </p>
             ))}
           </SimpleGridColumn>
         </SimpleGridRow>

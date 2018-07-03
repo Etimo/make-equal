@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react';
 import WordDefinitionModal from './WordDefinistionModal';
+import { WordAnnotator } from '../../services/WordAnnotator';
 
-export class AnnotateText extends PureComponent {
+const AnnotateTextContext = React.createContext(new WordAnnotator());
+
+class AnnotateTextUnwrapped extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,6 +71,12 @@ export class AnnotateText extends PureComponent {
         );
       }
     });
-    return <p>{segs}</p>;
+    return <span>{segs}</span>;
   }
 }
+
+export const AnnotateText = props => (
+  <AnnotateTextContext.Consumer>
+    {annotator => <AnnotateTextUnwrapped {...props} annotator={annotator} />}
+  </AnnotateTextContext.Consumer>
+);
