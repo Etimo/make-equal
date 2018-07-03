@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, FormSection } from 'redux-form';
+import { Field } from 'redux-form';
 import {
   OptionRow,
   QuestionContainer

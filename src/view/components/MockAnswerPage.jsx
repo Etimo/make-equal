@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import {
-  InformationBox,
-  SimpleGridContainer,
-  SimpleGridColumn,
-  SimpleGridRow
-} from './Layout-components';
-import { Accordion, Icon, Segment } from 'semantic-ui-react';
 import { tipsForAnswers } from '../../form/tips/tips.jsx';
 
 class FrontPage extends Component {

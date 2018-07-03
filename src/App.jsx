@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, GridColumn, Progress } from 'semantic-ui-react';
+import { Grid, GridColumn } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './view/style/App.css';
 import NetHateHelpForm from './form/NetHateHelpForm';
@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   targetPath(targetInTime) {
-    let { target, tempus } = targetInTime;
     let targetInTimeStr = `${targetInTime.target}In${titleCase(
       targetInTime.tempus
     )}`;

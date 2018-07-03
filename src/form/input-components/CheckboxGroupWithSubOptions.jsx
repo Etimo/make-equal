@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Field, FormSection } from 'redux-form';
-import { Checkbox, Accordion, Icon } from 'semantic-ui-react';
+import { Field } from 'redux-form';
+import { Accordion } from 'semantic-ui-react';
 import {
   OptionRow,
   QuestionContainer,

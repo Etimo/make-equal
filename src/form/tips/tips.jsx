@@ -91,7 +91,7 @@ function checkCondition(condition, answers) {
     return false;
   } else {
     console.error('Invalid tip condition: ', { condition, answers });
-    throw 'Invalid tip condition';
+    throw new Error('Invalid tip condition');
   }
 }
 

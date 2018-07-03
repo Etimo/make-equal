@@ -10,7 +10,6 @@ import {
   frontPageTitle
 } from '../other/page-text-content';
 import { Button } from 'semantic-ui-react';
-import WordDefinitionModal from './WordDefinistionModal';
 import { AnnotateText } from '../components/AnnotateText';
 
 class FrontPage extends Component {

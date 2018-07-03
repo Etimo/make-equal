@@ -1,4 +1,3 @@
-import { WordAnnotator } from '../../services/WordAnnotator';
 import React, { PureComponent } from 'react';
 import WordDefinitionModal from './WordDefinistionModal';
 

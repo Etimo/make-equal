@@ -7,10 +7,6 @@ import '../view/style/formSection.css';
 // import "../view/style/FormBase.css";
 
 class FormSection extends PureComponent {
-  constructor() {
-    super();
-  }
-
   get prevBtn() {
     if (!this.props.isFirst) {
       return (
