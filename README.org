@@ -1,0 +1,1 @@
+[[https://travis-ci.org/Etimo/make-equal][[[https://travis-ci.org/Etimo/make-equal.svg?branch=master]]]]
