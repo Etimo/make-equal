@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
+set -euo pipefail
+
 yarn install
 yarn build
 
-lftp -u "${LFTP_USERNAME}" --env-password "${LFTP_SERVER}" -c "mirror --reverse --delete build public_html"
+lftp -c "open -u ${LFTP_USERNAME} --env-password ${LFTP_SERVER} && mirror --reverse --delete build public_html"
