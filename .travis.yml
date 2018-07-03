@@ -2,7 +2,10 @@ language: node_js
 node_js:
 - 8.11.2
 cache: yarn
-sudo: required
+addons:
+  apt:
+    packages:
+    - lftp
 deploy:
   provider: script
   script: "./deploy.sh"
