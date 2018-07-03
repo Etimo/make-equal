@@ -31,7 +31,7 @@ const tips = [
   },
   {
     title: 'Myndig',
-    text: 'Detta visas bara för myndiga',
+    text: 'Vi kommer bara inkludera detta för myndiga',
     condition: 'q2-b'
   },
   {

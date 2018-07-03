@@ -6,7 +6,7 @@ import NetHateHelpForm from './form/NetHateHelpForm';
 import Header from './view/components/Header';
 import DeterminePath from './form/DeterminePath';
 import StartPage from './view/components/FrontPage';
-import MockAnswerPage from './view/components/MockAnswerPage';
+import { AnswerPage } from './view/components/AnswerPage';
 import {
   generateQuestionListForTarget,
   getIntroductionQuestions
@@ -73,7 +73,7 @@ class App extends Component {
       } else {
         return (
           <div className={'page-content'}>
-            <MockAnswerPage
+            <AnswerPage
               showForm={() => this.showForm()}
               answers={this.state.answers}
             />
