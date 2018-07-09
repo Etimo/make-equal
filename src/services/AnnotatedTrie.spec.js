@@ -55,6 +55,12 @@ describe('findNext', () => {
       expletives.findNext('I hear Scunthorpe is a pretty nice place to live!')
     ).toEqual(undefined);
   });
+
+  it('not crash when ending in the middle of a word', () => {
+    let words = new AnnotatedTrie();
+    words.add('experimental', true);
+    expect(words.findNext('experiment')).toEqual(undefined);
+  });
 });
 
 describe('findAll', () => {

@@ -55,16 +55,8 @@ export class AnnotatedTrie {
     let curr = this;
     let pos = posStart;
     while (posStart < text.length) {
-      if (curr === undefined) {
-        do {
-          posStart++;
-        } while (
-          text[posStart - 1] !== undefined &&
-          isWordLetter.test(text[posStart - 1])
-        );
-        pos = posStart;
-        curr = this;
-      } else if (
+      if (
+        curr !== undefined &&
         curr.tag !== undefined &&
         (text[pos] === undefined || !isWordLetter.test(text[pos]))
       ) {
@@ -73,6 +65,15 @@ export class AnnotatedTrie {
           posEnd: pos,
           tag: curr.tag
         };
+      } else if (curr === undefined || text[pos] === undefined) {
+        do {
+          posStart++;
+        } while (
+          text[posStart - 1] !== undefined &&
+          isWordLetter.test(text[posStart - 1])
+        );
+        pos = posStart;
+        curr = this;
       } else {
         curr = curr.getDirectChild(text[pos]);
         pos++;
