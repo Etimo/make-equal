@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Form, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Form, reduxForm, getFormValues } from 'redux-form';
 import FormSection from './FormSection';
 import { Progress } from 'semantic-ui-react';
+import _ from 'lodash';
+import { checkCondition } from '../models/condition';
 
 // import "../view/style/registrationForm.css";
 
@@ -15,9 +18,9 @@ class NetHateHelpForm extends Component {
 
   componentDidMount() {}
 
-  navigate(offset) {
+  navigateTo(index) {
     this.setState({
-      currentSection: this.state.currentSection + offset
+      currentSection: index
     });
   }
 
@@ -25,8 +28,16 @@ class NetHateHelpForm extends Component {
     const currentSection = this.props.sections[this.state.currentSection];
     console.log(this.state.currentSection, currentSection);
 
-    const first = this.state.currentSection === 0;
-    const last = this.state.currentSection === this.props.sections.length - 1;
+    const prev = _.findLastIndex(
+      this.props.sections,
+      question => checkCondition(question.condition, this.props.answers),
+      this.state.currentSection - 1
+    );
+    const next = _.findIndex(
+      this.props.sections,
+      question => checkCondition(question.condition, this.props.answers),
+      this.state.currentSection + 1
+    );
 
     return (
       <Form onSubmit={this.props.handleSubmit}>
@@ -38,14 +49,21 @@ class NetHateHelpForm extends Component {
         </div>
         <FormSection
           section={currentSection}
-          isFirst={first}
-          isLast={last}
-          goBack={() => this.navigate(-1)}
-          goForward={() => this.navigate(1)}
+          isFirst={this.state.currentSection === 0 || prev === -1}
+          isLast={next === -1}
+          goBack={() => this.navigateTo(prev)}
+          goForward={() => this.navigateTo(next)}
         />
       </Form>
     );
   }
+}
+
+function addAnswersToProps(state, ownProps) {
+  return {
+    answers: getFormValues(ownProps.form)(state, {}),
+    ...ownProps
+  };
 }
 
 export default (NetHateHelpForm = reduxForm({
@@ -54,6 +72,4 @@ export default (NetHateHelpForm = reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true
-})(NetHateHelpForm));
-
-// export default RegistrationForm;
+})(connect(addAnswersToProps)(NetHateHelpForm)));

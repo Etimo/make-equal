@@ -51,6 +51,15 @@ export const followupQuestions = [
     ]
   },
   {
+    id: 'adultConfirm',
+    type: 'radioGroup',
+    condition: 'age-adult',
+    questionText: {
+      noTarget: 'Denna fråga visas bara för myndiga'
+    },
+    options: [{ id: 'ok', optionText: { noTarget: 'OK' } }]
+  },
+  {
     id: 'q3',
     type: 'checkboxGroup',
     questionText: {

@@ -8,24 +8,20 @@ export const generateQuestionListForTarget = function(targetInTime) {
   let questionsForTarget = [];
   for (let i in followupQuestions) {
     const questionSourceObject = followupQuestions[i];
-    try {
-      let question = {
-        id: questionSourceObject.id,
-        type: questionSourceObject.type,
-        text: matchTextForTargetInTime(
-          targetInTime,
-          questionSourceObject.questionText
-        ),
-        options: getQuestionTextAndOptionsForTarget(
-          targetInTime,
-          questionSourceObject.options
-        )
-      };
-      questionsForTarget.push(question);
-    } catch (e) {
-      console.log(followupQuestions[i]);
-      console.log(e);
-    }
+    let question = {
+      id: questionSourceObject.id,
+      type: questionSourceObject.type,
+      condition: questionSourceObject.condition,
+      text: matchTextForTargetInTime(
+        targetInTime,
+        questionSourceObject.questionText
+      ),
+      options: getQuestionTextAndOptionsForTarget(
+        targetInTime,
+        questionSourceObject.options
+      )
+    };
+    questionsForTarget.push(question);
   }
   return questionsForTarget;
 };
