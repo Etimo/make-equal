@@ -16,7 +16,7 @@ class CheckboxGroupWithSubOptions extends Component {
   render() {
     const question = this.props.question;
     return (
-      <QuestionContainer title={question.text}>
+      <QuestionContainer title={question.text} tip={question.tip}>
         {question.options.map((option, index) => {
           option.questionId = question.id;
           return (

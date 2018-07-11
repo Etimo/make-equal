@@ -48,6 +48,11 @@ export const QuestionContainer = props => {
           <AnnotateText text={props.title} />
         </h3>
       </div>
+      {props.tip && (
+        <div className="question-tip">
+          <AnnotateText text={props.tip} />
+        </div>
+      )}
       <div className="option-container">{props.children}</div>
     </div>
   );

@@ -40,6 +40,7 @@ export const followupQuestions = [
   {
     id: 'age',
     type: 'radioGroup',
+    tip: 'Din ålder hjälper oss anpassa vilka tips du ser.',
     questionText: {
       selfInPresent: 'Hur gammal är du?',
       selfInPast: 'Hur gammal är du?',

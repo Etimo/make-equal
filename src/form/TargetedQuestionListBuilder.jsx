@@ -9,9 +9,7 @@ export const generateQuestionListForTarget = function(targetInTime) {
   for (let i in followupQuestions) {
     const questionSourceObject = followupQuestions[i];
     let question = {
-      id: questionSourceObject.id,
-      type: questionSourceObject.type,
-      condition: questionSourceObject.condition,
+      ...questionSourceObject,
       text: matchTextForTargetInTime(
         targetInTime,
         questionSourceObject.questionText
