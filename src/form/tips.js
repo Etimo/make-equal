@@ -1,4 +1,4 @@
-import { checkCondition } from '../../services/condition';
+import { checkCondition } from '../services/condition';
 
 /*
  * The tips will be shown in order, assuming that the condition is satisfied
@@ -27,7 +27,7 @@ const tips = [
   {
     title: 'Myndig',
     text: 'Vi kommer bara inkludera detta för myndiga',
-    condition: 'q2-b'
+    condition: 'age-adult'
   },
   {
     title: 'En testtitel',

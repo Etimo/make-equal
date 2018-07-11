@@ -1,10 +1,10 @@
-import {introductionQuestions, followupQuestions} from "./FormQuestionLists";
+import { introductionQuestions, followupQuestions } from '../models/questions';
 
 /**
  * The combination of the first two form-form-questions determine which target and tempus to use for the form-form-questions
  * 0a1a selfInPresent , 0a1b selfInPast, 0b1a otherInPresent, 0b1b otherInPast
  * */
-export const generateQuestionListForTarget = function (targetInTime) {
+export const generateQuestionListForTarget = function(targetInTime) {
   let questionsForTarget = [];
   for (let i in followupQuestions) {
     const questionSourceObject = followupQuestions[i];
@@ -12,8 +12,14 @@ export const generateQuestionListForTarget = function (targetInTime) {
       let question = {
         id: questionSourceObject.id,
         type: questionSourceObject.type,
-        text: matchTextForTargetInTime(targetInTime, questionSourceObject.questionText),
-        options: getQuestionTextAndOptionsForTarget(targetInTime, questionSourceObject.options)
+        text: matchTextForTargetInTime(
+          targetInTime,
+          questionSourceObject.questionText
+        ),
+        options: getQuestionTextAndOptionsForTarget(
+          targetInTime,
+          questionSourceObject.options
+        )
       };
       questionsForTarget.push(question);
     } catch (e) {
@@ -24,7 +30,10 @@ export const generateQuestionListForTarget = function (targetInTime) {
   return questionsForTarget;
 };
 
-const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptions) {
+const getQuestionTextAndOptionsForTarget = function(
+  targetInTime,
+  questionOptions
+) {
   if (targetInTime && questionOptions) {
     let options = [];
     // Add the containing options of the form-form-questions with text directed at targetInTime
@@ -33,28 +42,43 @@ const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptio
         let option = {};
         let subOptions = [];
         if (questionOptions[i].id) {
-          if (questionOptions[i].subOptions && questionOptions[i].subOptions.length > 0) {
+          if (
+            questionOptions[i].subOptions &&
+            questionOptions[i].subOptions.length > 0
+          ) {
             for (let j in questionOptions[i].subOptions) {
               subOptions.push({
                 id: questionOptions[i].subOptions[j].id,
-                text: matchTextForTargetInTime(targetInTime, questionOptions[i].subOptions[j].optionText)
+                text: matchTextForTargetInTime(
+                  targetInTime,
+                  questionOptions[i].subOptions[j].optionText
+                )
               });
             }
           }
           option = {
             id: questionOptions[i].id,
-            text: matchTextForTargetInTime(targetInTime, questionOptions[i].optionText)
+            text: matchTextForTargetInTime(
+              targetInTime,
+              questionOptions[i].optionText
+            )
           };
           if (subOptions && subOptions.length > 0) {
             option.subOptions = subOptions;
           }
           options.push(option);
         } else {
-          throw new Error(`An option for the question is missing the ID property: ${questionOptions[i]}`);
+          throw new Error(
+            `An option for the question is missing the ID property: ${
+              questionOptions[i]
+            }`
+          );
         }
       }
     } else {
-      throw new Error("The options object sent in from the question source object is not an array.");
+      throw new Error(
+        'The options object sent in from the question source object is not an array.'
+      );
     }
     return options;
   } else {
@@ -63,7 +87,7 @@ const getQuestionTextAndOptionsForTarget = function (targetInTime, questionOptio
   }
 };
 
-const matchTextForTargetInTime = function (target, textObject) {
-  return textObject[target] ? textObject[target] : textObject["noTarget"];
+const matchTextForTargetInTime = function(target, textObject) {
+  return textObject[target] ? textObject[target] : textObject['noTarget'];
 };
 export const getIntroductionQuestions = () => introductionQuestions;
