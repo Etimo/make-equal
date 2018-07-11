@@ -24,6 +24,7 @@ export const introductionQuestions = [
  * type: 'radioGroup' (one item may be selected), 'checkboxGroup' (multiple items may be selected),
  *   or 'checkboxGroupWithSubOptions' (like checkboxGroup, but options may reveal sub-options)
  * condition: see ./condition.js
+ * tip: an extra descriptive text
  * questionText: the.. text to display, this has five (optional) subkeys:
  *   {target}In{tempus} (see introductionQuestions for definitions of target/tempus) is shown if that option was selected
  *   noTarget: the default if there is no match for the current xInY
