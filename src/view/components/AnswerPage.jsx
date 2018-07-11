@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { tipsForAnswers } from '../../form/tips';
+import { tipsForAnswers } from '../../models/tips';
 import { AnnotateText } from './AnnotateText';
 
 export class AnswerPage extends Component {

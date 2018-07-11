@@ -1,4 +1,4 @@
-import { checkCondition } from '../services/condition';
+import { checkCondition } from './condition';
 
 /*
  * The tips will be shown in order, assuming that the condition is satisfied
